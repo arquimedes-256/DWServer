@@ -1,0 +1,208 @@
+
+<link rel="import" href="../../../algooz_components/algooz-filters/algooz-filters.html">
+
+<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="../../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../../bower_components/core-menu/core-menu.html">
+
+
+<polymer-element name="algooz-clazz-maker" attributes="types bus mode algz_class">
+  <template>
+    <h1>{{ mode == 'UPDATE' ? 'Editar' : 'Inserir'  }} Classe</h1>
+    <div layout vertical>
+      <paper-input
+        floatingLabel
+        multiline
+        value="[[ algz_class.name ]]"
+        label="[[ 'CLASS' | string_base ]]"
+        id="algz_class_name">
+      </paper-input>
+      <template repeat="{{ a in algz_class.attributes }}">
+        <template if="{{ a.fileStatus.name != 'IN_TRASH' }}">
+          <div layout horizontal>
+            <paper-input flex
+              label="Nome do Atributo"
+              class="attr-name"
+              value="{{ a.name }}"
+              id="{{ a.name }}"
+              class-attribute="{{ a.name }}">
+            </paper-input>
+            <div sep>:</div>
+            <paper-dropdown-menu flex
+              valueattr="label"
+              label="{{ a.typer.name }}"
+              selected="[[ a.typer.name ]]"
+              class-attribute="{{ a.name }}">
+            <paper-dropdown class="dropdown">
+              <core-menu class="menu">
+                    <template repeat="{{ t in types }}">
+                      <paper-item flex label="[[ t[1] ]]"></paper-item>
+                    </template>
+              </core-menu>
+            </paper-dropdown>
+            </paper-dropdown-menu>
+            <paper-fab icon="remove"
+              mini
+              use-showing
+              showing
+              class="colored"
+              on-click="{{ removeAttr }}"
+              class-attribute="{{ a.name }}"
+              class-attribute-id="{{ a.id }}"></paper-fab>
+          </div>
+        </template>
+      </template>
+    </div>
+    <div layout vertical>
+      <paper-fab
+        self-end
+        use-showing
+        showing
+        id="add"
+        on-tap="{{ add_attribute }}"
+        icon="add">
+        +
+      </paper-fab>
+    </div>
+    <br/>
+    <div opt>
+      <paper-button on-tap="{{ cancel }}" class="colored" raised flex>
+          {{ 'TO_CANCEL' | string_base }}!
+      </paper-button>
+      <paper-button on-tap="{{ mkclass }}" class="full-colored" raised flex>
+          {{ 'SAVE' | string_base }}!
+      </paper-button>
+    </div>
+    <style>
+      paper-input#algz_class_name
+      {
+        font-size: 23px;
+      }
+      core-menu {
+        box-sizing: border-box
+      }
+
+      paper-item {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      core-collapse {
+        border: 1px solid #ccc;
+        padding: 8px;
+      }
+      paper-input::shadow paper-input-decorator
+      {
+        margin-top: 5px;
+      }
+      [sep]
+      {
+        font-size: 51px;
+        margin: 0 13px;
+      }
+      paper-fab#add
+      {
+        background: #4CAF50;
+      }
+    </style>
+  </template>
+  <script>
+    Polymer({
+      ready:function()
+      {
+          if(this.bus && this.bus.tty)
+          {
+            this.bus.$.ajax_ls_c.go();
+          }
+          this.createClassIfNotExits();
+      },
+      mkclass:function(event)
+      {
+        if(this.bus && this.bus.pwd)
+        {
+          var cmd;
+          var class_literal = this.class_literal;
+          var class_name = this.shadowRoot.querySelector('#algz_class_name').value;
+
+          cmd = "mkclass "+class_name+class_literal
+          if(this.mode == "UPDATE")
+          {
+            cmd += " --force";
+          }
+          this.bus.send(cmd)
+        }
+      },
+      createClassIfNotExits:function()
+      {
+        if(!this.algz_class)
+        {
+          this.algz_class = {name:'',attributes:[]};
+          this.algz_class.attributes.push({name:gf.string_base('NAME'),typer:{id:10,name:"String"}});
+        }
+      },
+      add_attribute:function()
+      {
+        this.createClassIfNotExits();
+        this.algz_class.attributes.push({name:"",typer:{id:10,name:"String"}});
+      },
+      removeAttr:function(e,d,s)
+      {
+        var newList = [];
+        var attrName = e.target.getAttribute('class-attribute');
+        var attrId = parseInt(e.target.getAttribute('class-attribute-id'));
+
+        for(var i=0;i<this.algz_class.attributes.length;i++)
+        {
+          var attr = this.algz_class.attributes[i];
+
+          if(attr.name != attrName)
+            newList.push(attr);
+        }
+        this.algz_class.attributes = newList;
+
+        if(attrId)
+        {
+            this.bus.alter_remove_attribute(attrName.replace(/\s+/g,'_'));
+        }
+      },
+      get type_label()
+      {
+        return gf.string_base('TYPE');
+      },
+      get class_literal()
+      {
+        var root = this.shadowRoot;
+        var s = "[";
+        var inputs = root.querySelectorAll('paper-input[class-attribute]');
+
+        for(var i=0;i<inputs.length;i++)
+        {
+          var input = inputs[i];
+          var class_attribute = input.getAttribute('class-attribute');
+          var drop_down = root.querySelector('paper-dropdown-menu[class-attribute="'+class_attribute+'"]');
+          var selected = drop_down.selectedItemLabel;
+          if(!selected)
+          {
+            selected = "String";
+          }
+          s+= class_attribute+":"+selected;
+
+          if(i!=inputs.length-1)
+            s+=",";
+        }
+        s+= "]";
+        return s;
+      },
+      cancel:function()
+      {
+        this.fire('cancel');
+      }
+    });
+  </script>
+</polymer-element>

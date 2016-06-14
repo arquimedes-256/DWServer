@@ -1,0 +1,67 @@
+
+body {
+  font-family: RobotoDraft, sans-serif;
+  color: #333;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+}
+
+
+html /deep/ paper-button.colored {
+  color: #00BCD4;
+}
+html /deep/ paper-button.full-colored {
+  background: #00BCD4;
+  color:#FFF;
+}
+html /deep/ paper-button.full-colored-danger
+{
+  background:#D50000;
+  color:#FFF;
+}
+html /deep/ paper-tab::shadow #ink {
+  color: #E0E0E0;
+
+}
+html /deep/ paper-tabs {
+  background-color: #fbfbfb;
+  color: #333;
+  box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.2);
+}
+html /deep/ paper-tabs::shadow #selectionBar {
+  background-color: #00BCD4;
+}
+html /deep/ [opt]
+{
+  position:absolute;
+  bottom:10px;
+  right:10px;
+}
+html /deep/ [topt]
+{
+  position: absolute;
+  right: 10px;
+}
+html /deep/ [showing] {
+  -webkit-transform: none!important;
+  transform: none!important;
+}
+html /deep/ [white]
+{
+  background:#fbfbfb;
+}
+html /deep/ paper-fab,
+html /deep/ [use-showing]
+{
+  transition: transform 500ms cubic-bezier(0.4,0,.2,1) 500ms,background-color 500ms cubic-bezier(0.4,0,.2,1);
+  -webkit-transition: -webkit-transform 500ms cubic-bezier(0.4,0,.2,1) 500ms,background-color 500ms cubic-bezier(0.4,0,.2,1);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}

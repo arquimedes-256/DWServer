@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>algooz calendar</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="../../webcomponents.min.js"></script>
+
+  <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+  <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+  <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+  <link rel="import" href="../../bower_components/polymer/layout.html">
+  <link rel="import" href="../../algooz_components/algooz-bus/algooz-bus.html">
+
+  <link rel="import" href="algooz-agenda.html">
+
+
+  </head>
+
+  <body unsolved>
+    <polymer-element name="demo-agenda">
+      <template>
+        <algooz-bus id="bus" base_url="http://sig.sulnorte.com.br/algz" debug></algooz-bus>
+        <algooz-agenda bus="{{ $.bus }}" month="now" year="2014" classID="0" objectID="0">
+        </algooz-agenda>
+      </template>
+      <script>
+        Polymer({});
+      </script>
+    </polymer-element>
+
+    <demo-agenda>
+    </demo-agenda>
+     <style>
+       body {
+          font-family: RobotoDraft, sans-serif;
+          color: #333;
+          margin: 0;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-tap-highlight-color: rgba(0,0,0,0);
+          -webkit-touch-callout: none;
+        }
+        #calendar {
+      		max-width: 900px;
+      		margin: 0 auto;
+      	}
+     </style>
+  </body>
+</html>

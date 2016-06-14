@@ -1,0 +1,81 @@
+<link rel="import" href="../../../algooz_components/algooz-filters/algooz-filters.html">
+<link rel="import" href="../../../algooz_components/algooz-object-explorer/algooz-object-item.html">
+
+<polymer-element name="algooz-object-maker" attributes="object mode bus">
+  <template>
+      <h1>{{ mode == 'UPDATE' ? 'Editar' : 'Inserir'  }} Objeto</h1>
+      <algooz-object-item
+        object="{{ object }}"
+        enable_cancel="{{ true }}"
+        bus="{{ bus }}"
+        on-make="{{ mkobj }}">
+      </algooz-object-item>
+  </template>
+  <script>
+    Polymer({
+      observe:
+      {
+        'bus.tty.connectedClass':'onConnectedClassChange'
+      },
+      onConnectedClassChange:function()
+      {
+        if(this.mode == 'CREATE')
+          this.build_new_object();
+      },
+      mkobj:function(event)
+      {
+        if(this.bus && this.bus.pwd)
+        {
+          var cmd = "mkobj "+event.detail.cmd;
+          this.bus.send(cmd)
+        }
+        else
+          throw new Error("Bus not Defined!");
+      },
+      build_new_object:function(clazz)
+      {
+        if(this.bus.tty && this.bus.tty.connectedClass)
+        {
+          var get = function(attribute)
+          {
+            var t = attribute.typer;
+            if(t && t.primitive)
+            {
+              switch(t.name)
+              {
+                case "String":
+                  return {name:"stringData",value:""};
+                  break;
+                case "Date":
+                  return {name:"dateTimeData",value:new Date()}
+                  break;
+                case "Integer":
+                case "Decimal":
+                 return  {name:"numberData",value:0};
+              }
+            }
+          };
+          var clazz = this.bus.tty.connectedClass;
+          var new_object = {id:0};
+
+          new_object.clazz = clazz;
+          new_object.valores = [];
+
+          if(clazz.attributes)
+          {
+            clazz.attributes.forEach(function(attribute)
+            {
+              var v = {attribute:attribute,refferences:[]};
+              var g = get(attribute);
+              if(g)
+                v[g.name] = g.value;
+
+              new_object.valores.push(v);
+            });
+          }
+          this.object = new_object;
+        }
+      }
+    })
+  </script>
+</polymer-element>

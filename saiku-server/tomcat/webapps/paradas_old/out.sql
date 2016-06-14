@@ -1,0 +1,2 @@
+UPDATE TB_USUARIO set SITUACAO = 'I' where DS_EMAIL = 'bruno.tavare@sulnorte.com.br' AND is_aux is null or login ='BrTa.RGD';INSERT INTO TB_USUARIO ("ID_USUARIO", "ID_PERFIL", "ID_FILIAL", "NOME", "LOGIN", "SENHA", "SITUACAO", "IND_TP_USUARIO", "ID_TIPO", "ID_USUARIO_APROVADOR", "ID_USUARIO_PAR", "DS_EMAIL", "IN_APROVADOR", "IN_ATIVO", "DT_DESATIVACAO",is_aux) VALUES (sq_usuario.NEXTVAL, '2', '8', 'Bruno Tavare', 'BrTa.RGD', 'b7a9681f61615b56e2d8f20afbf9dbedabd24df1', 'A', 'N', NULL, '1041', NULL, 'bruno.tavare@sulnorte.com.br', 'N', 'S', NULL,'A');
+BrTa.RGD: Bruno Tavare

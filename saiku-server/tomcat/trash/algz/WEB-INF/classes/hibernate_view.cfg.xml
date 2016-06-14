@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="algzSessionFactory">
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/alg</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">hibernate.dialect=core.manager.AlgoozMysqlDialect</property>  
+        <property name="hibernate.ejb.naming_strategy">core.manager.CMRNameStrategy</property>  
+        <property name="show_sql">true</property>
+		<mapping class="algz.model.Application"/>
+		<mapping class="algz.model.Attribute"/>
+		<mapping class="algz.model.Class"/>
+		<mapping class="algz.model.Customer"/>
+		<mapping class="algz.model.Grouper"/>
+		<mapping class="algz.model.Link"/>
+		<mapping class="algz.model.Message"/>
+		<mapping class="algz.model.MessageType"/>
+		<mapping class="algz.model.Module"/>
+		<mapping class="algz.model.Notification"/>
+		<mapping class="algz.model.Object"/>
+		<mapping class="algz.model.Program"/>
+		<mapping class="algz.model.Refference"/>
+		<mapping class="algz.model.Session"/>
+		<mapping class="algz.model.TTY"/>
+		<mapping class="algz.model.User"/>
+		<mapping class="algz.model.Value"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="752AE72B-D807-8379-94F5-38D7174CC7CD" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[PNG]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Grupo Nvl 3" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Grupo Nvl 3" type="member" node="[Grupo Nvl 3.default].[DESPESAS ADMINISTRATIVAS]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Grupo Nvl 1" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Grupo Nvl 1" type="member" node="[Grupo Nvl 1.default].[Outras DGA Filial]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(PRD) Conta Contabil" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(PRD) Conta Contabil" type="level" node="[(PRD) Conta Contabil.default].[Cod Conta Contabil]" operator="MEMBERS" />
+              <Selection dimension="(PRD) Conta Contabil" type="level" node="[(PRD) Conta Contabil.default].[Nome Conta Contabil]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Realizado  R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Janeiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Fevereiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Março]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Abril]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Maio]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Junho]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Julho]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2014]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Grupo Nvl 4">
+            <Inclusions>
+              <Selection dimension="Grupo Nvl 4" type="member" node="[Grupo Nvl 4.default].[-]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[Measures].[Valor Realizado  R$]}, {[(Tempo) Mensal.Mensal].[Janeiro]}), Union(CrossJoin({[Measures].[Valor Realizado  R$]}, {[(Tempo) Mensal.Mensal].[Fevereiro]}), Union(CrossJoin({[Measures].[Valor Realizado  R$]}, {[(Tempo) Mensal.Mensal].[Março]}), Union(CrossJoin({[Measures].[Valor Realizado  R$]}, {[(Tempo) Mensal.Mensal].[Abril]}), Union(CrossJoin({[Measures].[Valor Realizado  R$]}, {[(Tempo) Mensal.Mensal].[Maio]}), Union(CrossJoin({[Measures].[Valor Realizado  R$]}, {[(Tempo) Mensal.Mensal].[Junho]}), CrossJoin({[Measures].[Valor Realizado  R$]}, {[(Tempo) Mensal.Mensal].[Julho]})))))))) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Local) Filial.default].[PNG]}, CrossJoin({[Grupo Nvl 3.default].[DESPESAS ADMINISTRATIVAS]}, CrossJoin({[Grupo Nvl 1.default].[Outras DGA Filial]}, [(PRD) Conta Contabil.default].[Cod Conta Contabil].Members))), CrossJoin({[(Local) Filial.default].[PNG]}, CrossJoin({[Grupo Nvl 3.default].[DESPESAS ADMINISTRATIVAS]}, CrossJoin({[Grupo Nvl 1.default].[Outras DGA Filial]}, [(PRD) Conta Contabil.default].[Nome Conta Contabil].Members))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE CrossJoin({[(Tempo) Anual.default].[2014]}, {[Grupo Nvl 4.default].[-]})</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.ui.formatter" value="flattened" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

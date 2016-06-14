@@ -1,0 +1,51 @@
+
+<link rel="import" href="../../../algooz_components/algooz-filters/algooz-filters.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+
+<polymer-element name="algooz-module-maker" attributes="bus mode algz_module">
+  <template>
+    <h1>{{ mode == 'UPDATE' ? 'Editar' : 'Inserir'  }} Módulo</h1>
+    <div layout vertical>
+      <paper-input
+        floatingLabel
+        multiline
+        value="[[ algz_module.name ]]"
+        label="[[ 'NAME' | string_base ]]"
+        id="algz_module_name">
+      </paper-input>
+      <div opt>
+        <paper-button on-tap="{{ cancel }}" class="colored" raised flex>
+            {{ 'TO_CANCEL' | string_base }}!
+        </paper-button>
+        <paper-button on-tap="{{ mkmodule }}" class="full-colored" raised flex>
+            {{ 'SAVE' | string_base }}!
+        </paper-button>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      algz_moduleChanged:function(oldValue,newValue)
+      {
+        if(newValue == null)
+          this.algz_module = {name:'New Module'};
+      },
+      mkmodule:function()
+      {
+        var cmd = null;
+        if(this.mode == 'CREATE')
+          cmd = 'mkmod';
+        else if(this.mode == 'UPDATE')
+          cmd = 'rename';
+        else
+          throw new Error("modo não existente");
+
+        this.bus.send(cmd+' '+this.$.algz_module_name.value);
+      },
+      cancel:function()
+      {
+        this.fire('cancel');
+      }
+    });
+  </script>
+</polymer-element>

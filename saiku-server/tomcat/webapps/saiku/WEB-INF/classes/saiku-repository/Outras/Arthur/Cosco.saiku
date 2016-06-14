@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="344A8223-2F08-EF69-B7C0-1A3E6474D637" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[RGD]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Nota Fiscal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Nota Fiscal" type="level" node="[(Operacao) Nota Fiscal.default].[Nota Fiscal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Armador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Armador" type="level" node="[(Empresa) Armador.default].[Armador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CHINA COSCO BULK SHIPPING (GROUP) CO.LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO BRASIL S/A]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO BRASIL S/A - STS]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO BULK CARRIER CO LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO (HK) SHIPPING CO., LTD. / PANAMAX CARRIERS DEPT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO SHIPPING CO ., LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO SHIPPING CO.,LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCOL (HK) INVESTMENT &amp; DEVELOPMENT CO., LIMITED]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[REFINED SUCCESS LTD.BVI]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Maio]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Faturado Liquido Corrigido R$]} ON COLUMNS,&#xD;
+NON EMPTY CrossJoin({[(Local) Filial.default].[RGD]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Empresa) Armador.default].[Armador].Members)) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE Hierarchize(Union(CrossJoin({[(Empresa) Cliente.default].[CHINA COSCO BULK SHIPPING (GROUP) CO.LTD]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO BRASIL S/A]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO BRASIL S/A - STS]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO BULK CARRIER CO LTD]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO (HK) SHIPPING CO., LTD. / PANAMAX CARRIERS DEPT]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO SHIPPING CO ., LTD]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO SHIPPING CO.,LTD]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCOL (HK) INVESTMENT &amp; DEVELOPMENT CO., LIMITED]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]})), CrossJoin({[(Empresa) Cliente.default].[REFINED SUCCESS LTD.BVI]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]})))))))))))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

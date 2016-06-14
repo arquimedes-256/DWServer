@@ -1,0 +1,74 @@
+<Schema name="New Schema1">
+  <Dimension type="StandardDimension" visible="true" name="Cliente">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CLIENTE">
+      <Table name="cliente" alias="">
+      </Table>
+      <Level name="Nome Cliente" visible="true" column="NOME_CLIENTE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Navio">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_NAVIO">
+      <Table name="navio" alias="">
+      </Table>
+      <Level name="Nome Navio" visible="true" column="NOME_NAVIO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Estado">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_ESTADO">
+      <Table name="estado">
+      </Table>
+      <Level name="Sigla Estado" visible="true" column="SIGLA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Manobra">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_MANOBRA">
+      <Table name="manobra">
+      </Table>
+      <Level name="Nome Manobra" visible="true" column="NOME_MANOBRA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Rebocador">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_REBOCADOR">
+      <Table name="rebocador" alias="">
+      </Table>
+      <Level name="Nome Rebocador" visible="true" column="NOME_REBOCADOR" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Proprio" visible="true" column="PROPRIO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="TimeDimension" visible="true" name="Tempo">
+    <Hierarchy name="default" visible="true" hasAll="false" primaryKey="ID_TEMPO">
+      <Table name="tempo" alias="">
+      </Table>
+      <Level name="Ano" visible="true" column="ANO" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+      <Level name="Mes" visible="true" column="MES" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Sulnorte" visible="true" cache="true" enabled="true">
+    <Table name="sn_fato" alias="">
+    </Table>
+    <DimensionUsage source="Cliente" name="Cliente" visible="true" foreignKey="ID_CLIENTE_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Navio" name="Navio" visible="true" foreignKey="ID_NAVIO_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Estado" name="Estado" visible="true" foreignKey="ID_ESTADO_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Manobra" name="Manobra" visible="true" foreignKey="ID_MANOBRA_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Rebocador" name="Rebocador" visible="true" foreignKey="ID_REBOCADOR_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="Tempo" visible="true" foreignKey="ID_TEMPO_FK">
+    </DimensionUsage>
+    <Measure name="Fatura" column="VALOR_FATURA" datatype="String" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Media Fatura" column="VALOR_FATURA" datatype="String" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

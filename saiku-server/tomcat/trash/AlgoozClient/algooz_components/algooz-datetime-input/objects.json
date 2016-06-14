@@ -1,0 +1,1036 @@
+[ {
+  "id" : 21,
+  "className" : "Object",
+  "name" : "Operacao@21",
+  "clazz" : {
+    "id" : 19,
+    "className" : "Class",
+    "name" : "Operacao",
+    "attributes" : [ {
+      "id" : 24,
+      "className" : "Attribute",
+      "functionBody" : null,
+      "name" : "Rebocador",
+      "typer" : {
+        "id" : 12,
+        "className" : "Class",
+        "name" : "Rebocador",
+        "attributes" : [ {
+          "id" : 1,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Nome",
+          "typer" : {
+            "id" : 10,
+            "className" : "Class",
+            "name" : "String",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 0,
+          "endTemporal" : false,
+          "startTemporal" : false
+        }, {
+          "id" : 2,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "BHP",
+          "typer" : {
+            "id" : 9,
+            "className" : "Class",
+            "name" : "Integer",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 1,
+          "endTemporal" : false,
+          "startTemporal" : false
+        }, {
+          "id" : 6,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Filial",
+          "typer" : {
+            "id" : 14,
+            "className" : "Class",
+            "name" : "Filial",
+            "attributes" : [ {
+              "id" : 4,
+              "className" : "Attribute",
+              "functionBody" : null,
+              "name" : "Nome",
+              "typer" : {
+                "id" : 10,
+                "className" : "Class",
+                "name" : "String",
+                "attributes" : [ ],
+                "fileStatus" : {
+                  "id" : 3,
+                  "className" : "FileStatus",
+                  "name" : "UNLOCKED"
+                },
+                "primitive" : true,
+                "simplePrimitive" : true
+              },
+              "fileStatus" : {
+                "id" : 3,
+                "className" : "FileStatus",
+                "name" : "UNLOCKED"
+              },
+              "ordering" : 0,
+              "endTemporal" : false,
+              "startTemporal" : false
+            } ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : false,
+            "simplePrimitive" : false
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 2,
+          "endTemporal" : false,
+          "startTemporal" : false
+        } ],
+        "fileStatus" : {
+          "id" : 3,
+          "className" : "FileStatus",
+          "name" : "UNLOCKED"
+        },
+        "primitive" : false,
+        "simplePrimitive" : false
+      },
+      "fileStatus" : {
+        "id" : 3,
+        "className" : "FileStatus",
+        "name" : "UNLOCKED"
+      },
+      "ordering" : 0,
+      "endTemporal" : false,
+      "startTemporal" : false
+    }, {
+      "id" : 25,
+      "className" : "Attribute",
+      "functionBody" : null,
+      "name" : "Manobra",
+      "typer" : {
+        "id" : 18,
+        "className" : "Class",
+        "name" : "Manobra",
+        "attributes" : [ {
+          "id" : 22,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Nome",
+          "typer" : {
+            "id" : 10,
+            "className" : "Class",
+            "name" : "String",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 0,
+          "endTemporal" : false,
+          "startTemporal" : false
+        }, {
+          "id" : 23,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Valor",
+          "typer" : {
+            "id" : 8,
+            "className" : "Class",
+            "name" : "Decimal",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 1,
+          "endTemporal" : false,
+          "startTemporal" : false
+        } ],
+        "fileStatus" : {
+          "id" : 3,
+          "className" : "FileStatus",
+          "name" : "UNLOCKED"
+        },
+        "primitive" : false,
+        "simplePrimitive" : false
+      },
+      "fileStatus" : {
+        "id" : 3,
+        "className" : "FileStatus",
+        "name" : "UNLOCKED"
+      },
+      "ordering" : 1,
+      "endTemporal" : false,
+      "startTemporal" : false
+    }, {
+      "id" : 26,
+      "className" : "Attribute",
+      "functionBody" : null,
+      "name" : "Data",
+      "typer" : {
+        "id" : 5,
+        "className" : "Class",
+        "name" : "Date",
+        "attributes" : [ ],
+        "fileStatus" : {
+          "id" : 3,
+          "className" : "FileStatus",
+          "name" : "UNLOCKED"
+        },
+        "primitive" : true,
+        "simplePrimitive" : true
+      },
+      "fileStatus" : {
+        "id" : 3,
+        "className" : "FileStatus",
+        "name" : "UNLOCKED"
+      },
+      "ordering" : 2,
+      "endTemporal" : false,
+      "startTemporal" : false
+    } ],
+    "fileStatus" : {
+      "id" : 3,
+      "className" : "FileStatus",
+      "name" : "UNLOCKED"
+    },
+    "primitive" : false,
+    "simplePrimitive" : false
+  },
+  "valores" : [ {
+    "id" : 40,
+    "className" : "Value",
+    "stringData" : null,
+    "numberData" : null,
+    "dateTimeData" : 1414955700000,
+    "user" : null,
+    "refferences" : [ ],
+    "bornDate" : 1414955795000,
+    "attribute" : {
+      "id" : 26,
+      "className" : "Attribute",
+      "functionBody" : null,
+      "name" : "Data",
+      "typer" : {
+        "id" : 5,
+        "className" : "Class",
+        "name" : "Date",
+        "attributes" : [ ],
+        "fileStatus" : {
+          "id" : 3,
+          "className" : "FileStatus",
+          "name" : "UNLOCKED"
+        },
+        "primitive" : true,
+        "simplePrimitive" : true
+      },
+      "fileStatus" : {
+        "id" : 3,
+        "className" : "FileStatus",
+        "name" : "UNLOCKED"
+      },
+      "ordering" : 2,
+      "endTemporal" : false,
+      "startTemporal" : false
+    },
+    "name" : "Data"
+  }, {
+    "id" : 41,
+    "className" : "Value",
+    "stringData" : null,
+    "numberData" : null,
+    "dateTimeData" : null,
+    "user" : null,
+    "refferences" : [ {
+      "id" : 19,
+      "className" : "Object",
+      "name" : "Manobra@19",
+      "clazz" : {
+        "id" : 18,
+        "className" : "Class",
+        "name" : "Manobra",
+        "attributes" : [ {
+          "id" : 22,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Nome",
+          "typer" : {
+            "id" : 10,
+            "className" : "Class",
+            "name" : "String",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 0,
+          "endTemporal" : false,
+          "startTemporal" : false
+        }, {
+          "id" : 23,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Valor",
+          "typer" : {
+            "id" : 8,
+            "className" : "Class",
+            "name" : "Decimal",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 1,
+          "endTemporal" : false,
+          "startTemporal" : false
+        } ],
+        "fileStatus" : {
+          "id" : 3,
+          "className" : "FileStatus",
+          "name" : "UNLOCKED"
+        },
+        "primitive" : false,
+        "simplePrimitive" : false
+      },
+      "valores" : [ {
+        "id" : 38,
+        "className" : "Value",
+        "stringData" : null,
+        "numberData" : 300.0,
+        "dateTimeData" : null,
+        "user" : null,
+        "refferences" : [ ],
+        "bornDate" : 1414955269000,
+        "attribute" : {
+          "id" : 23,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Valor",
+          "typer" : {
+            "id" : 8,
+            "className" : "Class",
+            "name" : "Decimal",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 1,
+          "endTemporal" : false,
+          "startTemporal" : false
+        },
+        "name" : "Valor"
+      }, {
+        "id" : 39,
+        "className" : "Value",
+        "stringData" : "Atracacao",
+        "numberData" : null,
+        "dateTimeData" : null,
+        "user" : null,
+        "refferences" : [ ],
+        "bornDate" : 1414955270000,
+        "attribute" : {
+          "id" : 22,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Nome",
+          "typer" : {
+            "id" : 10,
+            "className" : "Class",
+            "name" : "String",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 0,
+          "endTemporal" : false,
+          "startTemporal" : false
+        },
+        "name" : "Nome"
+      } ],
+      "naturalID" : 0,
+      "fileStatus" : {
+        "id" : 3,
+        "className" : "FileStatus",
+        "name" : "UNLOCKED"
+      },
+      "endTemporal" : null,
+      "startTemporal" : null
+    } ],
+    "bornDate" : 1414955795000,
+    "attribute" : {
+      "id" : 25,
+      "className" : "Attribute",
+      "functionBody" : null,
+      "name" : "Manobra",
+      "typer" : {
+        "id" : 18,
+        "className" : "Class",
+        "name" : "Manobra",
+        "attributes" : [ {
+          "id" : 22,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Nome",
+          "typer" : {
+            "id" : 10,
+            "className" : "Class",
+            "name" : "String",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 0,
+          "endTemporal" : false,
+          "startTemporal" : false
+        }, {
+          "id" : 23,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Valor",
+          "typer" : {
+            "id" : 8,
+            "className" : "Class",
+            "name" : "Decimal",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 1,
+          "endTemporal" : false,
+          "startTemporal" : false
+        } ],
+        "fileStatus" : {
+          "id" : 3,
+          "className" : "FileStatus",
+          "name" : "UNLOCKED"
+        },
+        "primitive" : false,
+        "simplePrimitive" : false
+      },
+      "fileStatus" : {
+        "id" : 3,
+        "className" : "FileStatus",
+        "name" : "UNLOCKED"
+      },
+      "ordering" : 1,
+      "endTemporal" : false,
+      "startTemporal" : false
+    },
+    "name" : "Manobra"
+  }, {
+    "id" : 42,
+    "className" : "Value",
+    "stringData" : null,
+    "numberData" : null,
+    "dateTimeData" : null,
+    "user" : null,
+    "refferences" : [ {
+      "id" : 8,
+      "className" : "Object",
+      "name" : "Rebocador@8",
+      "clazz" : {
+        "id" : 12,
+        "className" : "Class",
+        "name" : "Rebocador",
+        "attributes" : [ {
+          "id" : 1,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Nome",
+          "typer" : {
+            "id" : 10,
+            "className" : "Class",
+            "name" : "String",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 0,
+          "endTemporal" : false,
+          "startTemporal" : false
+        }, {
+          "id" : 2,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "BHP",
+          "typer" : {
+            "id" : 9,
+            "className" : "Class",
+            "name" : "Integer",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 1,
+          "endTemporal" : false,
+          "startTemporal" : false
+        }, {
+          "id" : 6,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Filial",
+          "typer" : {
+            "id" : 14,
+            "className" : "Class",
+            "name" : "Filial",
+            "attributes" : [ {
+              "id" : 4,
+              "className" : "Attribute",
+              "functionBody" : null,
+              "name" : "Nome",
+              "typer" : {
+                "id" : 10,
+                "className" : "Class",
+                "name" : "String",
+                "attributes" : [ ],
+                "fileStatus" : {
+                  "id" : 3,
+                  "className" : "FileStatus",
+                  "name" : "UNLOCKED"
+                },
+                "primitive" : true,
+                "simplePrimitive" : true
+              },
+              "fileStatus" : {
+                "id" : 3,
+                "className" : "FileStatus",
+                "name" : "UNLOCKED"
+              },
+              "ordering" : 0,
+              "endTemporal" : false,
+              "startTemporal" : false
+            } ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : false,
+            "simplePrimitive" : false
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 2,
+          "endTemporal" : false,
+          "startTemporal" : false
+        } ],
+        "fileStatus" : {
+          "id" : 3,
+          "className" : "FileStatus",
+          "name" : "UNLOCKED"
+        },
+        "primitive" : false,
+        "simplePrimitive" : false
+      },
+      "valores" : [ {
+        "id" : 8,
+        "className" : "Value",
+        "stringData" : null,
+        "numberData" : null,
+        "dateTimeData" : null,
+        "user" : null,
+        "refferences" : [ {
+          "id" : 1,
+          "className" : "Object",
+          "name" : "Filial@1",
+          "clazz" : {
+            "id" : 14,
+            "className" : "Class",
+            "name" : "Filial",
+            "attributes" : [ {
+              "id" : 4,
+              "className" : "Attribute",
+              "functionBody" : null,
+              "name" : "Nome",
+              "typer" : {
+                "id" : 10,
+                "className" : "Class",
+                "name" : "String",
+                "attributes" : [ ],
+                "fileStatus" : {
+                  "id" : 3,
+                  "className" : "FileStatus",
+                  "name" : "UNLOCKED"
+                },
+                "primitive" : true,
+                "simplePrimitive" : true
+              },
+              "fileStatus" : {
+                "id" : 3,
+                "className" : "FileStatus",
+                "name" : "UNLOCKED"
+              },
+              "ordering" : 0,
+              "endTemporal" : false,
+              "startTemporal" : false
+            } ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : false,
+            "simplePrimitive" : false
+          },
+          "valores" : [ {
+            "id" : 1,
+            "className" : "Value",
+            "stringData" : "RJ1",
+            "numberData" : null,
+            "dateTimeData" : null,
+            "user" : null,
+            "refferences" : [ ],
+            "bornDate" : 1408100542000,
+            "attribute" : {
+              "id" : 4,
+              "className" : "Attribute",
+              "functionBody" : null,
+              "name" : "Nome",
+              "typer" : {
+                "id" : 10,
+                "className" : "Class",
+                "name" : "String",
+                "attributes" : [ ],
+                "fileStatus" : {
+                  "id" : 3,
+                  "className" : "FileStatus",
+                  "name" : "UNLOCKED"
+                },
+                "primitive" : true,
+                "simplePrimitive" : true
+              },
+              "fileStatus" : {
+                "id" : 3,
+                "className" : "FileStatus",
+                "name" : "UNLOCKED"
+              },
+              "ordering" : 0,
+              "endTemporal" : false,
+              "startTemporal" : false
+            },
+            "name" : "Nome"
+          } ],
+          "naturalID" : 0,
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "endTemporal" : null,
+          "startTemporal" : null
+        } ],
+        "bornDate" : 1408100705000,
+        "attribute" : {
+          "id" : 6,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Filial",
+          "typer" : {
+            "id" : 14,
+            "className" : "Class",
+            "name" : "Filial",
+            "attributes" : [ {
+              "id" : 4,
+              "className" : "Attribute",
+              "functionBody" : null,
+              "name" : "Nome",
+              "typer" : {
+                "id" : 10,
+                "className" : "Class",
+                "name" : "String",
+                "attributes" : [ ],
+                "fileStatus" : {
+                  "id" : 3,
+                  "className" : "FileStatus",
+                  "name" : "UNLOCKED"
+                },
+                "primitive" : true,
+                "simplePrimitive" : true
+              },
+              "fileStatus" : {
+                "id" : 3,
+                "className" : "FileStatus",
+                "name" : "UNLOCKED"
+              },
+              "ordering" : 0,
+              "endTemporal" : false,
+              "startTemporal" : false
+            } ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : false,
+            "simplePrimitive" : false
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 2,
+          "endTemporal" : false,
+          "startTemporal" : false
+        },
+        "name" : "Filial"
+      }, {
+        "id" : 9,
+        "className" : "Value",
+        "stringData" : null,
+        "numberData" : 300.0,
+        "dateTimeData" : null,
+        "user" : null,
+        "refferences" : [ ],
+        "bornDate" : 1408100707000,
+        "attribute" : {
+          "id" : 2,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "BHP",
+          "typer" : {
+            "id" : 9,
+            "className" : "Class",
+            "name" : "Integer",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 1,
+          "endTemporal" : false,
+          "startTemporal" : false
+        },
+        "name" : "BHP"
+      }, {
+        "id" : 10,
+        "className" : "Value",
+        "stringData" : "ATALAIA",
+        "numberData" : null,
+        "dateTimeData" : null,
+        "user" : null,
+        "refferences" : [ ],
+        "bornDate" : 1408100707000,
+        "attribute" : {
+          "id" : 1,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Nome",
+          "typer" : {
+            "id" : 10,
+            "className" : "Class",
+            "name" : "String",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 0,
+          "endTemporal" : false,
+          "startTemporal" : false
+        },
+        "name" : "Nome"
+      } ],
+      "naturalID" : 0,
+      "fileStatus" : {
+        "id" : 3,
+        "className" : "FileStatus",
+        "name" : "UNLOCKED"
+      },
+      "endTemporal" : null,
+      "startTemporal" : null
+    } ],
+    "bornDate" : 1414955797000,
+    "attribute" : {
+      "id" : 24,
+      "className" : "Attribute",
+      "functionBody" : null,
+      "name" : "Rebocador",
+      "typer" : {
+        "id" : 12,
+        "className" : "Class",
+        "name" : "Rebocador",
+        "attributes" : [ {
+          "id" : 1,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Nome",
+          "typer" : {
+            "id" : 10,
+            "className" : "Class",
+            "name" : "String",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 0,
+          "endTemporal" : false,
+          "startTemporal" : false
+        }, {
+          "id" : 2,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "BHP",
+          "typer" : {
+            "id" : 9,
+            "className" : "Class",
+            "name" : "Integer",
+            "attributes" : [ ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : true,
+            "simplePrimitive" : true
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 1,
+          "endTemporal" : false,
+          "startTemporal" : false
+        }, {
+          "id" : 6,
+          "className" : "Attribute",
+          "functionBody" : null,
+          "name" : "Filial",
+          "typer" : {
+            "id" : 14,
+            "className" : "Class",
+            "name" : "Filial",
+            "attributes" : [ {
+              "id" : 4,
+              "className" : "Attribute",
+              "functionBody" : null,
+              "name" : "Nome",
+              "typer" : {
+                "id" : 10,
+                "className" : "Class",
+                "name" : "String",
+                "attributes" : [ ],
+                "fileStatus" : {
+                  "id" : 3,
+                  "className" : "FileStatus",
+                  "name" : "UNLOCKED"
+                },
+                "primitive" : true,
+                "simplePrimitive" : true
+              },
+              "fileStatus" : {
+                "id" : 3,
+                "className" : "FileStatus",
+                "name" : "UNLOCKED"
+              },
+              "ordering" : 0,
+              "endTemporal" : false,
+              "startTemporal" : false
+            } ],
+            "fileStatus" : {
+              "id" : 3,
+              "className" : "FileStatus",
+              "name" : "UNLOCKED"
+            },
+            "primitive" : false,
+            "simplePrimitive" : false
+          },
+          "fileStatus" : {
+            "id" : 3,
+            "className" : "FileStatus",
+            "name" : "UNLOCKED"
+          },
+          "ordering" : 2,
+          "endTemporal" : false,
+          "startTemporal" : false
+        } ],
+        "fileStatus" : {
+          "id" : 3,
+          "className" : "FileStatus",
+          "name" : "UNLOCKED"
+        },
+        "primitive" : false,
+        "simplePrimitive" : false
+      },
+      "fileStatus" : {
+        "id" : 3,
+        "className" : "FileStatus",
+        "name" : "UNLOCKED"
+      },
+      "ordering" : 0,
+      "endTemporal" : false,
+      "startTemporal" : false
+    },
+    "name" : "Rebocador"
+  } ],
+  "naturalID" : 0,
+  "fileStatus" : {
+    "id" : 3,
+    "className" : "FileStatus",
+    "name" : "UNLOCKED"
+  },
+  "endTemporal" : null,
+  "startTemporal" : null
+} ]

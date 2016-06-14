@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="E7769590-117C-765A-8B30-401227CC20C7" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="level" node="[(Tempo) Mensal.Mensal].[Mes]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Terminal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Terminal" type="level" node="[Terminal.default].[Nome do Terminal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tabela) Faixa DWT" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tabela) Faixa DWT" type="level" node="[(Tabela) Faixa DWT.default].[Faixa DWT Inicial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Operacoes]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Rebocadores]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CHINA COSCO BULK SHIPPING (GROUP) CO.LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO BRASIL S/A]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO BULK CARRIER CO LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO (HK) SHIPPING CO., LTD. / PANAMAX CARRIERS DEPT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO SHIPPING CO ., LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO SHIPPING CO.,LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCOL (HK) INVESTMENT &amp; DEVELOPMENT CO., LIMITED]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[REFINED SUCCESS LTD.BVI]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2014]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Local) Filial">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[STR]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[QTD. Operacoes], [Measures].[Faturado Liquido Corrigido U$], [Measures].[Faturado Liquido Corrigido R$], [Measures].[QTD. Rebocadores]} ON COLUMNS,&#xD;
+NON EMPTY CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([Terminal.default].[Nome do Terminal].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members)) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE Hierarchize(Union(CrossJoin({[(Empresa) Cliente.default].[CHINA COSCO BULK SHIPPING (GROUP) CO.LTD]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Local) Filial.default].[STR]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO BRASIL S/A]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Local) Filial.default].[STR]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO BULK CARRIER CO LTD]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Local) Filial.default].[STR]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO (HK) SHIPPING CO., LTD. / PANAMAX CARRIERS DEPT]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Local) Filial.default].[STR]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO SHIPPING CO ., LTD]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Local) Filial.default].[STR]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCO SHIPPING CO.,LTD]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Local) Filial.default].[STR]})), Union(CrossJoin({[(Empresa) Cliente.default].[COSCOL (HK) INVESTMENT &amp; DEVELOPMENT CO., LIMITED]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Local) Filial.default].[STR]})), CrossJoin({[(Empresa) Cliente.default].[REFINED SUCCESS LTD.BVI]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Local) Filial.default].[STR]}))))))))))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

@@ -1,0 +1,6 @@
+type=OLAP
+name=sulnorte
+driver=mondrian.olap4j.MondrianOlap4jDriver
+location=jdbc:mondrian:Jdbc=jdbc:oracle:thin:@//192.168.107.59:1521/ORCL;Catalog=res:sulnorte/Sulnorte.xml;JdbcDrivers=oracle.jdbc.OracleDriver;
+username=TOP
+password=RDAJNTOP_2012

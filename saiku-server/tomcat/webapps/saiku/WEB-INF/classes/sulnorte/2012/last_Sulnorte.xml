@@ -1,0 +1,124 @@
+<Schema name="Sul Norte OLAP">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Cliente">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CLIENTE">
+      <Table name="DW_cliente">
+      </Table>
+      <Level name="Nome do Cliente" visible="true" table="DW_cliente" column="NOME_CLIENTE" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Contrato">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CONTRATO">
+      <Table name="DW_contrato">
+      </Table>
+      <Level name="Numero do Contrato" visible="true" column="NUM_CONTRATO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Estado">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_ESTADO">
+      <Table name="DW_estado">
+      </Table>
+      <Level name="Sigla do Estado" visible="true" column="SIGLA" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Filial">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_FILIAL">
+      <Table name="DW_filial">
+      </Table>
+      <Level name="Filial" visible="true" column="SIGLA_FILIAL" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Navio">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_NAVIO">
+      <Table name="DW_navio">
+      </Table>
+      <Level name="Nome do Navio" visible="true" column="NOME_NAVIO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Dwt do Navio" visible="true" column="DWT" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="IMMO do Navio" visible="true" column="IMMO" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Operacao">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_OPERACAO">
+      <Table name="DW_operacao">
+      </Table>
+      <Level name="Id da Operacao" visible="true" column="ID_OPERACAO" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Porto">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_PORTO">
+      <Table name="DW_porto">
+      </Table>
+      <Level name="Nome do Porto" visible="true" column="NOME_PORTO" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Terminal">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_TERMINAL">
+      <Table name="DW_terminal">
+      </Table>
+      <Level name="Nome do Terminal" visible="true" column="NOME_TERMINAL" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="TimeDimension" visible="true" name="Tempo">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="DAY_ID">
+      <Table name="DW_TIME" alias="">
+      </Table>
+      <Level name="Ano" visible="true" column="YEAR_ID" type="String" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+      <Level name="Mes" visible="true" column="MONTH_LONG" type="String" uniqueMembers="true" levelType="TimeMonths" hideMemberIf="Never">
+      </Level>
+      <Level name="Dia do mes" visible="true" column="DAY_NUM_OF_MONTH" type="Numeric" uniqueMembers="true" levelType="TimeDays" hideMemberIf="Never">
+      </Level>
+      <Level name="Dia do Ano" visible="true" column="NUM_DAY_OF_YEAR" type="Numeric" uniqueMembers="true" levelType="TimeDays" hideMemberIf="Never">
+      </Level>
+      <Level name="Dia da Semana" visible="true" column="WEEK_DAY_FULL" type="Numeric" uniqueMembers="true" levelType="TimeWeeks" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Sul Norte" visible="true" cache="true" enabled="true">
+    <Table name="DW_sn_fato">
+    </Table>
+    <DimensionUsage source="Cliente" name="Cliente" visible="true" foreignKey="ID_CLIENTE_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Contrato" name="Contrato" visible="true" foreignKey="ID_CONTRATO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Estado" name="Estado" visible="true" foreignKey="ID_ESTADO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Filial" name="Filial" visible="true" foreignKey="ID_FILIAL_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Navio" name="Navio" visible="true" foreignKey="ID_NAVIO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Operacao" name="Operacao" visible="true" foreignKey="ID_OPERACAO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Porto" name="Porto" visible="true" foreignKey="ID_PORTO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Terminal" name="Terminal" visible="true" foreignKey="ID_TERMINAL_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="Tempo" visible="true" foreignKey="ID_TEMPO_FK">
+    </DimensionUsage>
+    <Measure name="Valor Dollar Bruto" column="VALOR_DOLLAR_BRUTO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Dollar ISS" column="VALOR_DOLLAR_ISS" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Dollar Liquido" column="VALOR_DOLLAR_LIQUIDO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Dollar Referencia" column="VALOR_DOLLAR_REFERENCIA" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Real Bruto" column="VALOR_REAL_BRUTO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Real ISS" column="VALOR_REAL_ISS" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Real Liquido" column="VALOR_REAL_LIQUIDO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Real Referencia" column="VALOR_REAL_REFERENCIA" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

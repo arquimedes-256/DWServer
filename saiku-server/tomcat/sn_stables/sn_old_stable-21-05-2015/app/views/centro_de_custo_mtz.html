@@ -1,0 +1,53 @@
+
+<div class="popover bottom pop-ind pop-centro-custo" 
+ng-if="rowsCentroDeCusto && rowsCentroDeCusto.length > 0" 
+style="height: 264px;
+    overflow: hidden;
+    position:absolute;
+    width: 411px;
+    top: -55px;
+    margin-top: 0px!important;
+    right: 30px;">
+<div class="progress progress-striped active" ng-show="rowsCentroDeCustoRequest">
+  <div 
+  class="progress-bar"  
+  role="progressbar" 
+  aria-valuenow="45" 
+  aria-valuemin="0" 
+  aria-valuemax="100" 
+  style="width: 100%">
+  </div>
+</div>	
+	<button ng-click="$parent.rowsCentroDeCusto = null" style="float:right" class="btn btn-danger">x</button>
+	
+	<h3 class="popover-title" style="font-weight: bold;">
+	{{rowsCentroDeCusto[0].filial}}-{{rowsCentroDeCusto[0].nomeContaContabil}}
+		<sub style="font-size: 12px;font-weight: normal;">{{rowsCentroDeCusto[0].idContaContabil}}</sub>
+	</h3>
+	<div class="popover-content" style="
+    height: 243px;
+    overflow: scroll;
+    width: 407px;
+    
+		">		
+		<table class="table" >
+			<tr>
+				<th>Centro de Custo</th>
+				<th>Realizado:</th>
+			</tr>
+			<tr	ng-repeat="r in $parent.rowsCentroDeCusto"
+				ng-class="{'bolder':r.idContaContabil == '99999999999'}"
+				class="{{r.vlrRealizado == 0? 'info' :
+							 r.vlrRealizado < 0 ? 'danger' : 'success'}}">
+				<td style="text-align: left;">{{r.centroDeCusto}}</td>
+				<td style="text-align: right;">{{r.vlrRealizado.formatMoney()}}</td>
+			</tr>
+		</table>
+	</div>
+	<style>
+		.pop-centro-custo:hover
+		{
+			opacity:1!important;
+		}
+	</style>
+</div>

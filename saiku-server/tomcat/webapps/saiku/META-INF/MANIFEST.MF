@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: tomcat
+Build-Jdk: 1.6.0_37
+Hudson-Build-Number: 66
+Hudson-Project: saiku-webapp
+Hudson-Version: 1.516
+Jenkins-Build-Number: 66
+Jenkins-Project: saiku-webapp
+Jenkins-Version: 1.516
+

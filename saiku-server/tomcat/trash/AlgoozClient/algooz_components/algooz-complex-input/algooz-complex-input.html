@@ -1,0 +1,200 @@
+
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../algooz_components/algooz-filters/algooz-filters.html">
+
+<polymer-element name="algooz-complex-input" extends="paper-input" attributes="algz_value bus clazz-id disabled">
+  <template>
+    <div layout vertical flex>
+      <div relative>
+        <shadow disabled?="{{ disabled }}">
+        </shadow><core-icon icon="search" hidden?="{{ disabled }}"></core-icon>
+      </div>
+      <template if="{{ bus.search_result[0].clazz.id  == algz_value.attribute.typer.id}}">
+      <paper-shadow z="3">
+        <template repeat="{{ o,i in bus.search_result }}" bind>
+          <paper-button raised flex index="{{ i }}" on-click="{{ changeCheckBox }}">
+            <paper-checkbox
+              flex
+              id="check-{{i}}"
+              object-id="{{ o.id }}"
+              checked?="{{ o | inRefferences  }}">
+
+              </paper-checkbox>
+            {{ o | getFirstValue }}
+          </paper-button>
+        </template>
+      </paper-shadow>
+    </template>
+      <template repeat="{{ r,i in algz_value.refferences }}" layout vertical>
+        <div item>
+        <!-- on-trackend="{{ deleteRefference }}" -->
+          <paper-button
+              class="colored"
+              raised
+              flex
+              id="button_refference"
+              refference-index="{{ i }}">
+            [[ r | getFirstValue ]]
+          </paper-button>
+          <paper-fab
+            icon="close"
+            mini
+            enable-showing
+            showing?="{{ !disabled }}"
+            id="fab_close"
+            refference-index="{{ i }}"
+            on-click="{{ deleteRefference }}"></paper-fab>
+        </div>
+      </template>
+    </div>
+    <style>
+      paper-shadow {
+        padding: 10px 7px;
+        padding-right: 18px;
+      }
+      paper-checkbox {
+        pointer-events: none;
+      }
+      paper-button
+      {
+        width:100%;
+        padding: 13px 15%;
+      }
+      div[item] {
+        position: relative;
+        top: 16px;
+      }
+      paper-fab#fab_close {
+        position: absolute;
+        right: -21px;
+        top: -17px;
+      }
+      core-icon[icon="search"] {
+        float: right;
+        position: absolute;
+        bottom: 19px;
+        right: 2px;
+      }
+      div[relative]
+      {
+        position:relative;
+      }
+    </style>
+  </template>
+  <script>
+    Polymer({
+      ready:function()
+      {
+          this.floatingLabel = true;
+          this.multiline = true;
+      },
+      /**
+       * References Changes Block
+      */
+      deleteCurrentIndex:function(index,block_toggle_check)
+      {
+        var refferences = this.algz_value.refferences;
+        var object =  this.algz_value.refferences[index];
+        if(index > -1)
+          refferences.splice(index,1);
+
+        /**
+         * list -> check
+         */
+        if(object && object.id)
+        {
+          var index_in_checks = this.getObjectById(object.id,this.bus.search_result,true);
+          if(block_toggle_check)
+            this.toggleCheck(index_in_checks,false);
+        }
+
+      },
+      deleteRefference:function(a,b,c)
+      {
+        var index = parseFloat(c.getAttribute('refference-index'))
+        this.deleteCurrentIndex(index,true);
+      },
+      ///////////////////////////////
+      toggleCheck:function(index,force)
+      {
+        var checkbox = this.shadowRoot.querySelector('#check-'+index);
+        if(checkbox)
+        {
+          var object_id = parseInt(checkbox.getAttribute('object-id'));
+          if(force === undefined)
+            checkbox.checked = !checkbox.checked;
+          else
+            checkbox.checked = force;
+          /**
+           * Binding check -> list
+           */
+          if(!checkbox.checked)
+          {
+            var index = this.getObjectById(object_id,this.algz_value.refferences,true);
+            this.deleteCurrentIndex(index,false);
+          }
+          else
+          {
+            var object = this.getObjectById(object_id,this.bus.search_result,false);
+            this.algz_value.refferences.push(object);
+          }
+        }
+      },
+      getObjectById:function(object_id,object_array,isIndex)
+      {
+        if(object_array && object_array.length)
+        {
+          for(var i=0;i<object_array.length;i++)
+          {
+            var o = object_array[i];
+            if(o.id === object_id)
+              if(isIndex)
+                return i;
+              else
+                return o;
+          }
+          return -1;
+        }
+      },
+      changeCheckBox:function(a,b,c)
+      {
+        var index = parseInt(c.getAttribute('index'));
+        this.toggleCheck(index);
+      },
+      inRefferences:function(value)
+      {
+        if(this.algz_value)
+        {
+          var refferences = this.algz_value.refferences;
+
+          if(value.id && refferences)
+          {
+            for(var i=0;i<refferences.length;i++)
+            {
+              var r = refferences[i];
+              if(r.id === value.id)
+                return true;
+            }
+          }
+        }
+        return false;
+      },
+      algz_valueChanged:function(oldValue,newValue)
+      {
+        if(this.algz_value.attribute)
+          this.clazz = this.algz_value.attribute.typer;
+      },
+      valueChanged:function(oldValue,newValue)
+      {
+        this.bus.search(this.clazz||{id:parseInt(this['clazz-id'])},newValue,0);
+      }
+    });
+  </script>
+</polymer-element>

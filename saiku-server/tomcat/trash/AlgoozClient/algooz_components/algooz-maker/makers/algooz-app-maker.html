@@ -1,0 +1,47 @@
+
+<link rel="import" href="../../../algooz_components/algooz-filters/algooz-filters.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+
+<polymer-element name="algooz-app-maker" attributes="bus mode algz_application">
+  <template>
+    <h1>{{ mode == 'UPDATE' ? 'Editar' : 'Inserir'  }} Aplicação</h1>
+    <div layout vertical>
+      <paper-input
+        floatingLabel
+        multiline
+        value="[[ algz_application.name ]]"
+        label="[[ 'NAME' | string_base ]]"
+        id="algz_app_name">
+      </paper-input>
+      <div opt>
+        <paper-button on-tap="{{ cancel }}" class="colored" raised flex>
+            {{ 'TO_CANCEL' | string_base }}!
+        </paper-button>
+        <paper-button  on-tap="{{ mkapp }}" class="full-colored" raised flex>
+            {{ 'SAVE' | string_base }}!
+        </paper-button>
+      </div>
+    </div>
+    <br/>
+  </template>
+  <script>
+    Polymer({
+      mkapp:function()
+      {
+        var cmd = null;
+        if(this.mode == 'CREATE')
+          cmd = 'mkapp';
+        else if(this.mode == 'UPDATE')
+          cmd = 'rename';
+        else
+          throw new Error("modo não existente");
+
+        this.bus.send(cmd+' '+this.$.algz_app_name.value);
+      },
+      cancel:function()
+      {
+        this.fire('cancel');
+      }
+    });
+  </script>
+</polymer-element>

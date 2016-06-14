@@ -1,0 +1,76 @@
+<div>
+	<h1>{{ $modalFilial }} - {{ subTitleRowsModal }} - {{ anoAtual }}</h1>
+	<h2>{{ nomeGrupo }}</h2>
+	<h5>R$/MIL</h5>
+	<div id="ex7">
+	</div>
+	<div>
+		<button class="btn btn-primary" ng-click="selectText()">Selecione tudo!</button>
+		
+		<table class="table table-striped tbx" id="selection">
+			<thead>
+				<th>#</th>
+				<th>Acumulado
+					<br/>
+					<sup>
+						real at&eacute; <b>{{ mesesAbrev[mesFinal-1] }}</b>
+						<br/>
+						orc at&eacute; <b>Dez</b>
+					</sub>
+				</th>
+				<th>Acumulado<br/><sup>orc/real at&eacute; {{ mesesAbrev[mesFinal-1] }}/{{ anoAtual }}</sup></th>
+				<th>Jan</th>
+				<th>Fev</th>
+				<th>Mar</th>
+				<th>Abr</th>
+				<th>Mai</th>
+				<th>Jun</th>
+				<th>Jul</th>
+				<th>Ago</th>
+				<th>Set</th>
+				<th>Out</th>
+				<th>Nov</th>
+				<th>Dez</th>
+			</thead>
+			<tr>
+				<td class="scape"><b>Meta</b></td>
+				<!-- orcado até dezembro -->
+				<td><b>{{ numeralize(diffTotal).formatMoney(0)  }}</b></td>
+				<td>{{ numeralize(arrTotalOrcado).formatMoney(0)}}</td>
+				<td ng-repeat="a in allArr">
+					{{
+						numeralize(a[3].v).formatMoney(0)
+					}}
+				</td>
+			</tr>
+			<tr>
+				<td class="scape"><b>Real</b></td>
+				<!-- realizado até mes -->
+				<td>{{ numeralize(arrTotalRealizado).formatMoney(0) }}</td>
+				<td>{{ numeralize(arrTotalRealizado).formatMoney(0) }}</td>
+				<td ng-repeat="a in allArr">
+					{{
+						numeralize(a[4].v).formatMoney(0)
+					}}
+				</td>
+			</tr>
+			<tr class="bolder">
+				<td class="scape"><b>Diff</b></td>
+				<td class="{{ diffTotalStyle }}">{{ numeralize((diffTotal - arrTotalRealizado)*-1).formatMoney(0) }}</td>
+				<td class="{{ total$style }}">{{ numeralize(arrTotalRealizado - arrTotalOrcado).formatMoney(0) }}</td>
+				<td ng-repeat="a in allArr" class="{{ a.$style }}">
+					{{
+						numeralize(a.$diff*-1).formatMoney(0)
+					}}
+				</td>
+			</tr>
+		</table>
+	</div>
+	<style>
+	.tbx td:not(.scape), .tbx th
+	{
+		text-align: right;
+		padding-right: 5px;
+	}
+	</style>
+</div>

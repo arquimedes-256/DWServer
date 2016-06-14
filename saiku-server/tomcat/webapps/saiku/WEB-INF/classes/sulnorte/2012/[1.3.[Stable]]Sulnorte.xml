@@ -1,0 +1,284 @@
+<Schema name="Sulnorte  - Data Warehouse">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Cliente">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CLIENTE">
+      <Table name="DW_cliente">
+      </Table>
+      <Level name="Nome do Cliente" visible="true" table="DW_cliente" column="NOME_CLIENTE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Contrato">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CONTRATO">
+      <Table name="DW_contrato">
+      </Table>
+      <Level name="Numero do Contrato" visible="true" column="NUM_CONTRATO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Tipo Contrato" visible="true" column="TIPO_CONTRATO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Estado">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_ESTADO">
+      <Table name="DW_estado">
+      </Table>
+      <Level name="Sigla do Estado" visible="true" column="SIGLA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Filial">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_FILIAL">
+      <Table name="DW_filial">
+      </Table>
+      <Level name="Filial" visible="true" column="SIGLA_FILIAL" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Navio">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_NAVIO">
+      <Table name="DW_navio">
+      </Table>
+      <Level name="Nome do Navio" visible="true" column="NOME_NAVIO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Dwt do Navio" visible="true" column="DWT" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="IMMO do Navio" visible="true" column="IMMO" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Operacao">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_OPERACAO">
+      <Table name="DW_operacao">
+      </Table>
+      <Level name="Id da Operacao" visible="true" column="ID_OPERACAO" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Porto">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_PORTO">
+      <Table name="DW_porto">
+      </Table>
+      <Level name="Nome do Porto" visible="true" column="NOME_PORTO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Terminal">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_TERMINAL">
+      <Table name="DW_terminal">
+      </Table>
+      <Level name="Nome do Terminal" visible="true" column="NOME_TERMINAL" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="TimeDimension" visible="true" highCardinality="false" name="Tempo">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="DAY_ID">
+      <Table name="DW_TIME">
+      </Table>
+      <Level name="Ano" visible="true" column="YEAR_ID" ordinalColumn="YEAR_ID" type="Numeric" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+      <Level name="Mes" visible="true" column="MONTH_NUM_OF_YEAR" nameColumn="MONTH_LONG" ordinalColumn="MONTH_NUM_OF_YEAR" type="Numeric" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+      <Level name="Dia do Mes" visible="true" column="DAY_NUM_OF_MONTH" type="Numeric" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+      <Level name="Dia do Ano" visible="true" column="DAY_NUM_OF_YEAR" type="Numeric" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+      <Level name="Dia da Semana" visible="true" column="WEEK_DAY_SHORT" ordinalColumn="DAY_NUM_OF_WEEK" type="String" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Rebocador">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_REBOCADOR">
+      <Table name="DW_rebocador">
+      </Table>
+      <Level name="Nome do Rebocador" visible="true" column="NOME_REBOCADOR" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Potencia do Rebocador" visible="true" column="POTENCIA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Ano Fabricacao do Rebocador" visible="true" column="ANO_FABRICACAO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Rebocador Proprio" visible="true" column="PROPRIO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Tipo Tarifacao">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_TIPO_TARIFACAO">
+      <Table name="DW_tipo_tarifacao">
+      </Table>
+      <Level name="Tarifacao" visible="true" column="NOME_TIPO_TARIFACAO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Manobra">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_TIPO_MANOBRA">
+      <Table name="DW_tipo_manobra">
+      </Table>
+      <Level name="Nome Manobra" visible="true" column="NOME_TIPO_MANOBRA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Tipo Faturamento">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_TIPO_FATURAMENTO">
+      <Table name="DW_tipo_faturamento">
+      </Table>
+      <Level name="Tipo Faturamento" visible="true" column="NOME_TIPO_FATURAMENTO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Tabela de Interfaturamento">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_INTERFATURAMENTO">
+      <Table name="TB_SIG_INTERFATURAMENTO">
+      </Table>
+      <Level name="Faixa DWT Inicial" visible="true" column="DWT_INICIAL" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Faixa DWT Final" visible="true" column="DWT_FINAL" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Valor Liner" visible="true" column="VLR_LINER" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Valor Tramp" visible="true" column="VLR_TRAMP" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Dono do Rebocador">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CLIENTE">
+      <Table name="DW_cliente">
+      </Table>
+      <Level name="Dono do Rebocador" visible="true" table="DW_cliente" column="NOME_CLIENTE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Tipo Calculo">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_TIPO_CALCULO">
+      <Table name="DW_tipo_calculo">
+      </Table>
+      <Level name="Tipo Calculo" visible="true" column="NOME_TIPO_CALCULO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Motivo Manobra">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_MOTIVO">
+      <Table name="DW_motivo">
+      </Table>
+      <Level name="Motivo Manobra" visible="true" column="DESCRICAO_MOTIVO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Manobra Especial">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CATEGORIA">
+      <Table name="DW_categoria">
+      </Table>
+      <Level name="Manobra Especial" visible="true" column="DESCRICAO_CATEGORIA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Armador">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CLIENTE">
+      <Table name="DW_cliente" alias="">
+      </Table>
+      <Level name="Armador" visible="true" column="NOME_CLIENTE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Agente">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CLIENTE">
+      <Table name="DW_cliente" alias="">
+      </Table>
+      <Level name="Agente" visible="true" column="NOME_CLIENTE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Carga">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CARGA">
+      <Table name="DW_carga" alias="">
+      </Table>
+      <Level name="Descricao Carga" visible="true" column="DESCRICAO_CARGA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Faturamento" visible="false" cache="true" enabled="false">
+    <Table name="DW_sn_fato">
+    </Table>
+    <DimensionUsage source="Cliente" name="Cliente" visible="true" foreignKey="ID_CLIENTE_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Contrato" name="Contrato" visible="true" foreignKey="ID_CONTRATO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Estado" name="Estado" visible="true" foreignKey="ID_ESTADO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Filial" name="Filial" visible="true" foreignKey="ID_FILIAL_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Navio" name="Navio" visible="true" foreignKey="ID_NAVIO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Operacao" name="Operacao" visible="true" foreignKey="ID_OPERACAO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Porto" name="Porto" visible="true" foreignKey="ID_PORTO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Terminal" name="Terminal" visible="true" foreignKey="ID_TERMINAL_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="Tempo" visible="true" foreignKey="ID_TEMPO_FK" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tipo Faturamento" name="Tipo Faturamento" visible="true" foreignKey="ID_TIPO_FATURAMENTO_FK" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Valor Dollar Bruto" column="VALOR_DOLLAR_BRUTO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Dollar ISS" column="VALOR_DOLLAR_ISS" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Dollar Liquido" column="VALOR_DOLLAR_LIQUIDO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Dollar Referencia" column="VALOR_DOLLAR_REFERENCIA" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Real Bruto" column="VALOR_REAL_BRUTO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Real ISS" column="VALOR_REAL_ISS" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Real Liquido" column="VALOR_REAL_LIQUIDO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Real Referencia" column="VALOR_REAL_REFERENCIA" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Sulnorte" visible="true" cache="true" enabled="true">
+    <Table name="DW_sn_afretamento_fato">
+    </Table>
+    <DimensionUsage source="Terminal" name="Terminal" visible="true" foreignKey="ID_TERMINAL" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Porto" name="Porto" visible="true" foreignKey="ID_PORTO" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Dono do Rebocador" name="Dono do Rebocador" visible="true" foreignKey="ID_DONOREBOCADOR" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Rebocador" name="Rebocador" visible="true" foreignKey="ID_REBOCADOR" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="Tempo" visible="true" foreignKey="ID_TEMPO" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Navio" name="Navio" visible="true" foreignKey="ID_NAVIO" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tipo Tarifacao" name="Tipo Tarifacao" visible="true" foreignKey="ID_TIPO_TARIFACAO" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Manobra" name="Manobra" visible="true" foreignKey="ID_TIPO_MANOBRA" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Filial" name="Filial" visible="true" foreignKey="ID_FILIAL" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tabela de Interfaturamento" name="Tabela de Interfaturamento" visible="true" foreignKey="ID_INTERFATURAMENTO" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Cliente" name="Cliente" visible="true" foreignKey="ID_EMPRESA" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Operacao" name="Operacao" visible="true" foreignKey="ID_OPERACAO" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tipo Calculo" name="Tipo Calculo" visible="true" foreignKey="ID_TIPO_CALCULO" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Motivo Manobra" name="Motivo Manobra" visible="true" foreignKey="ID_MOTIVO_MANOBRA" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Manobra Especial" name="Manobra Especial" visible="true" foreignKey="ID_CATEGORIA_MANOBRA" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Carga" name="Carga" visible="true" foreignKey="ID_CARGA">
+    </DimensionUsage>
+    <DimensionUsage source="Armador" name="Armador" visible="true" foreignKey="ID_ARMADOR">
+    </DimensionUsage>
+    <DimensionUsage source="Agente" name="Agente" visible="true" foreignKey="ID_AGENTE">
+    </DimensionUsage>
+    <Measure name="Valor Afretado" column="VALOR_AFRETAMENTO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Faturado" column="VALOR_MANOBRA" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Resultado" column="VALOR_FATURAMENTO_LIQUIDO" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="QTD. Rebocadores" column="ID_REBOCADOR" datatype="Numeric" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

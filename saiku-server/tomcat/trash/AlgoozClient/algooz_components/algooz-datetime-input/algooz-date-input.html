@@ -1,0 +1,69 @@
+<link rel="import" href="polymer-date-picker-master/polymer-date-picker.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../algooz_components/algooz-filters/algooz-filters.html">
+
+<polymer-element name="algooz-date-input" attributes="algz_value disabled" layout horizontal relative>
+  <template>
+
+    <input id="phaton" value="{{selectedDate}}"
+    on-click="{{ toggle }}"
+    readonly class="date"/>
+
+    <paper-input
+      disabled?="{{ disabled != null }}"
+      flex
+      value="{{selectedDate | formatData}}"
+      on-click="{{ toggle }}">
+    </paper-input>
+
+    <polymer-date-picker
+      id="datePicker"
+      selectedDate="{{ selectedDate }}"
+      relatedTarget="{{ $.phaton }}"
+      opened="false">
+    </polymer-date-picker>
+
+    <style>
+      polymer-date-picker
+      {
+        z-index: 1;
+      }
+      polymer-date-picker /deep/ .calendar table > tbody > tr > td.active {
+        background-color: #57b6db!important;
+        border-color: #57b6db!important;
+        color: #fff;
+      }
+      input#phaton {
+        border: none;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        display: block;
+        top: 44px;
+        position: relative;
+        left: 17px;
+      }
+    </style>
+  </template>
+  <script>
+    Polymer({
+      selectedDateChanged:function(o,n)
+      {
+        if(typeof n == "string")
+          this.algz_value.dateTimeData = new Date(n).getTime();
+        else if(typeof n == "object" && n.getTime)
+          this.algz_value.dateTimeData = n.getTime();
+
+      },
+      ready:function()
+      {
+        //this.selectedDate = new Date(this.algz_value.dateTimeData).to;
+      },
+      toggle:function()
+      {
+        if(this.disabled == null)
+          this.$.datePicker.opened = (!eval((this.$.datePicker.opened))).toString();
+      }
+    });
+  </script>
+</polymer-elemen>

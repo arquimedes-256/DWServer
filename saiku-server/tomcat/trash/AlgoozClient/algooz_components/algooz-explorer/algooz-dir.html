@@ -1,0 +1,77 @@
+<polymer-element name="algooz-dir" attributes="dirs icon" flex>
+  <template>
+    <div horizontal around-justified layout wrap tile-cascade slide-up cross-fade>
+
+<!--
+
+        <template if="{{ dirs.length == 0 }}">
+          <div layout vertical>
+            <div id="hold-add" self-center>
+              <span id="notexist">{{ 'NOT_EXIST' | string_base }}
+              <br />{{'CLICK_TO_CREATE' | string_base}}</span>
+              <paper-fab
+                icon="add"
+                id="add-folder-mini"
+                on-tap="{{ toggleDialog }}" mini>
+              </paper-fab>
+            </div>
+          </div>
+        </template>
+-->
+        <!-- front folder -->
+        <template repeat="{{d in dirs}}">
+          <div class="folder-item">
+            <div layout vertical>
+              <paper-icon-button self-center
+                list-casdade
+                icon="{{ icon }}"
+                label="[[ d ]]"
+                on-click="{{ onclick_folder }}">
+              </paper-icon-button>
+              <div self-center>{{ d }}</div>
+            </div>
+          </div>
+        </template>
+      </div>
+      <style>
+      .folder-item,.folder-item paper-icon-button::shadow core-icon
+      {
+        height: 128px;
+        width: 128px;
+      }
+      .folder-item
+      {
+        float: left;
+        margin: 16px;
+        text-align: center;
+      }
+      span#pwd
+      {
+        margin-left: 18px;
+      }
+      paper-ripple
+      {
+        overflow: hidden;
+        width: 128px;
+        height: 128px;
+      }
+      paper-fab#add-folder-mini
+      {
+        background: #00BCD4;
+      }
+      </style>
+  </template>
+  <script>
+    Polymer({
+      icon:'folder',
+      onclick_folder:function(e)
+      {
+        this.fire('open-dir',{dir:e.target.getAttribute('label')});
+      },
+      onclick_new:function()
+      {
+        this.fire('click-new');
+      }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,119 @@
+
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+
+<link rel="import" href="makers/algooz-object-maker.html">
+<link rel="import" href="makers/algooz-module-maker.html">
+<link rel="import" href="makers/algooz-clazz-maker.html">
+<link rel="import" href="makers/algooz-app-maker.html">
+
+<polymer-element name="algooz-maker" attributes="bus">
+  <template>
+
+      <template if="{{ status| show_app_maker }}">
+        <algooz-app-maker
+          bus="{{ bus }}"
+          algz_application="{{ bus.tty.connectedApplication }}"
+          mode="{{ mode }}">
+        </algooz-app-maker>
+      </template>
+
+      <template if="{{ status |show_mod_maker }}">
+        <algooz-module-maker
+          bus="{{ bus }}"
+          algz_module="{{ bus.tty.connectedModule }}"
+          mode="{{ mode }}">
+        </algooz-module-maker>
+      </template>
+
+      <template if="{{ status | show_class_maker }}">
+        <algooz-clazz-maker
+          types="{{ bus.types }}"
+          algz_class="{{  bus.tty.connectedClass }}"
+          id="clazz_maker"
+          bus="{{ bus }}"
+          mode="{{ mode }}">
+        </algooz-clazz-maker>
+      </template>
+
+      <template if="{{ status | show_obj_maker }}">
+        <algooz-object-maker
+          bus="{{ bus }}"
+          mode="{{ mode }}">
+        </algooz-object-maker>
+      </template>
+
+  </template>
+  <script>
+    Polymer({
+      status:0,
+      show_app_maker:function()
+      {
+        var b = (this.isRoot() && this.mode == 'CREATE') || (this.isApplication() && this.mode == 'UPDATE');
+        return b;
+      },
+      show_mod_maker:function()
+      {
+        var b = (this.isApplication() && this.mode == 'CREATE') || (this.isModule() && this.mode == 'UPDATE');
+        return b;
+      },
+      show_class_maker:function()
+      {
+        var b = (this.isClass() && this.mode == 'UPDATE') || (this.isModule() && this.mode == 'CREATE');
+        return b;
+      },
+      show_obj_maker:function()
+      {
+        var b = this.isClass() && this.mode == 'CREATE' && this.tty().connectedClass.id;
+        return b;
+      },
+      tty:function()
+      {
+        return this.bus && this.bus.tty ? this.bus.tty : {};
+      },
+      isRoot:function()
+    	{
+    	  var b =
+    		(this.tty().connectedApplication 	== null &&
+    				this.tty().connectedClass		== null &&
+    		    this.tty().connectedModule 		== null &&
+    				this.tty().connectedObject 		== null);
+    		return b;
+    	},
+    	isApplication:function()
+    	{
+    	  var b =
+    		(this.tty().connectedApplication != null &&
+    				this.tty().connectedModule == null &&
+    				this.tty().connectedClass == null &&
+    				this.tty().connectedObject == null);
+    		return b;
+    	},
+    	isModule:function()
+    	{
+    	  var b = (this.tty().connectedApplication != null &&
+    				this.tty().connectedModule != null &&
+    				(this.tty().connectedClass == null || !this.tty().connectedClass.id) &&
+    				this.tty().connectedObject == null);
+    		return b;
+    	},
+    	isClass:function()
+    	{
+    	  var b = (this.tty().connectedApplication != null &&
+    				this.tty().connectedModule != null &&
+    				this.tty().connectedClass != null &&
+    				this.tty().connectedObject == null);
+    		return b;
+    	},
+    	isObject:function()
+    	{
+    	  var b = (this.tty().connectedApplication != null &&
+    				this.tty().connectedModule != null &&
+    				this.tty().connectedClass != null &&
+    				this.tty().connectedObject != null);
+    		return b;
+    	}
+    });
+  </script>
+</polymer-element>

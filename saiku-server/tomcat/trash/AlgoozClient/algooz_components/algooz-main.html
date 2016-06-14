@@ -1,0 +1,358 @@
+<!-- Icons -->
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/core-icons/social-icons.html">
+<link rel="import" href="../bower_components/core-icons/image-icons.html">
+<link rel="import" href="../bower_components/core-icons/communication-icons.html">
+
+<!-- Core Components -->
+
+<link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../bower_components/core-scaffold/core-scaffold.html">
+<link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/slide-from-right.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/slide-up.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/slide-down.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/scale-up.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/tile-cascade.html">
+<!-- Paper Components -->
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog-transition.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-shadow/paper-shadow.html">
+
+<link rel="import" href="../bower_components/core-transition/core-transition-css.html">
+<link rel="import" href="../bower_components/core-overlay/core-overlay.html">
+<link rel="import" href="../bower_components/core-style/core-style.html">
+<link rel="import" href="../bower_components/core-media-query/core-media-query.html">
+
+<!-- Algooz Components -->
+<link rel="import" href="algooz-explorer/algooz-explorer.html">
+<link rel="import" href="algooz-maker/algooz-maker.html">
+<link rel="import" href="algooz-maker/algooz-remover.html">
+<link rel="import" href="algooz-search/algooz-search.html">
+<link rel="import" href="algooz-bus/algooz-bus.html">
+<link rel="import" href="algooz-filters/algooz-filters.html">
+<link rel="import" href="algooz-search-result/algooz-search-result.html">
+<link rel="import" href="algooz-agenda/algooz-agenda.html">
+<link rel="import" href="algooz-navigator/algooz-navigator.html">
+<link rel="import" href="algooz-logo/algooz-logo.html">
+
+<!-- Styles -->
+<link rel="stylesheet" href="styles.css">
+
+<polymer-element name="algooz-main">
+  <template>
+    <!--
+    <algooz-bus id="bus" base_url="http://sig.sulnorte.com.br/algz"></algooz-bus>
+    <algooz-bus id="bus" base_url="http://127.0.0.1:8080/Algooz"></algooz-bus>
+    -->
+    <algooz-bus id="bus" base_url="{{ debug_channel_address }}"></algooz-bus>
+
+    <core-scaffold>
+    <core-header-panel navigation flex mode="seamed">
+      <core-toolbar>
+        <!--
+        <img src="logo.png" style="margin: 10px;"/>
+        -->
+        <algooz-logo></algooz-logo>
+      </core-toolbar>
+      <core-menu theme="core-light-theme">
+
+      </core-menu>
+    </core-header-panel>
+    <div tool>
+      <algooz-search id="search_bar" bus="{{ $.bus }}" flex></algooz-search>
+
+        <paper-fab
+          showing?="{{ $.pages.selected == 0 }}"
+          icon="add" id="add-folder" on-tap="{{ toggleDialog }}"></paper-fab>
+        <paper-fab
+          showing?="{{ $.pages.selected == 0 }}"
+          icon="image:edit" id="edit-folder" on-tap="{{ toggleEditDialog }}"> </paper-fab>
+        <paper-fab
+          showing?="{{ $.pages.selected == 0 }}"
+          icon="delete" id="delete" on-tap="{{ toggleRemoveDialog }}" mini> </paper-fab>
+
+
+        <div fabs use-showing showing?="{{ $.pages.selected == 2 }}">
+            <paper-fab
+              use-showing
+              showing?="{{ $.pages.selected == 2 }}"
+              class="refresh"
+              icon="refresh"
+              on-tap="{{ agendaRefresh }}"
+              class="colored"
+              action-button>
+            </paper-fab>
+            <paper-fab
+              use-showing
+              showing?="{{ $.pages.selected == 2 }}"
+              class="next"
+              icon="image:navigate-next"
+              on-tap="{{ agendaNext }}"
+              action-button>
+            </paper-fab>
+            <paper-fab
+              use-showing
+              showing?="{{ $.pages.selected == 2 }}"
+              class="prev"
+              icon="image:navigate-before"
+              on-tap="{{ agendaPrev }}"
+              action-button>
+            </paper-fab>
+        </div>
+
+    </div>
+    <div>
+      <paper-tabs selected="{{ $.pages.selected }}" flex>
+        <paper-tab>
+          <core-icon icon="social:public" role="img"></core-icon>
+        </paper-tab>
+        <paper-tab>
+          <core-icon icon="trending-up" role="img"></core-icon>
+        </paper-tab>
+        <paper-tab>
+          <core-icon icon="icons:event" role="img"></core-icon>
+        </paper-tab>
+      </paper-tabs>
+      <core-animated-pages
+          id="pages"
+          transitions="slide-from-right slide-up"
+          flex auto>
+          <section>
+             <div fade>
+                <div layout horizontal>
+                  <algooz-navigator flex layout horizontal
+                    bus="{{ $.bus }}"
+                    id="navigator"
+                    selected="{{ selected }}">
+
+                  </algooz-navigator>
+                </div>
+                <!-- back folder -->
+
+                  <div layout horizontal>
+                    <paper-button
+                      showing?="{{ $.bus.pwd.data != '/' && $.bus.resp }}"
+                      use-showing
+                      flex
+                      label=".."
+                      raised
+                      id="back-mini"
+                      on-click="{{ back }}">
+                      <core-icon icon="reply"></core-icon>
+                    </paper-button>
+                  </div>
+
+                <algooz-explorer
+                  on-click-new="{{ toggleDialog }}"
+                  on-click-delete-object="{{ on_click_delete_object }}"
+                  id="ex_main"
+                  selected="{{ selected }}"
+                  bus="{{ $.bus }}"
+                  miniatures="{{ true }}">
+                </algooz-explorer>
+
+              </div>
+          </section>
+          <section>
+              <div flex><h1>Estatísticas</h1>
+                <algooz-search-result bus="{{ $.bus }}">
+                </algooz-search-result>
+              </div>
+          </section>
+          <section>
+            <div flex><h1>Agenda</h1></div>
+              <algooz-agenda
+                id="agenda"
+                bus="{{ $.bus }}"
+                month="now"
+                year="2014"
+                classID="0"
+                objectID="0"
+                enabled?="{{ $.pages.selected == 2 }}">
+              </algooz-agenda>
+          </section>
+      </core-animated-pages>
+        <paper-dialog backdrop
+          transition="core-transition-center"
+          id="dialog"
+          flex
+          on-core-overlay-close-completed="{{ on_core_overlay_close_completed }}"
+          heading="">
+
+          <algooz-maker
+            id="maker"
+            bus="{{ $.bus }}"
+            hidden?="{{ ($.maker.mode == 'REMOVE') }}"
+            on-cancel="{{ on_cancel_dialog }}">
+          </algooz-maker>
+
+          <algooz-remover id="remover"
+            bus="{{ $.bus }}"
+            hidden?="{{ !($.maker.mode == 'REMOVE') }}"
+            object_to_delete="{{ object_to_delete }}"
+            on-cancel="{{ on_cancel_dialog }}">
+          </algooz-remover>
+
+        </paper-dialog>
+    </div>
+    </core-scaffold>
+    <core-media-query query="min-width:600px" queryMatches="{{ isMobile }}"></core-media-query>
+    <style>
+    #dialog{
+      width:{{isMobile ? '50':'90'}}%;
+      height:80%;
+    }
+    core-toolbar,
+    core-scaffold::shadow core-toolbar
+    {
+      background-color: #fbfbfb;
+      color: inherit;
+    }
+    [tool]
+    {
+      width:100%;
+    }
+    section
+    {
+      padding:7px;
+    }
+    paper-fab#add-folder
+    {
+      top: 17px;
+      right: 13px;
+      position: fixed;
+      background: #4CAF50;
+      z-index: 999999;
+    }
+    paper-fab#edit-folder {
+      top: 68px;
+      right: 54px;
+      position: absolute;
+      background: #03A9F4;
+      z-index: 999999;
+    }
+    paper-dialog::shadow #main
+    {
+        padding:12px;
+        height: 100%;
+    }
+    paper-dialog::shadow #container
+    {
+      overflow:auto!important;
+      height: 100%;
+    }
+    [action-button]
+    {
+      position:relative;
+    }
+    .refresh {
+      background: #9E9E9E;
+      right: -65px;
+      top: 68px;
+    }
+    .prev {
+      background: #E91E63;
+      right: 94px;
+      top: 16px;
+    }
+    .next {
+      background: #E91E63;
+      right: -45px;
+      top: 16px;
+    }
+    [fabs] {
+      position: absolute;
+      z-index: 99999;
+      right: -3px;
+      top: 1px;
+    }
+    paper-button#back
+    {
+      background:#fbfbfb;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+    #hold-add
+    {
+      margin-top: 56px;
+    }
+    #back-mini
+    {
+      margin-top: 18px;
+      background-color: #fbfbfb;
+    }
+    algooz-navigator
+    {
+      margin-top: 15px;
+    }
+    #delete {
+      top: 21px;
+      right: 81px;
+      position: absolute;
+      background:#FFC107;
+    }
+    </style>
+  </template>
+
+  <script>
+    Polymer({
+      get debug_channel_address()
+      {
+        if(window.location.origin == "http://sig.sulnorte.com.br"
+          || navigator.platform != "Win32")
+          return "http://sig.sulnorte.com.br/algz";
+        else
+          return "http://127.0.0.1:8080/Algooz";
+      },
+      toggleRemoveDialog:function()
+      {
+        this.toggleDialog();
+        this.$.maker.mode = 'REMOVE';
+      },
+      toggleEditDialog:function()
+      {
+        this.toggleDialog();
+        this.$.maker.mode = 'UPDATE';
+      },
+      toggleDialog:function()
+      {
+        this.$.maker.status++;
+        this.$.dialog.toggle();
+        this.$.maker.mode = 'CREATE';
+      },
+      agendaRefresh:function()
+      {
+        this.$.agenda.refresh();
+      },
+      agendaPrev:function()
+      {
+        this.$.agenda.prev();
+      },
+      agendaNext:function()
+      {
+        this.$.agenda.next();
+      },
+      back:function()
+      {
+         this.$.bus.goto_dir('..');
+      },
+      on_cancel_dialog:function()
+      {
+        this.$.dialog.toggle();
+      },
+      on_core_overlay_close_completed:function()
+      {
+        this.object_to_delete = undefined;
+      },
+      on_click_delete_object:function(e)
+      {
+        this.object_to_delete = e.detail.object;
+        this.toggleRemoveDialog();
+      }
+    });
+  </script>
+</polymer-element>
+

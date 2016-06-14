@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/12/2014 17:31:26 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="algz.model.Attribute" table="ATTRIBUTE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="functionBody" type="java.lang.String">
+            <column name="FUNCTIONBODY" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <many-to-one name="typer" class="algz.model.Class" fetch="join">
+            <column name="TYPER" />
+        </many-to-one>
+        <one-to-one name="fileStatus" class="algz.model.FileStatus"></one-to-one>
+        <property name="ordering" type="int">
+            <column name="ORDERING" />
+        </property>
+        <property name="endTemporal" type="boolean" access="field">
+            <column name="ENDTEMPORAL" />
+        </property>
+        <property name="startTemporal" type="boolean" access="field">
+            <column name="STARTTEMPORAL" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/12/2014 17:31:26 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="algz.model.Notification" table="NOTIFICATION">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <one-to-one name="message" class="algz.model.Message"></one-to-one>
+        <property name="date" type="java.util.Calendar">
+            <column name="DATE" />
+        </property>
+        <one-to-one name="grouper" class="algz.model.Grouper"></one-to-one>
+        <one-to-one name="user" class="algz.model.User"></one-to-one>
+        <property name="body" type="java.lang.String">
+            <column name="BODY" />
+        </property>
+    </class>
+</hibernate-mapping>

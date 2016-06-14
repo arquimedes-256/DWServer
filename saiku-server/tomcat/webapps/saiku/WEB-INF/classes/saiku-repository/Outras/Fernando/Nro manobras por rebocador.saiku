@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="04F51D20-645B-FDCA-AB5B-717EB1EFB376" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Dia Manobra" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[1]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[2]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[3]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[4]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[5]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[6]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[7]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[8]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[9]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[10]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[11]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[12]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[13]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[14]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[15]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[16]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[17]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[18]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[19]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[20]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[21]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[22]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[23]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[24]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[25]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[26]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[27]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[28]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[29]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[30]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia Manobra" type="member" node="[(Tempo) Dia Manobra.default].[31]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN MARAU]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN JATOBA]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN ABROLHOS]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Local) Filial">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[STR]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Dezembro]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Manobras]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {Hierarchize({{[(Rebocador) Rebocador.default].[SN MARAU], [(Rebocador) Rebocador.default].[SN JATOBA], [(Rebocador) Rebocador.default].[SN ABROLHOS]}})} ON COLUMNS,&#xD;
+NON EMPTY {Hierarchize({{[(Tempo) Dia Manobra.default].[1], [(Tempo) Dia Manobra.default].[2], [(Tempo) Dia Manobra.default].[3], [(Tempo) Dia Manobra.default].[4], [(Tempo) Dia Manobra.default].[5], [(Tempo) Dia Manobra.default].[6], [(Tempo) Dia Manobra.default].[7], [(Tempo) Dia Manobra.default].[8], [(Tempo) Dia Manobra.default].[9], [(Tempo) Dia Manobra.default].[10], [(Tempo) Dia Manobra.default].[11], [(Tempo) Dia Manobra.default].[12], [(Tempo) Dia Manobra.default].[13], [(Tempo) Dia Manobra.default].[14], [(Tempo) Dia Manobra.default].[15], [(Tempo) Dia Manobra.default].[16], [(Tempo) Dia Manobra.default].[17], [(Tempo) Dia Manobra.default].[18], [(Tempo) Dia Manobra.default].[19], [(Tempo) Dia Manobra.default].[20], [(Tempo) Dia Manobra.default].[21], [(Tempo) Dia Manobra.default].[22], [(Tempo) Dia Manobra.default].[23], [(Tempo) Dia Manobra.default].[24], [(Tempo) Dia Manobra.default].[25], [(Tempo) Dia Manobra.default].[26], [(Tempo) Dia Manobra.default].[27], [(Tempo) Dia Manobra.default].[28], [(Tempo) Dia Manobra.default].[29], [(Tempo) Dia Manobra.default].[30], [(Tempo) Dia Manobra.default].[31]}})} ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Anual.default].[2015]}, CrossJoin({[(Tempo) Mensal.Mensal].[Dezembro]}, {[Measures].[QTD. Manobras]})))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

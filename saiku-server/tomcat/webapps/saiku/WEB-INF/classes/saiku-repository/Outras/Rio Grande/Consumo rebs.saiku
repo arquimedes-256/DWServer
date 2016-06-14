@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="73D1114C-A0F6-0B0C-B0A1-2395303D7964" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN ABAIS I]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN DAVID]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="level" node="[(Tempo) Mensal.Mensal].[Mes]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Orcado  R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Realizado  R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Valor Litros Hora]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Hora MCA]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Hora MCP]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Consumo]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Consumo MCA]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Consumo MCP]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Compra]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Valor Orcado  R$], [Measures].[Valor Realizado  R$], [Measures].[(Combustivel) Valor Litros Hora], [Measures].[(Combustivel) Hora MCA], [Measures].[(Combustivel) Hora MCP], [Measures].[(Combustivel) Consumo], [Measures].[(Combustivel) Consumo MCA], [Measures].[(Combustivel) Consumo MCP], [Measures].[(Combustivel) Compra]} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Rebocador) Rebocador.default].[SN ABAIS I]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, {[(Tempo) Anual.default].[2015]})), CrossJoin({[(Rebocador) Rebocador.default].[SN DAVID]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, {[(Tempo) Anual.default].[2015]})))) ON ROWS&#xD;
+FROM [Sulnorte]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

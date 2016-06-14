@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>algooz datetime input</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="../../webcomponents.min.js"></script>
+
+  <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+  <link rel="import" href="algooz-date-input.html">
+
+  </head>
+
+  <body unsolved>
+    <polymer-element name="test-input-date">
+      <template>
+        <core-ajax url="objects.json" 
+          response="{{ obj }}" 
+          method="GET"
+          id="ajax" 
+          handleAs="json">
+        </core-ajax>
+        <algooz-date-input algz_value="{{ obj[0].valores[0] }}"></algooz-date-input>
+    </template>
+    <script>
+      Polymer({
+        ready:function()
+        {
+          this.$.ajax.go();
+        }
+      });
+    </script>
+    </polymer-element>
+    <test-input-date>
+    </test-input-date>
+  </body>
+</html>

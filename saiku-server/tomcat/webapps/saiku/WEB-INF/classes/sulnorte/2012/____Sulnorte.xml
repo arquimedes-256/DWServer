@@ -1,0 +1,134 @@
+<Schema name="New Schema1">
+  <Dimension type="StandardDimension" visible="true" name="Cliente">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CLIENTE">
+      <Table name="cliente" alias="">
+      </Table>
+      <Level name="Nome do Cliente" visible="true" table="cliente" column="NOME_CLIENTE" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Contrato">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_CONTRATO">
+      <Table name="contrato" alias="">
+      </Table>
+      <Level name="Numero do Contrato" visible="true" column="NUM_CONTRATO" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Estado">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_ESTADO">
+      <Table name="estado" alias="">
+      </Table>
+      <Level name="Sigla do Estado" visible="true" column="SIGLA" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Filial">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_FILIAL">
+      <Table name="filial" alias="">
+      </Table>
+      <Level name="Filial" visible="true" column="SIGLA_FILIAL" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Navio">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_NAVIO">
+      <Table name="navio" alias="">
+      </Table>
+      <Level name="Nome do Navio" visible="true" column="NOME_NAVIO" uniqueMembers="false">
+      </Level>
+      <Level name="Dwt do Navio" visible="true" column="DWT" uniqueMembers="false">
+      </Level>
+      <Level name="IMMO do Navio" visible="true" column="IMMO" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Operacao">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_OPERACAO">
+      <Table name="operacao" alias="">
+      </Table>
+      <Level name="Id da Operacao" visible="true" column="ID_OPERACAO" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Porto">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_PORTO">
+      <Table name="porto" alias="">
+      </Table>
+      <Level name="Nome do Porto" visible="true" column="NOME_PORTO" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Rebocador">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="rebocador" alias="">
+      </Table>
+      <Level name="Nome do Rebocador" visible="true" column="NOME_REBOCADOR" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Tipo Rebocador" visible="true" hasAll="true" primaryKey="ID_ESTADO_REBOCADOR">
+      <Table name="rebocador_tipo" alias="">
+      </Table>
+      <Level name="Tipo do Rebocador" visible="true" column="NOME_ESTADO_REBOCADOR" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="TimeDimension" visible="true" name="Tempo">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_TEMPO">
+      <Table name="tempo" alias="">
+      </Table>
+      <Level name="Ano" visible="true" column="ANO" type="String" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+      <Level name="Mes" visible="true" column="MES" type="String" uniqueMembers="true" levelType="TimeMonths" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Terminal">
+    <Hierarchy name="default" visible="true" hasAll="true" primaryKey="ID_TERMINAL">
+      <Table name="terminal" alias="">
+      </Table>
+      <Level name="Nome do Terminal" visible="true" column="NOME_TERMINAL" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Sul Norte" visible="true" cache="true" enabled="true">
+    <Table name="sn_fato" alias="">
+    </Table>
+    <DimensionUsage source="Cliente" name="Cliente" visible="true" foreignKey="ID_CLIENTE_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Contrato" name="Contrato" visible="true" foreignKey="ID_CONTRATO_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Estado" name="Estado" visible="true" foreignKey="ID_ESTADO_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Filial" name="Filial" visible="true" foreignKey="ID_FILIAL_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Navio" name="Navio" visible="true" foreignKey="ID_NAVIO_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Operacao" name="Operacao" visible="true" foreignKey="ID_OPERACAO_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Porto" name="Porto" visible="true" foreignKey="ID_PORTO_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Rebocador" name="Rebocador" visible="true" foreignKey="ID_REBOCADOR_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="Tempo" visible="true" foreignKey="ID_TEMPO_FK">
+    </DimensionUsage>
+    <DimensionUsage source="Terminal" name="Terminal" visible="true" foreignKey="ID_TERMINAL_FK">
+    </DimensionUsage>
+    <Measure name="Valor Dollar Bruto" column="VALOR_DOLLAR_BRUTO" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Dollar ISS" column="VALOR_DOLLAR_ISS" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Dollar Liquido" column="VALOR_DOLLAR_LIQUIDO" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Dollar Referencia" column="VALOR_DOLLAR_REFERENCIA" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Valor Real Bruto" column="VALOR_REAL_BRUTO" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Valor Real ISS" column="VALOR_REAL_ISS" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Valor Real Liquido" column="VALOR_REAL_LIQUIDO" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Valor Real Referencia" column="VALOR_REAL_REFERENCIA" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

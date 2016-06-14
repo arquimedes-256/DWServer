@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="71CA5C92-34AF-FB03-8F86-1C7E2D50C95B" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Operacao)" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao)" type="member" node="[(Operacao).default].[102123]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Cambio U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Desconto U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Desconto R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Faturado R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Faturado US$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Faturado Liquido Corrigido R$], [Measures].[Faturado Liquido Corrigido U$], [Measures].[Valor Cambio U$], [Measures].[Faturado Liquido R$], [Measures].[Faturado Liquido U$], [Measures].[Valor Desconto U$], [Measures].[Valor Desconto R$], [Measures].[Valor Faturado R$], [Measures].[Valor Faturado US$]} ON COLUMNS,&#xD;
+NON EMPTY {Hierarchize({[(Operacao).default].[102123]})} ON ROWS&#xD;
+FROM [Sulnorte]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

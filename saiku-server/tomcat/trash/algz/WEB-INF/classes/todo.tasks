@@ -1,0 +1,59 @@
+-Projeto alGooz {alG(x) = x > 0 ? {alG(1);ooz() is alG(0)+"hemist"},ooz() = oriented object zyztem"}
+
+UiApp:
+-H	[x] 1/2 debugar compilador de uiapp do angularjs
+-H	[x] Corrigir drops de components
+-H	[x] Corrigir compiler da directiva dynamic
+-H	[x] 2/2 debugar compilador de uiapp do angularjs(ng-change)
+-H	[x] Levantar proximos requisitos da sandbox 
+	-H	[x] Corrigir os elements salvos em Box
+	-H	[x] Valor de $this some quando salva e lista
+-H	[x] Migração para jsp
+-H	[x] Implementação de cache-safe para scripts principais
+-H	[x] Corrigir UIApp.config nunca ser null
+:::::::-H	[ ] Após o tipo User pronto, implementar Carrinho(Produto,User)(mkattr,e testar com ls -l) e botão para enviar produto para o carrinho
+	**** Back Packs *****
+	[x] list
+	[x] get
+	[x] set
+[x] push // backpack --push Pedido -item 33 -qty 1
+
+	[ ] criar novo usuário fora de outra aplicacao
+		[ ] testar se esse usuário tem acesso a backpacks do root
+		[ ] test list
+		[ ] test get
+		[ ] test set
+		[ ] test push
+
+	
+	[ ] Implementar attributo releases em model.Object
+
+-H	[x] Testar iteração de objetos em determinados Boxes
+
+Client
+-B	[x] Concertar chamads de bin.cd em frontend
+-B	[x] ttyController.$scope.getFirstValue nulled
+-H	[ ] desenvolver create class menu form
+-H	[ ] aprimorar o inner create object para aceitar referencias em busca
+-L	[ ] remover "ls tty" do cd */object, pois já existe um ls -l para isso
+
+Kernel:
+-H	[x] Criar tipo de dado primitivo : User, Location(primeiro ponto: Criar modelo se ele não existir e segundo ponto: Colocar na carga básica se não estiver lá)
+	-[x]mkclass w/User
+	-[x]mkobject w/User 
+-L	[ ] otimizar com cache o mapeamento do bin.cd
+-L	[ ] otimizar busca com cache em tabela
+	-L	[ ] criar cleaner automático, quando tabela for alterada
+-H	[x] aplicado o conceito de que tudo es um arquivo, incluindo: 
+			TTY,Application, Modules, Classes,Object,Attribute,Value
+-H	[x] otimizar cd atraves de jsonIgnore de TTY.connectedUiApp
+-L	[x] definir caracteres reservados
+-L	[x] implementar caracteres reservados
+-H	[x] Otimizar bin.cd para não retornar resultados
+-H	[x] Criar FIFO(File In File Out) para chamada de binários(Piped Structure)
+	{bin.alter}
+		-H	[x] Corrigir existsInThisFolder para buscar em todas as classes da applicacao
+		-L	[x] Corrigir o findClassByName para Buscar somente classes de aplicacao	
+		
+Warnnings
+-H	[ ] testar se pode criar um attributo em classe com tipo estando em outra aplicação de outro cliente(o corrreto é isso não ocorrer, o motivo deve estar na query de ClassDAO.findByName)

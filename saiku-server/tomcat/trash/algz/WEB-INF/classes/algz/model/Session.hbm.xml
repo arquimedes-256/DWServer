@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/12/2014 17:31:26 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="algz.model.Session" table="SESSION">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="ip" type="java.lang.String">
+            <column name="IP" />
+        </property>
+        <list name="ttys" inverse="false" table="TTY" lazy="true">
+            <key>
+                <column name="SERIALVERSIONUID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="algz.model.TTY" />
+        </list>
+        <one-to-one name="locale" class="algz.model.Locale"></one-to-one>
+        <one-to-one name="user" class="algz.model.User"></one-to-one>
+        <one-to-one name="tty" class="algz.model.TTY"></one-to-one>
+        <property name="bornDate" type="java.util.Calendar">
+            <column name="BORNDATE" />
+        </property>
+        <property name="deathDate" type="java.util.Calendar">
+            <column name="DEATHDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

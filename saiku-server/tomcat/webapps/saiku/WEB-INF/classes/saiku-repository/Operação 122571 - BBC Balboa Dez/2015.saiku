@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="A947D38A-897D-1885-8C39-4633DFC9609B" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Dezembro]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao)" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao)" type="member" node="[(Operacao).default].[122571]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Local) Porto" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Porto" type="member" node="[(Local) Porto.default].[RIO GRANDE]" operator="MEMBER" />
+              <Selection dimension="(Local) Porto" type="member" node="[(Local) Porto.default].[RIO GRANDE]" operator="CHILDREN" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Tipo Tarifacao" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Tipo Tarifacao" type="level" node="[(Operacao) Tipo Tarifacao.default].[Tarifacao]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Manobra) Tipo Calculo" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Manobra) Tipo Calculo" type="level" node="[(Manobra) Tipo Calculo.default].[Tipo Calculo]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Tipo Faturamento" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Tipo Faturamento" type="level" node="[(Operacao) Tipo Faturamento.default].[Faturamento]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual Saida do Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual Saida do Navio" type="member" node="[(Tempo) Anual Saida do Navio.default].[All (Tempo) Anual Saida do Navio.defaults]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Anual Saida do Navio" type="member" node="[(Tempo) Anual Saida do Navio.default].[2015]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Referencia US$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Tempo) Anual Saida do Navio.default].[All (Tempo) Anual Saida do Navio.defaults]}, {[Measures].[Valor Referencia US$]}), CrossJoin({[(Tempo) Anual Saida do Navio.default].[2015]}, {[Measures].[Valor Referencia US$]}))) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Tempo) Mensal.Mensal].[Dezembro]}, CrossJoin({[(Operacao).default].[122571]}, CrossJoin({[(Local) Porto.default].[RIO GRANDE]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Operacao) Tipo Tarifacao.default].[Tarifacao].Members, CrossJoin([(Manobra) Tipo Calculo.default].[Tipo Calculo].Members, [(Operacao) Tipo Faturamento.default].[Faturamento].Members)))))), CrossJoin({[(Tempo) Mensal.Mensal].[Dezembro]}, CrossJoin({[(Operacao).default].[122571]}, CrossJoin([(Local) Porto.default].[RIO GRANDE].Children, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Operacao) Tipo Tarifacao.default].[Tarifacao].Members, CrossJoin([(Manobra) Tipo Calculo.default].[Tipo Calculo].Members, [(Operacao) Tipo Faturamento.default].[Faturamento].Members)))))))) ON ROWS&#xD;
+FROM [Sulnorte]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

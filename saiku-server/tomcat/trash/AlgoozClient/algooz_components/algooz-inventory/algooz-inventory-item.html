@@ -1,0 +1,39 @@
+
+
+<polymer-element name="algooz-inventory-item" attributes="object">
+  <template>
+    <div layout horizontal>
+      <core-icon icon="image:photo"></core-icon>
+      <div layout vertical>
+        <div object-name flex>
+          {{ object.name }}
+        </div>
+        <div qtd flex>
+          {{ object.qtd }}
+        </div>
+      </div>
+    </div>
+    <style>
+      :host
+      {
+        padding:16px;
+      }
+      [object-name]
+      {
+
+      }
+      [qtd]
+      {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      [icon] {
+        width: 64px;
+        height: 64px;
+      }
+    </style>
+  </template>
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>

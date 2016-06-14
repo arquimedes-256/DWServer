@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Title7</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body><div class="container"><p>data: 26/06/2015</p>
+
+<p>O algoritmo foi organizado em 3 partes:</p>
+
+<p><strong>1)</strong> Ler o documento <script type="math/tex" id="MathJax-Element-3256">D</script> <br>
+<strong>2)</strong> Parsear o documento <script type="math/tex" id="MathJax-Element-3257">D</script> e transformar em um “objetos sujos” <script type="math/tex" id="MathJax-Element-3258">X</script> <br>
+ logo: <br>
+ <script type="math/tex; mode=display" id="MathJax-Element-3259">
+ D \xrightarrow {\text{ parsear }} X
+ </script> <br>
+exemplo # objeto sujo: <br>
+ <img src="http://imagizer.imageshack.us/a/img910/8593/jAJaIj.png" alt="enter image description here" title=""> <br>
+ Parece simples o processo, mas antes eu precisei escrever um código para identificar onde começa os registros e identificar localização das colunas , limpar valores(removendo caracteres indesejados) e estruturar informações sem padrão(objeto sujo) <script type="math/tex" id="MathJax-Element-3260">X</script>.</p>
+
+<p>exemplo #não-padronização <br>
+<img src="http://imagizer.imageshack.us/a/img661/5051/31ZXKp.png" alt="enter image description here" title="">  <br>
+Coluna sem nome, nesse caso eu precisei criar uma classe chamada UndefinedFactory, que através de padrões reconhece qual deve ser o nome da coluna indefinida.</p>
+
+<p><strong>3)</strong> Transformar em “objetos limpos” <script type="math/tex" id="MathJax-Element-3261">L</script> (de acordo com os problemas de cada filial), buscando informações exatas (DWT,Navio,Rebocadores, …) <br>
+logo: <br>
+ <script type="math/tex; mode=display" id="MathJax-Element-3262">
+ D \xrightarrow {\text{ parsear }} X \xrightarrow {\text{ transformar }} L
+ </script> <br>
+um objeto limpo da linha <strong>10</strong> do arquivo <strong>MOV_JUN_4_RIO.xls</strong> , será algo do tipo:</p>
+
+<pre><code>        "10.1":
+        {
+            dwt: 12950,
+            rebocador:'S.PAULO', 
+            data:'01/06/2015',
+            valor:576 
+                    (...)
+        },
+        "10.2":
+        {
+            dwt: 12950,
+            rebocador:'S.JOAO', 
+            data:'01/06/2015',
+            valor:576
+                    (...)
+        }
+</code></pre>
+
+<p>nesse caso você pode notar que o valor <script type="math/tex" id="MathJax-Element-3263">1152</script> se dividiu entre <script type="math/tex" id="MathJax-Element-3264">2</script> rebocadores,<script type="math/tex" id="MathJax-Element-3265">1152/2=576</script></p>
+
+<p>Desafio: <br>
+1. Selecionar as “informações obrigatórias” para novo objeto limpo <script type="math/tex" id="MathJax-Element-3266">L</script>, caso não exista, informar um error. <br>
+2. Analisando esse erro, escrevemos uma função pequena de transformação para a filial em particular. <br>
+3. Normalizar todas as informações para um nível único,dividindo valores conforme exemplificado no objeto limpo acima.</p></div></body>
+</html>

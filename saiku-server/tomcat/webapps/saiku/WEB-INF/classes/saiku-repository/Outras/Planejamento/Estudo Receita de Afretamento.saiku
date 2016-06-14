@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="2DBA80D5-685B-70B4-97DD-BF662AB93D0B" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SEP]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Faturado R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2014]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2013]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Janeiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Fevereiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Março]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Manobra) Tipo Calculo">
+            <Inclusions>
+              <Selection dimension="(Manobra) Tipo Calculo" type="member" node="[(Manobra) Tipo Calculo.default].[Receita de Afretamento]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[Measures].[Valor Faturado R$]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Tempo) Mensal.Mensal].[Janeiro]})), Union(CrossJoin({[Measures].[Valor Faturado R$]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Tempo) Mensal.Mensal].[Fevereiro]})), Union(CrossJoin({[Measures].[Valor Faturado R$]}, CrossJoin({[(Tempo) Anual.default].[2014]}, {[(Tempo) Mensal.Mensal].[Março]})), Union(CrossJoin({[Measures].[Valor Faturado R$]}, CrossJoin({[(Tempo) Anual.default].[2013]}, {[(Tempo) Mensal.Mensal].[Janeiro]})), Union(CrossJoin({[Measures].[Valor Faturado R$]}, CrossJoin({[(Tempo) Anual.default].[2013]}, {[(Tempo) Mensal.Mensal].[Fevereiro]})), CrossJoin({[Measures].[Valor Faturado R$]}, CrossJoin({[(Tempo) Anual.default].[2013]}, {[(Tempo) Mensal.Mensal].[Março]})))))))) ON COLUMNS,&#xD;
+NON EMPTY {Hierarchize({[(Local) Filial.default].[SEP]})} ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE {[(Manobra) Tipo Calculo.default].[Receita de Afretamento]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

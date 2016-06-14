@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="1CD49B6A-D38B-20A1-AAD0-ADD8F3510D7F" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="level" node="[(Local) Filial.default].[Filial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="level" node="[(Empresa) Cliente.default].[Nome do Cliente]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Rebocador) Rebocador" type="level" node="[(Rebocador) Rebocador.default].[Nome do Rebocador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Dono do Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Dono do Rebocador" type="level" node="[(Empresa) Dono do Rebocador.default].[Dono do Rebocador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Dwt do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Tipo Tarifacao" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Tipo Tarifacao" type="level" node="[(Operacao) Tipo Tarifacao.default].[Tarifacao]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Operacoes]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[QTD. Operacoes]} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Rebocador) Rebocador.default].[Nome do Rebocador].Members, CrossJoin([(Empresa) Dono do Rebocador.default].[Dono do Rebocador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, [(Operacao) Tipo Tarifacao.default].[Tarifacao].Members))))), CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Rebocador) Rebocador.default].[Nome do Rebocador].Members, CrossJoin([(Empresa) Dono do Rebocador.default].[Dono do Rebocador].Members, CrossJoin([(Embarcacao) Navio.default].[Dwt do Navio].Members, [(Operacao) Tipo Tarifacao.default].[Tarifacao].Members))))))) ON ROWS&#xD;
+FROM [Sulnorte]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

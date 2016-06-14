@@ -1,0 +1,236 @@
+
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="algooz-bus" attributes="base_url">
+  <template>
+
+    <core-ajax id="ajax_cd"
+        auto?="{{ !debug }}"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"cd {{folder_name}} | ls -s","_":{{click_count}}}'
+        response="{{resp}}"
+        handleAs="json"
+        on-core-response="{{on_ajax_cd_response}}">
+    </core-ajax>
+
+    <core-ajax id="ajax_ls_s"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"ls -s"}'
+        response="{{resp}}"
+        handleAs="json"
+        on-core-response="{{on_ajax_cd_response}}">
+    </core-ajax>
+
+    <core-ajax id="ajax_ls_l"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"ls -l"}'
+        on-core-response="{{on_ajax_ls_l_response}}"
+        response="{{objects}}"
+        handleAs="json">
+    </core-ajax>
+
+    <core-ajax id="ajax_ls"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"ls"}'
+        response="{{current_item}}"
+        handleAs="json">
+    </core-ajax>
+
+    <core-ajax id="ajax_pwd"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"pwd"}'
+        response="{{pwd}}"
+        handleAs="json"
+        on-core-response="{{ on_ajax_pwd_response }}">
+    </core-ajax>
+
+    <core-ajax id="ajax_maker"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{{ full_maker_cmd }}'
+        response="{{notifications}}"
+        handleAs="json"
+        on-core-response="{{ on_ajax_maker_response }}">
+    </core-ajax>
+
+    <core-ajax id="ajax_search_by_class"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params="{{ajax_search_query}}"
+        response="{{ search_result }}"
+        handleAs="json">
+    </core-ajax>
+
+    <core-ajax id="ajax_tty"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"ls tty"}'
+        response="{{ tty }}"
+        handleAs="json"
+        on-core-response="{{ on_ajax_tty_response }}">
+    </core-ajax>
+
+    <core-ajax id="ajax_ls_events"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{{ shell_ls_events }}'
+        response="{{ events_data }}"
+        handleAs="json"
+        on-core-response="{{ on_ajax_ls_events_response }}">
+    </core-ajax>
+
+    <core-ajax id="ajax_ls_c"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"ls -c"}'
+        response="{{ types }}"
+        handleAs="json">
+    </core-ajax>
+
+    <core-ajax id="ajax_mv_trash"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"move /@trash"}'
+        on-core-response="{{ on_ajax_mv_trash_response }}"
+        response="{{ remove_response }}"
+        handleAs="json">
+    </core-ajax>
+
+    <core-ajax id="ajax_rm"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"rm {{ list_ids_to_delete }}"}'
+        on-core-response="{{ on_ajax_rm_response }}"
+        response="{{ remove_response }}"
+        handleAs="json">
+    </core-ajax>
+    <core-ajax id="ajax_alter_remove_attribute"
+        method="GET"
+        url="{{base_url}}/kernelBus"
+        params='{"shell":"alter remove {{ alter_remove_attribute_name }}"}'
+        on-core-response="{{ on_ajax_rm_response }}"
+        handleAs="json">
+    </core-ajax>
+
+
+  </template>
+
+    <script>
+      var search_timeout;
+
+      Polymer({
+      folder_name:"/",
+      click_count:0,
+      refresh:function()
+      {
+        this.$.ajax_ls_s.go();
+      },
+      rm:function(ids)
+      {
+        this.list_ids_to_delete = ids;
+        this.$.ajax_rm.go();
+      },
+      search:function(clazz,search_value,search_type)
+      {
+        if(clazz && search_value && search_value.length > 0)
+        {
+          var $this = this;
+          clearInterval(search_timeout);
+          search_timeout = setTimeout(function()
+          {
+            var q = search_value.trim().split(/\s+/g);
+            var x = JSON.stringify({q:q,t:search_type,c:clazz.id});
+            $this.ajax_search_query = JSON.stringify({shell:"search "+x});
+            $this.$.ajax_search_by_class.go();
+
+          },300);
+        }
+      },
+      send:function(cmd)
+      {
+        this.full_maker_cmd = {shell:cmd};
+        this.$.ajax_maker.go();
+      },
+      alter_remove_attribute:function(attributeName)
+      {
+        this.alter_remove_attribute_name = attributeName;
+        this.$.ajax_alter_remove_attribute.go();
+      },
+      list_events:function(mounth,year,classID,objectID)
+      {
+        var event_query = JSON.stringify({mounth:mounth,year:year,classID:classID,objectID:objectID});
+        this.shell_ls_events = {"shell":"ls events "+event_query};
+        this.$.ajax_ls_events.go();
+      },
+      goto_back:function()
+      {
+        this.goto_dir('..');
+      },
+      goto_dir:function(fdn)
+      {
+        this.folder_name = fdn;
+        this.click_count++;
+      },
+      /**
+       * ls events
+       */
+      on_ajax_ls_events_response:function()
+      {
+        this.fire('agenda-events');
+      },
+      /**
+       * ls tty
+       */
+      on_ajax_tty_response:function()
+      {
+        this.$.ajax_ls_l.go();
+        this.fire('tty');
+      },
+      /**
+       * cd {{folder_name}} | ls -s","_":{{click_count}}}
+       */
+      on_ajax_cd_response:function()
+      {
+        this.$.ajax_pwd.go();
+      },
+      /**
+       * {{full_maker_cmd}} <=> mkapp,mkmod,mkclass,mkobj
+       */
+      on_ajax_maker_response:function()
+      {
+        this.refresh();
+      },
+      /**
+       * ls -l
+       */
+      on_ajax_ls_l_response:function()
+      {
+      },
+      /**
+       * pwd
+       */
+      on_ajax_pwd_response:function()
+      {
+        if(this.pwd)
+        {
+          this.$.ajax_tty.go();
+        }
+      },
+      on_ajax_rm_response:function()
+      {
+        this.$.ajax_ls_l.go();
+        this.fire('send-trash-complete');
+      },
+      on_ajax_mv_trash_response:function()
+      {
+        this.goto_back();
+        this.fire('send-trash-complete');
+      }
+      })
+    </script>
+</polymer-element>

@@ -1,0 +1,114 @@
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+
+<polymer-element name="algooz-navigator" attributes="bus selected">
+
+  <template>
+    <style>
+      paper_button {
+        left: 0px;
+        top: 10px;
+        position: absolute;
+      }
+    </style>
+    <paper-tabs flex selected="{{ selected }}">
+      <paper-tab on-click="{{ gotoRoot }}"><core-icon icon="home"></core-icon></paper-tab>
+      <!-- Application -->
+        <paper-tab on-click="{{ gotoApplication }}"
+          use-showing
+          showing?="{{ bus.tty.connectedApplication }}"
+          hidden?="{{ !bus.tty.connectedApplication }}">
+          {{ bus.tty.connectedApplication.name }}
+        </paper-tab>
+        <!-- Module -->
+        <paper-tab
+          use-showing
+          showing?="{{ bus.tty.connectedModule }}"
+          hidden?="{{ !bus.tty.connectedModule }}"
+          on-click="{{ gotoModule }}">
+          {{ bus.tty.connectedModule.name }}
+        </paper-tab>
+        <!-- Class -->
+        <paper-tab
+          use-showing
+          showing?="{{ bus.tty.connectedClass }}"
+          hidden?="{{ !bus.tty.connectedClass }}">
+          {{ bus.tty.connectedClass.name }}
+        </paper-tab>
+    </paper-tabs>
+    <style>
+      paper-fab
+      {
+        position: relative;
+        top: 2px;
+      }
+      paper-button
+      {
+        background:#fbfbfb;
+      }
+      [current]
+      {
+        font-weight:bold;
+      }
+      paper-tabs
+      {
+        margin: 0 5px;
+        font-size: 20px;
+      }
+    </style>
+  </template>
+
+  <script>
+
+    Polymer({
+      ready:function()
+      {
+      },
+      busChanged:function(o,n)
+      {
+        this.bus.$.ajax_tty.go();
+      },
+      observe:
+      {
+        'bus.tty':'ttyChanged'
+      },
+      ttyChanged:function()
+      {
+        var tty = this.bus.tty;
+
+        if(tty)
+          if(!tty.connectedApplication)
+              this.selected = 0;
+            else if(tty.connectedApplication && !tty.connectedModule)
+              this.selected = 1;
+            else if(tty.connectedModule && !tty.connectedClass)
+              this.selected = 2;
+            else if(tty.connectedClass)
+              this.selected = 3;
+
+        console.log(this.selected);
+      },
+      gotoDir:function(dir)
+      {
+          this.bus.goto_dir(dir);
+      },
+      gotoRoot:function()
+      {
+        this.gotoDir('/');
+      },
+      gotoApplication:function()
+      {
+        this.gotoDir('/'+this.bus.tty.connectedApplication.name);
+      },
+      gotoModule:function()
+      {
+        this.gotoDir(
+          '/'+this.bus.tty.connectedApplication.name+
+          '/'+this.bus.tty.connectedModule.name);
+      }
+    });
+
+  </script>
+
+</polymer-element>

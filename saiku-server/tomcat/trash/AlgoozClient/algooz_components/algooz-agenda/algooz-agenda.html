@@ -1,0 +1,188 @@
+
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../bower_components/core-icons/image-icons.html">
+<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+
+<link rel="import" href="algooz-agenda-event.html">
+
+<polymer-element name="algooz-agenda" attributes="bus month year classID objectID enabled">
+  <template>
+
+      <h1>{{ monthLabel }} - {{ year }}</h1>
+        <template repeat="{{ g in grids }}">
+          <div grid header
+            horizontal
+            layout
+            fullbleed>
+            <template repeat="{{ d,j in g }}">
+              <paper-shadow
+                flex
+                vertical
+                layout now?="{{ d | isNow }}">
+                 <div self-start week-day>
+                  {{ weekDays[j] }}
+                  </div>
+                 <div day self-start>
+                  {{ d.number }}
+                 </div>
+                 <template repeat="{{ ev in bus.events_data.events }}">
+                  <template if="{{ ev | equalsDate(d) }}">
+                    <algooz-agenda-event event="{{ ev }}">
+                    </agenda-event>
+                  </template>
+                 </template>
+              </paper-shadow>
+            </template>
+        </template>
+      <style>
+        [main]
+        {
+          width: 100%;
+          height: 400px;
+        }
+
+        paper-shadow
+        {
+          min-height: 64px;
+          padding:13px;
+          margin:5px;
+          background: #FFF;
+        }
+        [now]
+        {
+          background:#FFEB3B;
+        }
+        [now] [day]
+        {
+         color:#E91E63;
+        }
+        [week-day]
+        {
+          color:#607D8B;
+        }
+        [day]
+        {
+          position: relative;
+          z-index: 9999;
+          font-size: 36px;
+          color: #9E9E9E;
+          width: 100%;
+        }
+      </style>
+  </template>
+  <script>
+
+    Polymer(
+    {
+      currentMonth:new Date().getMonth()+1,
+      currentDate:new Date().getDate(),
+
+      weekDays:['Domingo','Segunda','Terca','Quarta','Quinta','Sexta','Sabado'],
+      labelMeses:['Janeiro','Fevereiro','Marco','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+      grids : new Array(6),
+
+      equalsDate:function(ev,d)
+      {
+        var day = new Date(ev.start).getDate()+1;
+
+        if(d && day == d.number)
+        {
+          return true;
+        };
+        return false;
+      },
+      next:function()
+      {
+        this.month = ++(this.month);
+      },
+      prev:function()
+      {
+        this.month = --(this.month);
+      },
+      isNow:function(d)
+      {
+        return d && d.number == this.currentDate && d.month == this.currentMonth;
+      },
+      refresh:function()
+      {
+        if(this.enabled != undefined)
+          this.bus.list_events(
+            parseInt(this.month),
+            parseInt(this.year),
+            parseInt(this.classID),
+            parseInt(this.objectID)
+          );
+        this.buildGrid();
+      },
+      configureMonth:function()
+      {
+        if(this.month == "now")
+          this.month = new Date().getMonth()+1;
+      },
+      ready:function()
+      {
+        this.configureMonth();
+        this.buildGrid();
+      },
+      yearChanged:function(o,n)
+      {
+        if(typeof n == "string")
+          return this.year = parseInt(n);
+
+      },
+      monthChanged:function(o,n)
+      {
+        this.configureMonth();
+        if(typeof n == "string")
+          return this.month = parseInt(n);
+
+        if(this.month == 13)
+          this.month = 1,
+          this.year++;
+        else if(this.month == 0)
+          this.month = 12,
+          this.year--;
+
+        this.monthLabel = this.labelMeses[this.month-1];
+        this.refresh();
+      },
+      enabledChanged:function()
+      {
+        if(this.enabled != null)
+          this.refresh();
+      },
+      buildGrid:function(gridName)
+      {
+        this.monthDate = new Date(this.year+'-'+this.month+'-02');
+        this.grids = new Array(6);
+
+        if(this.monthDate.getDate() == 2)
+        {
+          this.monthDate = new Date(this.year+'-'+this.month+'-01');
+        }
+        for (var k=0;k<this.grids.length;k++)
+        {
+          var days = this.grids[k] = [];
+          var md = this.monthDate;
+
+          for (var i=1;i<=7;i++)
+          {
+            var d = null;
+            var dayOfWeek = md.getDay()+1;
+
+            if(dayOfWeek == i)
+            {
+              d = {number:md.getDate(),month:md.getMonth()+1}
+              md.setDate(md.getDate()+1);
+            }
+            days.push(d);
+          }
+          this.grids[k] = days;
+        }
+      }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,140 @@
+
+
+
+<div>
+	R$/MIL
+</div>
+<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Conta Sint&eacute;tica</th>
+					<th>Conta Cont&aacute;bil</th>
+					<th style="text-align:right">Or&ccedil;ado<sub ng-if="anoAtual == anoComparativo">{{ anoComparativoOrc }}</sub></th>
+					<th style="text-align:right">Realizado<sub ng-if="anoAtual == anoComparativo">{{ anoComparativoReal }}</sub></th>
+					<th style="text-align:right">Diferenca</th>
+					<th style="text-align:right">Var %</th>
+					<th style="text-align:right">#</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="r in rowsModal track by $index" ng-init="p = ($index > 0 && r.nomeGrupo != $parent.rowsModal[$index-1].nomeGrupo);tgl[r.nomeGrupo] = false">
+			<tr ng-if="p || $index == 0"
+					ng-click="tgl[r.nomeGrupo] = !tgl[r.nomeGrupo]" style="cursor:pointer"
+				
+				class="tr-total {{totalOrcado == totalRealizado ? 'info' :
+							totalOrcado > totalRealizado ? 'danger' : 'success'}}">
+					<td style="width: 279px" colspan="2">
+						<button 
+							style="margin-right: 27px;" 
+							class="btn btn-warning">
+						+
+						</button>
+						<b>{{r.nomeGrupo}}</b>
+					</td>
+					
+					<td style="text-align:right"><b>{{(totalOrcado = sum(r.nomeGrupo,'vlrOrcado',$parent.$parent.rowsModal,'nomeGrupo')).formatMoney(0)}}</b></td>
+					<!-- function(fieldValue,metric,series,fieldName) -->
+					<td style="text-align:right"><b>{{(totalRealizado = sum(r.nomeGrupo,'vlrRealizado',$parent.$parent.rowsModal,'nomeGrupo')).formatMoney(0)}}</b></td>
+					<td style="text-align:right">
+						<span><b>{{(totalRealizado - totalOrcado).formatMoney(0)}}</b></span>
+					</td>
+					<td style="text-align:right"
+						ng-init="">
+						<span><b>{{perc(((totalRealizado - totalOrcado)/totalOrcado)*-1,r.nomeGrupo)}}</b></span>
+					</td>
+					<td style="text-align:right"
+						ng-click="openRelatorio('orcadorealizado_detalhado_intern',
+					{inModal:true,
+					idGrupoMaster:r.idGrupoMaster,
+					idGrupo:r.idGrupo,
+					mes:mesAtual-1,
+					mesFinal:mesFinal-1,
+					filial:'LISTAR',
+					ano:anoAtual})">
+						<button class="btn btn-info">
+							<i class="glyphicon glyphicon-zoom-in"></i>
+							 &nbsp;Comparar c/<br/>outras Filiais
+						</button>
+						
+						<button class="btn btn-warning" 
+			               	ng-show=" r.idGrupoMaster != '9898989' "
+			               	ng-click="
+			                  openRelatorio('evolucao_grafico',
+			                  {inModal:true,
+			                  idGrupoMaster:r.idGrupoMaster,
+			                  filial:r.filial,
+			                  idGrupo:r.idGrupo,
+			                  nomeGrupoMaster:r.nomeGrupoMaster,
+			                  nomeGrupo:r.nomeGrupo
+			                  })">
+			               		<i class="glyphicon glyphicon-stats"></i>
+			             </button>
+			             
+					</td>
+				</tr>
+				
+				<tr ng-if="tgl[r.nomeGrupo]" index="{{$id}}"
+				class="{{r.vlrOrcado == r.vlrRealizado ? 'info' :
+							r.vlrOrcado > r.vlrRealizado ? 'danger' : 'success'}}">
+					<td style="width: 279px;">{{r.idContaContabil}}</td>
+					<td style="width: 279px;">{{r.nomeContaContabil}}</td>
+					<td style="text-align:right">{{numeralize(r.vlrOrcado).formatMoney(0)}}</td>
+					<td style="text-align:right">{{numeralize(r.vlrRealizado).formatMoney(0) }}</td>
+					<td style="text-align:right" 
+						ng-init="total = (numeralize(r.vlrOrcado) - numeralize(r.vlrRealizado))*-1;">
+						<span>{{total.formatMoney(0)}}</span>
+					</td>
+					<td style="text-align:right"
+						ng-init="total2 = perc(numeralize(r.vlrOrcado / r.vlrRealizado -1))|| 0;">
+						<span>
+						{{perc(((r.vlrRealizado - r.vlrOrcado)/r.vlrOrcado)*-1)}}</span>
+					</td>
+					<td style="text-align:right"
+						ng-click="openRelatorio('centro_de_custo_mtz',
+					{
+					idGrupoMaster:r.idGrupoMaster,
+					idContaContabil:r.idContaContabil,
+					idGrupo:r.idGrupo,
+					mes:$parent.$parent.mesAtual-1,
+					mesFinal:$parent.$parent.mesFinal-1,
+					filial:$parent.$parent.$modalFilial,
+					inCentroDeCusto:true,
+					ano:$parent.$parent.anoAtual,
+					index:$id})">
+						<button 
+						ng-class="{'disabled':r.vlrRealizado === 0}"
+						class="btn btn-success">
+						<i class="glyphicon glyphicon-zoom-in"></i> &nbsp;
+						Detalhar por<br/> Centro de Custo</button>
+					</td>
+				</tr>
+				
+				<thead>
+				<tr>
+					<th>TOTAL:</th>
+					<th>-</th>
+					<th style="text-align:right">{{(StotalOrcado = sum(subTitleRowsModal,'vlrOrcado',rowsModal,'nomeGrupoMaster')).formatMoney(0)}}</th>
+					<th style="text-align:right">{{(StotalRealizado = sum(subTitleRowsModal,'vlrRealizado',rowsModal,'nomeGrupoMaster')).formatMoney(0)}}</th>
+					<th style="text-align:right">
+						<span 
+							class="result-{{(sum(subTitleRowsModal,'vlrOrcado',rowsModal,'nomeGrupoMaster') > sum(subTitleRowsModal,'vlrRealizado',rowsModal,'nomeGrupoMaster'))}}">
+							{{( StotalRealizado - StotalOrcado).formatMoney(0)}}
+						</span>
+					</th>
+					<th style="text-align:right">
+						<span class="result-{{(sum(subTitleRowsModal,'vlrOrcado',rowsModal,'nomeGrupoMaster') > sum(subTitleRowsModal,'vlrRealizado',rowsModal,'nomeGrupoMaster'))}}">
+						{{ perc(((StotalRealizado - StotalOrcado)/StotalOrcado)*-1) }}
+						</span>
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			</tbody>
+		</table>
+<style>
+.tr-total {
+	cursor: pointer;
+	border-top: 3px dashed #BAAEAE;
+	border-bottom: 3px dashed #BAAEAE;
+}
+</style>

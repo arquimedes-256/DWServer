@@ -1,0 +1,61 @@
+<style>
+  @font-face {
+      font-family: 'catullregular';
+      src: url('fonts/catull-webfont.eot');
+      src: url('fonts/catull-webfont.eot?#iefix') format('embedded-opentype'),
+           url('fonts/catull-webfont.woff2') format('woff2'),
+           url('fonts/catull-webfont.woff') format('woff'),
+           url('fonts/catull-webfont.ttf') format('truetype'),
+           url('fonts/catull-webfont.svg#catullregular') format('svg');
+      font-weight: normal;
+      font-style: normal;
+
+  }
+  @font-face {
+      font-family: 'catullregular';
+      src: url('fonts/catull-webfont.eot');
+      src: url('fonts/catull-webfont.eot?#iefix') format('embedded-opentype'),
+           url('fonts/catull-webfont.woff2') format('woff2'),
+           url('fonts/catull-webfont.woff') format('woff'),
+           url('fonts/catull-webfont.ttf') format('truetype'),
+           url('fonts/catull-webfont.svg#catullregular') format('svg');
+      font-weight: normal;
+      font-style: normal;
+
+  }
+</style>
+<polymer-element name="algooz-logo">
+  <template>
+    <span logo-body showing?="{{ isOk }}" use-showing>al<span upper>G</span>ooz</span>
+    <style>
+      :host
+      {
+				font-family: 'catullregular' !important;
+      }
+      [logo-body]
+      {
+        margin-left: 11px;
+        display: block;
+        margin-bottom: 2px;
+				font-size:32px;
+				color:#424242;
+      }
+      [upper]
+      {
+        color: #00BCD4;
+      }
+    </style>
+  </template>
+  <script>
+    Polymer({
+      isOk:false,
+      ready:function()
+      {
+        this.async(function()
+        {
+          this.isOk = true;
+        },500)
+      }
+    });
+  </script>
+</polymer-element>

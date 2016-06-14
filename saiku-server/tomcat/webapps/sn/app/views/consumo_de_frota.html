@@ -1,0 +1,54 @@
+
+<div>
+	<table class="table table-striped">
+		<tr>
+			<th>Filial</th>
+			<th>Rebocador</th>
+			<th mdo-vlr>Nvl.Inicial</th>
+			<th mdo-vlr>Tr.Fornec</th>
+			<th mdo-vlr>Tr.Receb</th>
+			<th mdo-vlr>A/P/D</th>
+			<th mdo-vlr>Compra</th>
+			<th mdo-vlr>Nvl Final</th>
+			<th mdo-vlr>Consumo</th>
+			<th mdo-vlr style="text-align:center">MXM Estq(Entrada)</th>
+			<th mdo-vlr style="text-align:center">MXM Estq(Saida)</th>
+			<th mdo-vlr style="text-align:center">Diff Entrada</th>
+			<th mdo-vlr style="text-align:center">Diff Saida</th>
+		</tr>
+		<tr ng-repeat="r in consumoRows" class="{{ DiffA != 0 || DiffB != 0 ? 'danger':'success' }}">
+			<td>{{ r.filial }}</td>
+			<td>{{ r.reb}}</td>
+			<td mdo-vlr>{{ (r.nvlInicial).formatMoney(0) }} </td>
+			<td mdo-vlr>{{ (r.transFornec).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.transReceb).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.apd).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.compra).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.nvlFinal).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.consumo).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.estoqueEntrada).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.estoqueSaida).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ DiffA = (r.estoqueEntrada - (r.compra+r.transReceb) ).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ DiffB = (r.estoqueSaida - (r.consumo+r.transFornec)).formatMoney(0) }}</td>
+		</tr>
+		<tr ng-repeat="r in viagemRows">
+			<td>{{ r.filial }}</td>
+			<td>{{ r.reb}}</td>
+			<td mdo-vlr>{{ (r.nvlInicial).formatMoney(0) }} </td>
+			<td mdo-vlr>{{ (r.transFornec).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.transReceb).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.apd).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.compra).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.nvlInicial-r.consumo+r.compra+r.transReceb-r.transFornec).formatMoney(0) }}</td>
+			<td mdo-vlr>{{ (r.consumo).formatMoney(0) }}</td>
+			<td mdo-vlr>-</td>
+			<td mdo-vlr>-</td>
+			<td mdo-vlr>-</td>
+			<td mdo-vlr>-</td>
+		</tr>
+	</table>
+	<style>
+	[mdo-vlr] { text-align:right }
+	</style>
+	
+</div>

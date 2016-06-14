@@ -1,0 +1,164 @@
+
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../../algooz_components/algooz-filters/algooz-filters.html">
+<link rel="import" href="../../algooz_components/algooz-datetime-input/algooz-date-input.html">
+<link rel="import" href="../../algooz_components/algooz-complex-input/algooz-complex-input.html">
+
+<polymer-element name="algooz-object-item" attributes="object bus enable_cancel disabled">
+  <template>
+      <div object-item layout vertical>
+      <paper-icon-button hidden?="{{ disabled != null }}" icon="delete" self-end topt on-click="{{ delete }}" object-id="[[object.id]]">
+      </paper-icon-button>
+        <h2>{{ object.fullName }}</h2>
+          <div object-id="[[object.id]]" layout vertical>
+            <template repeat="{{ a in object.clazz.attributes }}">
+              <template if="{{ a.fileStatus.name != 'IN_TRASH' }}">
+                <template if="{{ a.typer.primitive }}">
+                  <template if="{{ a.typer.name != 'Date' }}">
+                    <paper-input auto-vertical flex
+                      floatingLabel
+                      multiline
+                      attribute-id="[[ a.id ]]"
+                      name="[[ a.name ]]"
+                      label="[[ a.name ]]"
+                      value="[[ a | getValueByAttribute | getValue ]]" disabled?="{{ disabled != undefined }}">
+                    </paper-input>
+                  </template>
+                  <template if="{{ a.typer.name == 'Date' }}">
+                    <algooz-date-input
+                      auto-vertical
+                      flex
+                      algz_value="{{ a | getValueByAttribute }}"
+                      attribute-id="[[ a.id ]]"
+                      name="[[ a.name ]]" disabled?="{{ disabled != undefined }}">
+                    </algooz-date-input>
+                  </template>
+                </template>
+              </template>
+                <template if="{{ !a.typer.primitive }}">
+                  <algooz-complex-input flex
+                    auto-vertical
+                    floatingLabel
+                    multiline
+                    name="[[ a.name ]]"
+                    clazz-id="[[ a.typer.id ]]"
+                    label="[[ a.name ]]"
+                    bus="{{ bus }}"
+                    algz_value="{{ a | getValueByAttribute }}" disabled?="{{ disabled != undefined }}">
+                  </algooz-complex-input>
+                </template>
+                <br />
+            </template><br />
+            <div opt>
+              <paper-button hidden?="{{ !enable_cancel }}"
+              on-tap="{{ cancel }}"
+              raised id="save_button"
+              class="colored">{{ 'TO_CANCEL' | string_base }}!</paper-button>
+
+              <paper-button
+              on-tap="{{ mkobj }}"
+              raised id="save_button"
+              class="full-colored">{{ 'SAVE' | string_base }}!</paper-button>
+            </div>
+          </div>
+      </div>
+      <style>
+        paper-button.colored {
+          color: #57b6db;
+        }
+        [object-item]
+        {
+          margin:17px;
+        }
+        algooz-complex-input
+        {
+          margin-bottom: 9px;
+        }
+      </style>
+  </template>
+  <script>
+    Polymer({
+      getValueByAttribute:function(attribute)
+      {
+        var valores = this.object.valores;
+        if(valores)
+        {
+          for(var i=0;i<valores.length;i++)
+          {
+            var v = valores[i];
+            if(v)
+            {
+              if(v.attribute && v.attribute.id == attribute.id)
+                return v;
+            }
+          }
+        }
+        var nv = { id:0,attribute:attribute,refferences:[] };
+        valores.push(nv);
+        return nv;
+      },
+    	mkobj:function()
+    	{
+      		var obj = {id:this.object.id};
+      		var valores = this.object.valores;
+
+      		for(var i=0;i<valores.length;i++)
+      		{
+      		  var v = valores[i];
+      		  var attr  = v.attribute;
+      		  if(attr.fileStatus && attr.fileStatus.name != 'IN_TRASH')
+      		  {
+        		  var val;
+        		  var key   = attr.name;
+        			if(!attr.typer.primitive)
+        			{
+        					val = this.getReffArray(v);
+        			}
+        			else
+        			{
+        			  if(attr.typer.name != "Date")
+        			  {
+        			    var q = 'paper-input[attribute-id="'+attr.id+'"]';
+        			    var e = this.shadowRoot.querySelector(q);
+        				  val = e.value;
+        			  }
+        			  else if(attr.typer.name == "Date")
+        			  {
+        			    var q = 'algooz-date-input[attribute-id="'+attr.id+'"]::shadow paper-input';
+        			    var e = this.shadowRoot.querySelector(q);
+        				  val = e.value;
+        			  }
+        			}
+        			obj[key] = val;
+      		  }
+      		}
+      		var cmd 	= ('new'+JSON.stringify(obj));
+      		this.fire('make',{cmd:cmd});
+	    },
+    	getReffArray:function(v,pureString)
+    	{
+    		var r = [];
+    		if(v.refferences)
+    		{
+    			for(var i=0;i<v.refferences.length;i++)
+    			{
+    				r.push(v.refferences[i].id);
+    			}
+    		}
+    		return pureString ? r.toString().replace(/[\[\]]/,"") :r;
+    	},
+    	cancel:function()
+    	{
+    	  this.fire("cancel");
+    	},
+    	delete:function(e)
+    	{
+    	  this.fire('click-delete-object',{object:this.object});
+    	}
+    });
+  </script>
+</polymer-element>

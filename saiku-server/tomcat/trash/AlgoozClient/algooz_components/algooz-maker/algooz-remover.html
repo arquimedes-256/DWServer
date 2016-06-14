@@ -1,0 +1,101 @@
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../algooz_components/algooz-filters/algooz-filters.html">
+<link rel="import" href="../../algooz_components/algooz-loading/algooz-loading.html">
+<link rel="import" href="../../algooz_components/algooz-object-explorer/algooz-object-item.html">
+
+<polymer-element name="algooz-remover" attributes="bus object_to_delete">
+  <template>
+    <div layout vertical>
+      <h1>{{ 'WARN' | string_base }}!</h1>
+      <div auto-vertical>
+        <core-icon icon="warning"></core-icon>
+
+        &nbsp;{{ 'REMOVE_ANSW' | string_base }}
+        <template if="{{ object_to_delete }}">
+          {{ 'A' | string_base }}
+        </template>
+        <template if="{{ !object_to_delete }}">
+          {{ 'ALL' | string_base }}
+        </template>
+        <b>{{ name }}</b>
+        <template if="{{ object_to_delete }}">
+          {{ 'BELLOW' | string_base }}
+        </template>
+        ?
+
+      </div>
+      <algooz-loading response="{{ !bus.remove_response }}"></algooz-loading>
+      <template if="{{ object_to_delete }}">
+        <algooz-object-item
+          auto-vertical
+          object="{{ object_to_delete }}"
+          bus="{{ bus }}"
+          enable_cancel="{{ false }}"
+          disabled>
+        </algooz-object-item>
+      </template>
+      <div auto-vertical layout horizontal opt>
+        <div>
+          <paper-button raised flex on-click="{{ cancel }}">
+            {{ 'TO_CANCEL' | string_base }}
+          </paper-button>
+        </div>
+        <template if="{{ name != 'root'  }}">
+          <div>
+            <paper-button class="full-colored-danger" hidden?="{{ object_to_delete }}"
+              raised on-click="{{ sendToTrashDirectory }}" >
+              {{ 'TO_REMOVE' | string_base }}!
+            </paper-button>
+          </div>
+          <div>
+            <paper-button class="full-colored-danger" hidden?="{{ !object_to_delete }}"
+              raised on-click="{{ sendToTrashObject }}"  >
+              {{ 'TO_REMOVE' | string_base }}!
+            </paper-button>
+          </div>
+        </template>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      observe:
+      {
+        'bus.tty':'ttyChanged'
+      },
+      busChanged:function()
+      {
+        this.bus.addEventListener('send-trash-complete',this.cancel);
+      },
+      cancel:function()
+      {
+        this.fire('cancel');
+      },
+      sendToTrashDirectory:function()
+      {
+        this.bus.$.ajax_mv_trash.go();
+      },
+      sendToTrashObject:function()
+      {
+        this.bus.rm(this.object_to_delete.id);
+      },
+      ttyChanged:function()
+      {
+        var tty = this.bus.tty;
+
+        if(tty)
+        {
+          if(!tty.connectedApplication)
+            this.name = "root";
+          else if(tty.connectedApplication && !tty.connectedModule)
+            this.name = tty.connectedApplication.name;
+          else if(tty.connectedModule && !tty.connectedClass)
+            this.name = tty.connectedModule.name;
+          else if(tty.connectedClass)
+            this.name = tty.connectedClass.name
+        }
+      }
+    });
+  </script>
+</polymer-element>

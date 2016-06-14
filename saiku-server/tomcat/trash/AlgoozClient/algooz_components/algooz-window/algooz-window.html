@@ -1,0 +1,66 @@
+
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../gs_components/gs-tween-max/gs-tween-max.html">
+
+<polymer-element name="algooz-window" attributes="title on-init on-close">
+  <template>
+    <section id="window_body">
+      <paper-shadow z="3">
+        <paper-button raised flex id="title_bar">{{title}}</paper-button>
+        <paper-fab id="fab_close" icon="close" mini on-tap="{{close_window}}">
+        </paper-fab>
+        <section id="final_content">
+          <content id="content" select="*">
+          </content>
+        </section>
+      </paper-shadow>
+      <gs-tween-max id="window_body_fade_in" target="{{ $.window_body }}" 
+          seconds=".5" 
+          css='{{ {"scale":.5,"opacity":0} }}'  init>
+      </gs-tween-max>
+      </section>
+  <style>
+    #title_bar
+    {
+      width: 100%;
+      display: block;
+      margin: 0;
+      background:#57b6db;
+      font-weight:bold;
+      color:#FFF;
+    }
+    paper-fab#fab_close
+    {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    #final_content
+    {
+      padding:30px;
+    }
+    #window_body
+    {
+      margin: 51px;
+    }
+  </style>
+  </template>
+  <script>
+    Polymer({
+      title:'untitled',
+      domReady:function()
+      {
+        this.$.window_body_fade_in.toggle();
+        if(this['on-init']) this['on-init']();
+      },
+      close_window:function()
+      {
+        this.$.window_body_fade_in.from();
+        if(this['on-close']) this['on-close']();
+      }
+    });
+  </script>
+</polymer-element>

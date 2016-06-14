@@ -1,0 +1,355 @@
+<div ng-if="rows.length > 0">
+<table class="table table-striped {{$parent.$parent.isEvolucao ? 'table-evolucao' : ''}} {{$index == 0 ? 'fist-table-evolucao' : ''}}"
+		>
+			<thead>
+				<td>
+{{$parent.$parent.getMesLabel(this)}}</td>
+<td></td>
+<td></td><td></td><td></td><td></td>
+			</thead>
+			<thead>	
+					<th ng-show="isShowed(this)" class="th-cc">Conta Gerencial</th>
+					<th>Filial</th>
+					
+					<th style="text-align:right"
+						ng-show="$parent.colInUse('orc')" class="th-fixed-lvl1">Orc.</th>
+					<th style="text-align:right"
+						ng-show="$parent.colInUse('real')" class="th-fixed-lvl1">Real.</th>
+					<th style="text-align:right"
+						ng-show="$parent.colInUse('dif')" class="th-fixed-lvl1">Dif.</th>
+					<th style="text-align:right"
+						ng-show="$parent.colInUse('vari')" class="th-fixed-lvl1">Var%</th>
+						
+			</thead>
+			<tbody bindonce ng-repeat="r in rows track by $index"
+			   ng-init="p = ($index > 0 && r.nomeGrupoMaster != $parent.rows[$index-1].nomeGrupoMaster);tgl[r.nomeGrupoMaster] = false">
+			<tr 
+			   ng-show="!inBlackList(r) && p || $index == 0"
+			            ng-click="(principalFilial == 'Total Empresa') && (tgl[r.nomeGrupoMaster] = !tgl[r.nomeGrupoMaster])" 
+			            ng-style="{cursor:((principalFilial == 'Total Empresa') ? 'pointer':'inherit')}"
+			            class="{{vlrOrcado == vlrRealizado ? 'info' :
+							vlrOrcado > vlrRealizado ? 'danger' : 'success'}}">
+			<!--  -->
+			            <td ng-show="isShowed(this)" class="snapp-scrollable th-cc-imp">
+			               <button ng-show="principalFilial == 'Total Empresa'" class="btn btn-success" 
+			               >
+			               +
+			               </button>
+			               <b style="margin-left: 22px;">{{r.nomeGrupoMaster}}</b>
+			            </td>
+			            
+			            <td>
+			               <button class="btn btn-{{(principalFilial == 'Total Empresa')  ? 'primary': 'info'}}" 
+			                  ng-click="
+			                  openRelatorio('orcadorealizado_detalhado',
+			                  {inModal:true,
+			                  idGrupoMaster:r.idGrupoMaster,
+			                  filial:principalFilial,
+			                  nomeGrupoMaster:r.nomeGrupoMaster,
+			                  __mes:$parent.$parent.key
+			                  })">
+			               {{principalFilial}}</button>
+			               
+			               <button class="btn btn-warning"  ng-show=" r.idGrupoMaster != '9898989' "
+			               	ng-click="
+			                  openRelatorio('evolucao_grafico',
+			                  {inModal:true,
+			                  idGrupoMaster:r.idGrupoMaster,
+			                  filial:principalFilial,
+			                  nomeGrupoMaster:r.nomeGrupoMaster
+			                  })">
+			               		<i class="glyphicon glyphicon-stats"></i>
+			               </button>
+			            </td>
+			            
+			            <td style="text-align:right"
+			            	ng-show="$parent.colInUse('orc')"
+			            ><b>{{(vlrOrcado = sum(r.nomeGrupoMaster,'vlrOrcado',rows,null,null,null)).formatMoney(0)}}</b>
+			            </td>
+			            
+			            <td style="text-align:right"
+			            	ng-show="$parent.colInUse('real')"
+			            ><b>{{(vlrRealizado = sum(r.nomeGrupoMaster,'vlrRealizado',rows,null,null,null)).formatMoney(0)}}</b>
+			            </td>
+			            
+			            <td style="text-align:right"
+			            	ng-show="$parent.colInUse('dif')">
+			               <span class="result-{{vlrOrcado > vlrRealizado}}">
+			               <b>{{(vlrRealizado - vlrOrcado).formatMoney(0)}}</b></span>
+			            </td>
+			            
+			            <td style="text-align:right"
+			            	ng-show="$parent.colInUse('vari')">
+			               <span class="result-{{vlrOrcado > vlrRealizado}}">
+			               <b>{{perc(
+			               (vlrOrcado-vlrRealizado)
+			               / vlrOrcado)|| 0}}</b></span>
+			            </td>
+			         </tr>
+			 <tr ng-show="tgl[r.nomeGrupoMaster]" 
+			             class="{{r.vlrOrcado == r.vlrRealizado ? 'info' :
+							r.vlrOrcado > r.vlrRealizado ? 'danger' : 'success'}}">
+			            <td 
+			            ng-show="isShowed(this)"
+			            class="pd-grupomaster"
+			            >{{r.nomeGrupoMaster}}</td>
+			            <td>
+			               <button class="btn btn-info" ng-click="
+				               openRelatorio(
+				               'orcadorealizado_detalhado',
+				               {inModal:true,
+				               idGrupoMaster:r.idGrupoMaster,
+				               filial:r.filial,
+				               nomeGrupoMaster:r.nomeGrupoMaster,__mes:$parent.$parent.key})
+			               ">
+			               {{r.filial}}
+			               </button>
+			               
+			               <button class="btn btn-warning" 
+			               	ng-show=" r.idGrupoMaster != '9898989' "
+			               	ng-click="
+			                  openRelatorio('evolucao_grafico',
+			                  {inModal:true,
+			                  idGrupoMaster:r.idGrupoMaster,
+			                  filial:r.filial,
+			                  idGrupo:null,
+			                  nomeGrupoMaster:r.nomeGrupoMaster
+			                  })">
+			               		<i class="glyphicon glyphicon-stats"></i>
+			               </button>
+			            </td>
+			            <td style="text-align:right"
+			            	ng-show="$parent.colInUse('orc')">
+			            	<span data-toggle="tooltip" data-placement="bottom" title="Orcado">
+			            		{{numeralize(r.vlrOrcado).formatMoney(0)}}
+			            	</span>
+			            	</td>
+			            <td style="text-align:right"
+			            	ng-show="$parent.colInUse('real')">
+			               <span data-toggle="tooltip" data-placement="bottom" title="Realizado">
+			               	{{numeralize(r.vlrRealizado,$parent.r).formatMoney(0) }}
+			               </span>
+			            </td>
+			            <td style="text-align:right"
+			            	ng-show="$parent.colInUse('dif')">
+			               <span class="result-{{(r.vlrOrcado > r.vlrRealizado)}}">
+			               		{{numeralize(r.vlrRealizado - r.vlrOrcado).formatMoney(0)}}
+			               	</span>
+			            </td>
+			            <td style="text-align:right"
+			            	ng-show="$parent.colInUse('vari')">
+			               <span class="result-{{(r.vlrOrcado > r.vlrRealizado)}}">
+				               {{perc(
+				               	((r.vlrRealizado - r.vlrOrcado)  / r.vlrOrcado)
+				               )}}
+			               </span>
+			            </td>
+			</tr>
+			</tbody>
+<!-- EBITDA -->
+			<tr ng-click="$parent.$parent.ebitdaIsOpen = !$parent.$parent.ebitdaIsOpen"
+				class="{{totalEmpresaOrcado == totalEmpresaRealizado ? 'info' :
+							totalEmpresaOrcado > totalEmpresaRealizado ? 'danger' : 'success'}}">
+				<td ng-show="isShowed(this)" class="snapp-scrollable th-cc-imp">
+					<button class="btn btn-warning" 
+							ng-show="principalFilial == 'Total Empresa'" class="btn btn-success" 
+			               >
+			               +
+			               </button>
+			               <b style="margin-left: 22px;">EBITDA</b>
+				</td>
+				<td>
+					<button class="btn btn-warning" disabled>{{principalFilial}} Ajustado</button>
+					<button class="btn btn-warning"  
+		               	ng-click="
+		                  openRelatorio('evolucao_grafico',
+		                  {inModal:true,
+		                  idGrupoMaster:'EBT',
+		                  filial:principalFilial,
+		                  nomeGrupoMaster:'EBITDA'
+		                  })">
+		               		<i class="glyphicon glyphicon-stats"></i>
+		             </button>
+				</td>
+				<td  style="text-align:right" ng-show="colInUse('orc')" ng-scope>
+					{{
+						__$$col = "vlrOrcado";
+						filial = null;
+							__$$data = 
+							{
+								RECEITA_LIQUIDA:sum("RECEITA L\u00cdQUIDA",__$$col,rows,null,filial),
+								PESSOAL_OPERACIONAL:sum("PESSOAL OPERACIONAL",__$$col,rows,null,filial),
+								CUSTOS_DE_AFRETAMENTO:sum("CUSTOS DE AFRETAMENTO",__$$col,rows,null,filial),
+								CUSTO_DE_COMBUSTIVEL:sum("CUSTO DE COMBUST\u00cdVEL",__$$col,rows,null,filial),
+								DESP_TEC_MANUN:sum("DESP T\u00C9CN E MANUTEN\u00C7\u00C3O",__$$col,rows,null,filial),
+								SEG_PI:sum("SEGUROS E P\u0026I",__$$col,rows,null,filial), 
+								PROVISAO:sum("PROVIS\u00D5ES PARA DOCAGEM",__$$col,rows,null,filial), 
+								OUTRAS_DESP_OP:sum("OUTRAS DESPESAS OPERACIONAIS",__$$col,rows,null,filial), 
+								DESPESAS_ADMINISTRATIVAS:sum("DESPESAS ADMINISTRATIVAS",__$$col,rows,null,filial), 
+								DESPESAS_COM:sum('DESP. COMERCIAIS E COMISS\u00d5ES',__$$col,rows,null,filial), 
+								DESPESAS_EXTR:sum('DESPESAS EXTRAORDIN\u00c1RIAS',__$$col,rows,null,filial)
+								,OUTRAS_DESP_FINANC:sum('(+) Outras Despesas Financeiras',__$$col,rows,null,filial,null)
+								
+								
+							};
+							totalEmpresaOrcado = __$$data.RECEITA_LIQUIDA +
+							(
+								__$$data.PESSOAL_OPERACIONAL +
+								__$$data.CUSTOS_DE_AFRETAMENTO +
+								__$$data.CUSTO_DE_COMBUSTIVEL +
+								__$$data.DESP_TEC_MANUN +
+								__$$data.SEG_PI +
+								__$$data.PROVISAO +
+								__$$data.OUTRAS_DESP_OP+
+								__$$data.DESPESAS_ADMINISTRATIVAS+
+								__$$data.DESPESAS_COM+
+								__$$data.DESPESAS_EXTR
+								
+							) - (__$$data.OUTRAS_DESP_FINANC)
+					}}
+				</td>
+				<td  style="text-align:right" ng-show="colInUse('real')" ng-scope>{{
+					__$$col2 = 'vlrRealizado';
+						filial = null;
+							__$$data2 = 
+							{
+								RECEITA_LIQUIDA:sum('RECEITA L\u00cdQUIDA',__$$col2,rows,null,filial),
+								PESSOAL_OPERACIONAL:sum('PESSOAL OPERACIONAL',__$$col2,rows,null,filial),
+								CUSTOS_DE_AFRETAMENTO:sum('CUSTOS DE AFRETAMENTO',__$$col2,rows,null,filial),
+								CUSTO_DE_COMBUSTIVEL:sum('CUSTO DE COMBUST\u00cdVEL',__$$col2,rows,null,filial),
+								DESP_TEC_MANUN:sum('DESP T\u00C9CN E MANUTEN\u00C7\u00C3O',__$$col2,rows,null,filial),
+								SEG_PI:sum('SEGUROS E P\u0026I',__$$col2,rows,null,filial), 
+								PROVISAO:sum('PROVIS\u00D5ES PARA DOCAGEM',__$$col2,rows,null,filial), 
+								OUTRAS_DESP_OP:sum('OUTRAS DESPESAS OPERACIONAIS',__$$col2,rows,null,filial), 
+								DESPESAS_ADMINISTRATIVAS:sum('DESPESAS ADMINISTRATIVAS',__$$col2,rows,null,filial), 
+								DESPESAS_COM:sum('DESP. COMERCIAIS E COMISS\u00d5ES',__$$col2,rows,null,filial), 
+								DESPESAS_EXTR:sum('DESPESAS EXTRAORDIN\u00c1RIAS',__$$col2,rows,null,filial)
+								
+								
+							};
+							totalEmpresaRealizado = __$$data2.RECEITA_LIQUIDA +
+							(
+								__$$data2.PESSOAL_OPERACIONAL +
+								__$$data2.CUSTOS_DE_AFRETAMENTO +
+								__$$data2.CUSTO_DE_COMBUSTIVEL +
+								__$$data2.DESP_TEC_MANUN +
+								__$$data2.SEG_PI +
+								__$$data2.PROVISAO +
+								__$$data2.OUTRAS_DESP_OP+
+								__$$data2.DESPESAS_ADMINISTRATIVAS+
+								__$$data2.DESPESAS_COM+
+								__$$data2.DESPESAS_EXTR
+							)}}
+					
+				</td>
+				<td style="text-align:right" ng-show="colInUse('dif')" class=" result-{{(totalEmpresaOrcado > totalEmpresaRealizado)}}">
+					{{totalEmpresaRealizado - totalEmpresaOrcado}}
+				</td>
+				<td style="text-align:right" ng-show="colInUse('vari')" class=" result-{{(totalEmpresaOrcado > totalEmpresaRealizado)}}">
+					{{perc((totalEmpresaRealizado - totalEmpresaOrcado)/totalEmpresaOrcado)}}
+				</td>
+			</tr>
+<!--  ebitida cada filial -->
+			<tr bindonce ng-repeat="filial in filiais" ng-show="$parent.$parent.ebitdaIsOpen"
+			class="{{totalOrcado == totalRealizado ? 'info' :
+							totalOrcado > totalRealizado ? 'danger' : 'success'}}">
+					<td  ng-show="isShowed(this)">
+					EBITDA Ajustado
+					</td>
+					<td>
+						<button class="btn btn-info">
+							{{filial}}
+						</button>
+						<button class="btn btn-warning"  
+		               	ng-click="
+		                  openRelatorio('evolucao_grafico',
+		                  {inModal:true,
+		                  idGrupoMaster:'EBT',
+		                  filial:filial,
+		                  nomeGrupoMaster:'EBITDA'
+		                  })">
+		               		<i class="glyphicon glyphicon-stats"></i>
+		             </button>
+					</td>
+					<td style="text-align:right">
+					{{
+						__$$col = "vlrOrcado";
+							__$$data = 
+							{
+								RECEITA_LIQUIDA:sum("RECEITA L\u00cdQUIDA",__$$col,rows,null,filial,null,true),
+								PESSOAL_OPERACIONAL:sum("PESSOAL OPERACIONAL",__$$col,rows,null,filial,null,true),
+								CUSTOS_DE_AFRETAMENTO:sum("CUSTOS DE AFRETAMENTO",__$$col,rows,null,filial,null,true),
+								CUSTO_DE_COMBUSTIVEL:sum("CUSTO DE COMBUST\u00cdVEL",__$$col,rows,null,filial,null,true),
+								DESP_TEC_MANUN:sum("DESP T\u00C9CN E MANUTEN\u00C7\u00C3O",__$$col,rows,null,filial,null,true),
+								SEG_PI:sum("SEGUROS E P\u0026I",__$$col,rows,null,filial,null,true), 
+								PROVISAO:sum('PROVIS\u00D5ES PARA DOCAGEM',__$$col,rows,null,filial,null,true), 
+								OUTRAS_DESP_OP:sum("OUTRAS DESPESAS OPERACIONAIS",__$$col,rows,null,filial,null,true), 
+								DESPESAS_ADMINISTRATIVAS:sum("DESPESAS ADMINISTRATIVAS",__$$col,rows,null,filial,null,true), 
+								DESPESAS_COM:sum('DESP. COMERCIAIS E COMISS\u00d5ES',__$$col,rows,null,filial,null,true), 
+								DESPESAS_EXTR:sum('DESPESAS EXTRAORDIN\u00c1RIAS',__$$col,rows,null,filial,null,true)
+								
+								,OUTRAS_DESP_FINANC:sum('(+) Outras Despesas Financeiras',__$$col,rows,null,filial,null,true)
+								
+							}; 
+							totalOrcado = __$$data.RECEITA_LIQUIDA +
+							(
+								__$$data.PESSOAL_OPERACIONAL +
+								__$$data.CUSTOS_DE_AFRETAMENTO +
+								__$$data.CUSTO_DE_COMBUSTIVEL +
+								__$$data.DESP_TEC_MANUN +
+								__$$data.SEG_PI +
+								__$$data.PROVISAO +
+								__$$data.OUTRAS_DESP_OP+
+								__$$data.DESPESAS_ADMINISTRATIVAS +
+								__$$data.DESPESAS_COM +
+								__$$data.DESPESAS_EXTR
+							) - __$$data.OUTRAS_DESP_FINANC;
+						}}
+					</td>
+					<td style="text-align:right">
+						{{
+							__$$col2 = "vlrRealizado";
+							__$$data2 = 
+							{
+								RECEITA_LIQUIDA:sum("RECEITA L\u00cdQUIDA",__$$col2,rows,null,filial,null,true),
+								PESSOAL_OPERACIONAL:sum("PESSOAL OPERACIONAL",__$$col2,rows,null,filial,null,true),
+								CUSTOS_DE_AFRETAMENTO:sum("CUSTOS DE AFRETAMENTO",__$$col2,rows,null,filial,null,true),
+								CUSTO_DE_COMBUSTIVEL:sum("CUSTO DE COMBUST\u00cdVEL",__$$col2,rows,null,filial,null,true),
+								DESP_TEC_MANUN:sum("DESP T\u00C9CN E MANUTEN\u00C7\u00C3O",__$$col2,rows,null,filial,null,true),
+								SEG_PI:sum("SEGUROS E P\u0026I",__$$col2,rows,null,filial,null,true), 
+								PROVISAO:sum("PROVIS\u00D5ES PARA DOCAGEM",__$$col2,rows,null,filial,null,true), 
+								OUTRAS_DESP_OP:sum("OUTRAS DESPESAS OPERACIONAIS",__$$col2,rows,null,filial,null,true), 
+								DESPESAS_ADMINISTRATIVAS:sum("DESPESAS ADMINISTRATIVAS",__$$col2,rows,null,filial,null,true), 
+								DESPESAS_COM:sum('DESP. COMERCIAIS E COMISS\u00d5ES',__$$col2,rows,null,filial,null,true), 
+								DESPESAS_EXTR:sum('DESPESAS EXTRAORDIN\u00c1RIAS',__$$col2,rows,null,filial,null,true)
+								
+							};
+							totalRealizado = __$$data2.RECEITA_LIQUIDA +
+							(
+								__$$data2.PESSOAL_OPERACIONAL +
+								__$$data2.CUSTOS_DE_AFRETAMENTO +
+								
+								__$$data2.CUSTO_DE_COMBUSTIVEL +
+								__$$data2.DESP_TEC_MANUN +
+								
+								__$$data2.SEG_PI +
+								__$$data2.PROVISAO +
+								
+								__$$data2.OUTRAS_DESP_OP+
+								__$$data2.DESPESAS_ADMINISTRATIVAS +
+								__$$data2.DESPESAS_COM+
+								__$$data2.DESPESAS_EXTR
+							)
+							
+						}}
+					</td>
+					<td style="text-align:right" class="result-{{(totalOrcado > totalRealizado)}}">
+						{{totalRealizado - totalOrcado}}
+					</td>
+					<td style="text-align:right" class="result-{{(totalOrcado > totalRealizado)}}">
+						{{$parent.perc((totalRealizado - totalOrcado)/totalOrcado)}}
+					</td>
+				</tr>
+			
+		</table>
+</div>

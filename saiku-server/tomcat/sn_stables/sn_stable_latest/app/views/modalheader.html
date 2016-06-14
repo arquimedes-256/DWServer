@@ -1,0 +1,160 @@
+<div ng-if="$parent.isConsolidado">
+Consolidado:true
+<h3>{{subTitleRowsModal}} -         
+        <div class="btn-group">
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		    {{$modalFilial == 'LISTAR' ? 'Comparar c/ outras filiais':$modalFilial}} <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu">
+		    <li style="cursor:pointer" ng-if="loginResult.perfil.isMaster">
+		    	<a ng-click="openRelatorio('orcadorealizado_detalhado',
+		    		{inModal:true,isConsolidado:true,
+		    			idGrupoMaster:idGrupoMaster,filial:'Total Empresa',nomeGrupoMaster:subTitleRowsModal})">
+		    			Total Empresa</a>
+		    </li>
+		    <li class="divider" ng-if="loginResult.perfil.isMaster"></li>
+		    <li style="cursor:pointer" ng-repeat="filial in filiais">
+		    	<a ng-click="openRelatorio('orcadorealizado_detalhado',
+		    		{inModal:true,
+		    			idGrupoMaster:idGrupoMaster,filial:filial,nomeGrupoMaster:subTitleRowsModal})">
+		    		{{filial}}
+		    	</a>
+		    </li>
+		  </ul>
+		</div>
+		
+
+			<div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle btn-lg" data-toggle="dropdown">
+			    {{mesAtualLabelModal}} <span class="caret"></span>
+			  </button>
+				<ul class="dropdown-menu" style="height: 300px;overflow: auto;">
+							<li><a style="cursor: pointer"
+								ng-click="openRelatorio(relatorioAtualInModal.method,
+		    		{inModal:true,
+		    			idGrupoMaster:idGrupoMaster,isConsolidado:true,
+		    			filial:modalFilial,
+		    			mes:'Acumulado'})">Acumulado de
+									{{anoAtual}}</a></li>
+							<li class="divider"></li>
+							<li  ng-repeat="mes in meses" style="cursor: pointer"><a
+								>
+					<span ng-click="openRelatorio(relatorioAtualInModal.method,
+		    		{inModal:true,isConsolidado:true,
+		    			idGrupoMaster:idGrupoMaster,
+		    			filial:modalFilial,
+		    			nomeGrupoMaster:subTitleRowsModal,
+		    			mes:$index,
+		    			mesFinal:$index})">{{mes}}</span>&nbsp;
+		    			
+						<button class="btn {{meses[mesAtual-1] == mes ? 'btn-warning' : 'btn-link'}}" 
+					ng-click="openRelatorio(relatorioAtualInModal.method,
+		    		{
+		    			inModal:true,isConsolidado:true,
+		    			idGrupoMaster:idGrupoMaster,
+		    			filial:modalFilial
+		    			,nomeGrupoMaster:subTitleRowsModal,
+		    			mes:$index
+		    			}
+		    		
+		    		)">
+									<i class="glyphicon glyphicon-hand-right">
+									</i>
+								</button>
+								<button class="btn {{meses[mesFinal-1] == mes ? 'btn-warning' : 'btn-link'}}" 
+								ng-click="
+								openRelatorio(relatorioAtualInModal.method,
+		    		{inModal:true,isConsolidado:true,
+		    			idGrupoMaster:idGrupoMaster,
+		    			filial:modalFilial,nomeGrupoMaster:subTitleRowsModal,
+		    			mesFinal:$index})">
+		    			
+									<i class="glyphicon glyphicon-hand-left">
+									</i>
+								</button>
+								</a></li>
+						</ul>
+			</div>
+         - {{"/"+anoAtual}}</h3>
+</div>
+
+<div ng-if="!$parent.isConsolidado">
+Consolidado:false
+<h3>{{subTitleRowsModal}} -         
+        <div class="btn-group">
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		    {{$modalFilial == 'LISTAR' ? 'Comparar c/ outras filiais':$modalFilial}} <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu">
+		    <li style="cursor:pointer">
+		    	<a ng-click="openRelatorio('orcadorealizado_detalhado',
+		    		{inModal:true,
+		    			idGrupoMaster:idGrupoMaster,filial:'Total Empresa',nomeGrupoMaster:subTitleRowsModal})">
+		    			Total Empresa</a>
+		    </li>
+		    <li class="divider"></li>
+		    <li style="cursor:pointer"  ng-repeat="filial in filiais">
+		    	<a ng-click="openRelatorio('orcadorealizado_detalhado',
+		    		{inModal:true,
+		    			idGrupoMaster:idGrupoMaster,filial:filial,nomeGrupoMaster:subTitleRowsModal})">
+		    		{{filial}}
+		    	</a>
+		    </li>
+		  </ul>
+		</div>
+		
+
+			<div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle btn-lg" data-toggle="dropdown">
+			    {{mesAtualLabelModal}} <span class="caret"></span>
+			  </button>
+				<ul class="dropdown-menu">
+							<li><a style="cursor: pointer"
+								ng-click="openRelatorio(relatorioAtualInModal.method,
+		    		{inModal:true,
+		    			idGrupoMaster:idGrupoMaster,
+		    			filial:modalFilial,
+		    			nomeGrupoMaster:subTitleRowsModal,
+		    			mes:'Acumulado'})">Acumulado de
+									{{anoAtual}}</a></li>
+							<li class="divider"></li>
+							<li ng-repeat="mes in meses" style="cursor: pointer"><a
+								>
+					<span ng-click="openRelatorio(relatorioAtualInModal.method,
+		    		{inModal:true,
+		    			idGrupoMaster:idGrupoMaster,
+		    			filial:modalFilial,
+		    			nomeGrupoMaster:subTitleRowsModal
+		    			,mes:$index,
+		    			mesFinal:$index})">{{mes}}</span>&nbsp;
+		    			
+						<button class="btn {{meses[mesAtual-1] == mes ? 'btn-warning' : 'btn-link'}}" 
+					ng-click="openRelatorio(relatorioAtualInModal.method,
+		    		{
+		    			inModal:true,
+		    			idGrupoMaster:idGrupoMaster,
+		    			filial:modalFilial
+		    			,nomeGrupoMaster:subTitleRowsModal,
+		    			mes:$index
+		    			}
+		    		
+		    		)">
+									<i class="glyphicon glyphicon-hand-right">
+									</i>
+								</button>
+								<button class="btn {{meses[mesFinal-1] == mes ? 'btn-warning' : 'btn-link'}}" 
+								ng-click="
+								openRelatorio(relatorioAtualInModal.method,
+		    		{inModal:true,
+		    			idGrupoMaster:idGrupoMaster,
+		    			filial:modalFilial,nomeGrupoMaster:subTitleRowsModal,
+		    			mesFinal:$index})">
+		    			
+									<i class="glyphicon glyphicon-hand-left">
+									</i>
+								</button>
+								</a></li>
+						</ul>
+			</div>
+         - {{"/"+anoAtual}}</h3>
+</div>

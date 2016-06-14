@@ -1,0 +1,59 @@
+
+<polymer-element name="gs-tween-max" 
+  attributes="target seconds css css-on-complete init ease-pack ease-type">
+  <script src="TweenMax.min.js"></script>
+  <script>
+    Polymer({
+      lastTween:null,
+      domReady:function()
+      {
+        if(this.init === "")
+        {
+          this.toggle();
+        }
+      },
+      to:function()
+      {
+        var _this = this;
+        this.lastTween = TweenMax.to(this.target,parseFloat(this.seconds),{css:this.css,
+        onComplete:function()
+          {
+            if(_this['css-on-complete'])
+              TweenMax.to(_this.target,parseFloat(_this.seconds),{css:_this['css-on-complete']})
+          }
+        })
+      },
+      from:function()
+      {
+        var _this = this;
+        TweenMax.to(this.target,parseFloat(this.seconds),{css:this['css-on-complete'],
+        onComplete:function()
+          {
+            if(_this.css)
+              TweenMax.to(_this.target,parseFloat(_this.seconds),{css:_this.css})
+          }
+        })
+      },
+      toggle:function()
+      {
+        if(this.target.tweenStatus === undefined)
+            this.target.tweenStatus = true;
+        
+        if(this.target.tweenStatus)
+        {
+          this.to();
+          this.target.tweenStatus = false;  
+        }
+        else
+        {
+          if(this['css-on-complete'])
+            this.from();
+          else
+            this.lastTween.reverse();
+            
+          this.target.tweenStatus = true;
+        }
+      }
+    });
+  </script>
+</polymer-element>

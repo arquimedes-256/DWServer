@@ -1,0 +1,2 @@
+2016-06-14 17:00:42,035 WARN  [mondrian.rolap.RolapUtil] Mondrian: Warning: JDBC driver sun.jdbc.odbc.JdbcOdbcDriver not found
+2016-06-14 17:00:43,252 WARN  [mondrian.rolap.RolapCube] RolapCube.createUsage: duplicate HierarchyUsage: kind=SHARED, hierarchyName=(Estoque) Item.default, fullName=(Estoque) Item.default, foreignKey=ID_PRD_ITEM, source=(Estoque) Item.default, level=null, name=(Estoque) Item

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="752AE72B-D807-8379-94F5-38D7174CC7CD" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[MAC]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Grupo Nvl 3" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Grupo Nvl 3" type="member" node="[Grupo Nvl 3.default].[DESP TÉCN E MANUTENÇÃO]" operator="MEMBER" />
+              <Selection dimension="Grupo Nvl 3" type="member" node="[Grupo Nvl 3.default].[SEGUROS E P&amp;I]" operator="MEMBER" />
+              <Selection dimension="Grupo Nvl 3" type="member" node="[Grupo Nvl 3.default].[OUTRAS DESPESAS OPERACIONAIS]" operator="MEMBER" />
+              <Selection dimension="Grupo Nvl 3" type="member" node="[Grupo Nvl 3.default].[DESPESAS ADMINISTRATIVAS]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(PRD) Conta Contabil" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(PRD) Conta Contabil" type="level" node="[(PRD) Conta Contabil.default].[Cod Conta Contabil]" operator="MEMBERS" />
+              <Selection dimension="(PRD) Conta Contabil" type="level" node="[(PRD) Conta Contabil.default].[Nome Conta Contabil]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Orcado R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Outubro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Novembro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Dezembro]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Tempo) Anual.default].[2015]}, CrossJoin({[Measures].[Valor Orcado R$]}, {[(Tempo) Mensal.Mensal].[Outubro]})), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, CrossJoin({[Measures].[Valor Orcado R$]}, {[(Tempo) Mensal.Mensal].[Novembro]})), CrossJoin({[(Tempo) Anual.default].[2015]}, CrossJoin({[Measures].[Valor Orcado R$]}, {[(Tempo) Mensal.Mensal].[Dezembro]}))))) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin({[Grupo Nvl 3.default].[DESP TÉCN E MANUTENÇÃO]}, [(PRD) Conta Contabil.default].[Cod Conta Contabil].Members)), Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin({[Grupo Nvl 3.default].[DESP TÉCN E MANUTENÇÃO]}, [(PRD) Conta Contabil.default].[Nome Conta Contabil].Members)), Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin({[Grupo Nvl 3.default].[SEGUROS E P&amp;I]}, [(PRD) Conta Contabil.default].[Cod Conta Contabil].Members)), Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin({[Grupo Nvl 3.default].[SEGUROS E P&amp;I]}, [(PRD) Conta Contabil.default].[Nome Conta Contabil].Members)), Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin({[Grupo Nvl 3.default].[OUTRAS DESPESAS OPERACIONAIS]}, [(PRD) Conta Contabil.default].[Cod Conta Contabil].Members)), Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin({[Grupo Nvl 3.default].[OUTRAS DESPESAS OPERACIONAIS]}, [(PRD) Conta Contabil.default].[Nome Conta Contabil].Members)), Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin({[Grupo Nvl 3.default].[DESPESAS ADMINISTRATIVAS]}, [(PRD) Conta Contabil.default].[Cod Conta Contabil].Members)), CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin({[Grupo Nvl 3.default].[DESPESAS ADMINISTRATIVAS]}, [(PRD) Conta Contabil.default].[Nome Conta Contabil].Members)))))))))) ON ROWS&#xD;
+FROM [Sulnorte]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.ui.render.type" value="" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

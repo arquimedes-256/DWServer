@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<context:component-scan base-package="modules" />
+ 
+	<!--
+		Enable annotation-based configuration. companyService and
+		industryService (used in the Company Manager sample) are configured
+		using annotations. Open CompanyDAO.java and IndustryDAO.java for
+		details.
+	-->
+	<context:annotation-config />
+	<!--
+		Instruct Spring to perform declarative transaction management
+		automatically on annotated classes.
+	-->
+	<tx:annotation-driven />
+
+	<!-- BBDD Configuration -->
+	<context:property-placeholder location="/WEB-INF/spring/jdbc.properties" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="${jdbc.driverClassName}"
+		p:url="${jdbc.url}" p:username="${jdbc.username}" p:password="${jdbc.password}" />
+	<bean id="nff" class="core.manager.CMRNameStrategy" />
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+		p:dataSource-ref="dataSource">
+		<property name="configurationClass">
+			<value>org.hibernate.cfg.AnnotationConfiguration</value>
+		</property>
+		<!-- 
+		<property name="namingStrategy" ref="nff"></property>
+		 -->
+		<property name="annotatedClasses">
+			<list>
+				<value>algz.model.Application</value>
+				<value>algz.model.Attribute</value>
+				<value>algz.model.Class</value>
+				<value>algz.model.Grouper</value>
+				<value>algz.model.Module</value>
+				<value>algz.model.Object</value>
+				<value>algz.model.Refference</value>
+				<value>algz.model.User</value>
+				<value>algz.model.Value</value>
+				<value>algz.model.TTY</value>
+				<value>algz.model.Session</value>
+				<value>algz.model.Program</value>
+				<value>algz.model.Link</value>
+				<value>algz.model.Customer</value>
+				<value>algz.model.Notification</value>
+				<value>algz.model.Message</value>
+				<value>algz.model.MessageType</value>
+				<value>algz.model.Locale</value>
+				<value>algz.model.FileStatus</value>
+				<value>algz.model.Reason</value>
+				<value>algz.model.Location</value>
+				
+				<value>algz.model.ui.Box</value>
+				<value>algz.model.ui.Component</value>
+				<value>algz.model.ui.Element</value>
+				<value>algz.model.ui.UIApp</value>
+				<value>algz.model.ui.UIConfig</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="show_sql">true</prop>
+				<prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.generate_auto}</prop>
+				
+		<prop key="hibernate.cache.provider_class">
+			org.hibernate.cache.EhCacheProvider
+		</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Transaction Manager -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory" />
+		
+	<bean id="orionService" class="orion.channel.app.OrionService">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="orionDao" class="orion.channel.app.OrioDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	 
+	<!-- [Principal] Carga Básica -->
+	
+	<bean id="principalCargaBasica" class="core.base.BasicAPI">
+		<property name="service" ref="orionService"/>
+	</bean>
+	
+</beans>

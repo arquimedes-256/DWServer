@@ -1,0 +1,83 @@
+
+<link rel="import" href="algooz-object-item.html">
+
+<link rel="import" href="../algooz-inventory/algooz-inventory-item.html">
+
+<polymer-element name="algooz-object-explorer" attributes="objects bus">
+  <template>
+    <div vertical layout tile-cascade slide-up cross-fade>
+      <paper-button
+        raised flex white auto-vertical change-view
+        use-showing
+        showing?="{{ !isDefaultOnlyPossible }}" on-click="{{ toggleMode }}">
+        <core-icon icon="view-stream">
+        </core-icon>
+      </paper-button>
+      <template repeat="{{o in objects}}">
+        <paper-shadow z="1" id="item" slide-from-right cross-fade>
+          <template if="{{ enableMode && mode == 'INVENTORY' }}">
+            <algooz-inventory-item
+              object="{{ o }}">
+            </algooz-inventory-item>
+          </template>
+          <template if="{{ !enableMode }}">
+            <algooz-object-item
+              enable_cancel="{{ false }}"
+              object="{{o}}" bus="{{ bus }}" on-make="{{ makeobj }}">
+            </algooz-object-item>
+          </template>
+        </paper-shadow>
+      </template>
+    </div>
+    <style>
+    paper-button[change-view]
+    {
+      margin-bottom: 18px;
+    }
+    paper-shadow#item
+    {
+      background:#FFF;
+    }
+    paper-shadow
+    {
+      margin: 10px 22px;
+      display: block;
+    }
+    </style>
+  </template>
+  <script>
+  Polymer({
+    observe:
+    {
+      'bus.tty.connectedClass.inventory':'on_inventory_changed'
+    },
+    on_inventory_changed:function()
+    {
+      this.isDefaultOnlyPossible = false;
+      this.enableMode = true;
+
+      if(this.bus.tty && this.bus.tty.connectedClass && this.bus.tty.connectedClass.inventory)
+      {
+        this.mode = 'INVENTORY';
+      }
+      else
+      {
+        this.mode = 'DEFAULT';
+        this.isDefaultOnlyPossible = true;
+        this.enableMode = false;
+      }
+    },
+    toggleMode:function()
+    {
+      this.enableMode = !this.enableMode;
+    },
+    ready:function()
+    {
+    },
+    makeobj:function(event)
+    {
+      this.bus.send("mkobj "+event.detail.cmd);
+    }
+  });
+  </script>
+</polymer-element>

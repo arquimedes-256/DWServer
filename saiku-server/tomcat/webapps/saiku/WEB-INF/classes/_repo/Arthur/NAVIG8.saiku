@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="6AC1D904-030C-BDC0-B0BD-087DDE4419C6" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="level" node="[(Local) Filial.default].[Filial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Dwt do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao)" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao)" type="level" node="[(Operacao).default].[Id da Operacao]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Faturado US$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Referencia US$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 CHEMICALS C/O NAVIG8 PTE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 CHEMICALS POOL INC C/O NAVIG8 CHEMICALS ASIA PTE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 EUROPE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 EUROPE LTD.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 POOL INC C/O NAVIG8 ASIA PTE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 POOL INC C/O NAVIG8 PTE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 PTE LTD]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2013]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Valor Faturado US$], [Measures].[Valor Referencia US$]} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, [(Operacao).default].[Id da Operacao].Members)), CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Embarcacao) Navio.default].[Dwt do Navio].Members, [(Operacao).default].[Id da Operacao].Members)))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE Hierarchize(Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 CHEMICALS C/O NAVIG8 PTE LTD]}, {[(Tempo) Anual.default].[2013]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 CHEMICALS POOL INC C/O NAVIG8 CHEMICALS ASIA PTE LTD]}, {[(Tempo) Anual.default].[2013]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 EUROPE LTD]}, {[(Tempo) Anual.default].[2013]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 EUROPE LTD.]}, {[(Tempo) Anual.default].[2013]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 POOL INC C/O NAVIG8 ASIA PTE LTD]}, {[(Tempo) Anual.default].[2013]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 POOL INC C/O NAVIG8 PTE LTD]}, {[(Tempo) Anual.default].[2013]}), CrossJoin({[(Empresa) Cliente.default].[NAVIG8 PTE LTD]}, {[(Tempo) Anual.default].[2013]}))))))))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

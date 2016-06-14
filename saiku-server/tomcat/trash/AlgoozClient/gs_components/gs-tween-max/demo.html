@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>gs tween max</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+  <link rel="import" href="gs-tween-max.html">
+
+  </head> 
+
+  <body unsolved>
+    <!-- Test Element -->
+    <polymer-element name="test-tween">
+      <template>
+        <div style="width:50px;height:50px;background:#000" id="box"></div>
+        
+        <gs-tween-max id="tween" target="{{$.box}}" 
+          css='{{ {"width":100} }}' 
+          css-on-complete='{{ {"width":500} }}' seconds=".5">
+        </gs-tween-max>
+        
+        
+        <button on-click="{{ moveBox }}">moveBox</button>
+        <button on-click="{{ toggleBox }}">toggleBox</button> <br />
+        
+        
+        <div style="width:50px;height:50px;background:#000" id="box_scale"></div>
+        <button on-click="{{ toggleScale }}">toggleScale</button>
+        
+        <gs-tween-max 
+          id="tween_scale" target="{{$.box_scale}}" 
+          css='{{ {"scale":.5,"opacity":0} }}'
+          css-on-complete='{{ {"scale":1,"opacity":1} }}'  
+          seconds=".3" init>
+        </gs-tween-max>
+        
+      </template>
+      <script>
+        Polymer({
+          moveBox:function()
+          {
+            this.$.tween.to();
+          },
+          toggleBox:function()
+          {
+            this.$.tween.toggle();
+          },
+          toggleScale:function()
+          {
+            this.$.tween_scale.toggle();
+          }
+        })
+      </script>
+    </polymer-element>
+    <!-- /Test Element -->
+    <test-tween></test-tween>
+  </body>
+</html>

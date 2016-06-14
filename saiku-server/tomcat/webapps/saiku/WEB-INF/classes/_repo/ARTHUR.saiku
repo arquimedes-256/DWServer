@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="0308CE3A-B315-C34F-9388-CFEE93346F61" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="level" node="[(Local) Filial.default].[Filial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tabela) Market Share" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tabela) Market Share" type="level" node="[(Tabela) Market Share.default].[Faixa DWT Inicial]" operator="MEMBERS" />
+              <Selection dimension="(Tabela) Market Share" type="level" node="[(Tabela) Market Share.default].[Faixa DWT Final]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2012]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2013]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Operacoes]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[RAFFLES SHIP CHARTERING PTE LTD.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[RAFFLES SHIPPING GROUP OF COMPANIES]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[RAFFLES SHIPPING INTERNATIONAL PTE LTD.]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Tempo) Anual.default].[2012]}, {[Measures].[QTD. Operacoes]}), CrossJoin({[(Tempo) Anual.default].[2013]}, {[Measures].[QTD. Operacoes]}))) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Market Share.default].[Faixa DWT Inicial].Members), CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Market Share.default].[Faixa DWT Final].Members))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE {[(Empresa) Cliente.default].[RAFFLES SHIP CHARTERING PTE LTD.], [(Empresa) Cliente.default].[RAFFLES SHIPPING GROUP OF COMPANIES], [(Empresa) Cliente.default].[RAFFLES SHIPPING INTERNATIONAL PTE LTD.]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

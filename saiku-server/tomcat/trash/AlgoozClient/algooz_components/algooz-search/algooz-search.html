@@ -1,0 +1,33 @@
+
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+
+<polymer-element name="algooz-search" attributes="bus">
+  <template>
+    <core-icon icon="search"></core-icon>
+    <paper-input
+      id="search_input"
+      value="{{ input_value }}"
+      flex></paper-input>
+    </paper-fab>
+
+    <style>
+      #search_input{width:85%;padding-bottom: 5px;}
+    </style>
+  </template>
+  <script>
+    Polymer({
+      ready:function()
+      {
+        this.input_value = 'manobra porto preco';
+      },
+      input_valueChanged:function(o,n)
+      {
+        if(this.bus && this.bus.tty && this.bus.tty.connectedApplication)
+        this.bus.search({id:0},this.input_value,1);
+      }
+    });
+  </script>
+</polymer-element>

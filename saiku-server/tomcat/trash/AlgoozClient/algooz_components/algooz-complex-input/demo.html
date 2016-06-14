@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>algooz complex input</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="../../webcomponents.min.js"></script>
+  <link rel="import" href="../../algooz_components/algooz-bus/algooz-bus.html">
+  <link rel="import" href="algooz-complex-input.html">
+
+  </head>
+
+  <body unsolved>
+    <polymer-element name="demo-complex-input">
+      <template>
+         <algooz-bus id="bus" base_url="http://127.0.0.1:8080/Algooz"></algooz-bus>
+         <core-ajax id="ajax_ls_s"
+            auto
+            method="GET"
+            url="ls_l.json"
+            response="{{ objects }}"
+            handleAs="json">
+        </core-ajax>
+        <algooz-complex-input label="Nome:" bus="{{ $.bus }}" algz_value="{{ objects[0].valores[0] }}">
+        </algooz-complex-input>
+      </template>
+      <script>Polymer({});</script>
+    </polymer-element>
+    
+    <demo-complex-input></demo-complex-input>
+    
+  </body>
+</html>

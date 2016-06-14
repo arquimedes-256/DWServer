@@ -1,0 +1,121 @@
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../algooz_components/algooz-window/algooz-window.html">
+<link rel="import" href="../../algooz_components/algooz-bus/algooz-bus.html">
+<link rel="import" href="../../algooz_components/algooz-object-explorer/algooz-object-explorer.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-up.html">
+<link rel="import" href="../../bower_components/core-animated-pages/transitions/list-cascade.html">
+
+<polymer-element name="algooz-explorer"
+  attributes="bus miniatures">
+  <template>
+    <!--
+    <span id="pwd">{{bus.pwd.data}}</span>
+    -->
+
+
+    <template if="{{ bus.pwd.data != '/' }}">
+      <template if="{{ !miniatures }}">
+        <paper-item icon="folder" label=".." on-click="{{ onclick_folder }}">
+        </paper-item>
+      </template>
+
+    </template>
+
+    <template if="{{ !miniatures }}">
+      <template repeat="{{d in bus.resp.data}}">
+        <paper-item
+          list-casdade
+          icon="folder"
+          label="[[ d ]]"
+          on-click="{{ onclick_folder }}">
+        </paper-item>
+      </template>
+    </template>
+
+    <template if="{{ miniatures }}">
+      <div justified layout horizontal wrap >
+        <!-- back folder -->
+        <template if="{{ bus.pwd.data != '/' }}">
+          <div class="folder-item" >
+            <paper-icon-button
+              list-casdade
+              icon="reply"
+              label=".."
+              on-click="{{ onclick_folder }}">
+            </paper-icon-button>
+            <br/>
+            <span>..</span>
+          </div>
+        </template>
+        <!-- front folder -->
+        <template repeat="{{d in bus.resp.data}}">
+          <div class="folder-item">
+            <paper-icon-button
+              list-casdade
+              icon="folder"
+              label="[[ d ]]"
+              on-click="{{ onclick_folder }}">
+            </paper-icon-button>
+            <br/>
+            <span>{{ d }}</span>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <style>
+      .folder-item,.folder-item paper-icon-button::shadow core-icon
+      {
+        height: 128px;
+        width: 128px;
+      }
+      .folder-item
+      {
+        float: left;
+        margin: 16px;
+        text-align: center;
+      }
+      .folder-item span
+      {
+        margin-left: 20px;
+        display: block;
+        width: auto;
+        text-align: center;
+      }
+      :host
+      {
+        margin-top: 14px;
+        display: block;
+      }
+      span#pwd
+      {
+        margin-left: 18px;
+      }
+      paper-ripple
+      {
+        overflow: hidden;
+        width: 128px;
+        height: 128px;
+      }
+
+    </style>
+  </template>
+  <script>
+    Polymer({
+      get_object_name:function(value)
+      {
+        return value.split('/')[3]
+      },
+      onclick_folder:function(e,d,s)
+      {
+        this.bus.goto_dir(s.label_ || s.getAttribute('label'));
+      }
+    });
+  </script>
+</polymer-element>

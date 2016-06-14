@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   <meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+      <style>
+         body {
+         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+         }
+         .error input {
+			background: pink !important;
+		 }
+		 .title {
+				margin-left: 24px;
+				color: #fff;
+				font-weight: bold;
+		}
+		.title i 
+		{
+			color:!important;
+		}
+.title {
+margin-left: 24px;
+color: #fff;
+font-weight: bold;
+display: block;
+float: left;
+width: 114px;
+font-size: 16px;
+position: relative;
+top: -13px;
+}
+.btn-erro.btn.item_fx.btn-danger {
+	position: absolute;
+	right: 149px;
+	top: 11px;
+}
+.title span {
+	text-align: right;
+	display: block;
+	width: 10px;
+	padding-left: 46px;
+	color: #bce8f1;
+	font-size: 20px;
+}
+      </style>
+	  
+      <link href="assert/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="assert/css/bootstrap.css" rel="stylesheet">
+      <link href="assert/css/docs.css" rel="stylesheet">
+
+   </head>
+   <body>
+<div class="blocker" style="width:100%;height:200%;position:absolute;background:#cccccc;z-index:999;opacity:0.8">
+</div>
+<div style="position:fixed;display:none; top: 211px; width: 300px; left: 40%;
+" class="loadingZ">
+	<img alt="" src="assert/img/490.GIF"><br/>
+	Aguarde um momento...
+</div>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+         <div class="navbar-inner">
+            <div class="container" style="margin-left: 4%;width: 1092px;">
+             	<div id="formS">
+	               <div style="margin-top:10px">
+	               		<input type="text" id="login" placeholder="Login" style="float:left">
+	               		<input type="password" id="senha" placeholder="Senha" style="float:left;margin-left:10px">
+	               <button class="btn logarSe btn-success" 
+	               style="float: left;position: relative;top: -5px;left: 8px;">Logar-se</button>
+	               </div>
+	               <!--/.nav-collapse -->
+					<div class="alert alert-error erroLogin" style="display:none;width: 210px; float: left;position: relative;left: 23px;margin-bottom: 0;top: -5px;">
+						<strong>Ops...</strong> Usuário ou senha inválidos.
+					</div>
+				</div>
+				<div class="salvarRegistros"  style="float: left; margin-right: 19px;width: 104%;display:none">
+					<button class="btn" style="float:left;margin-top: 16px;">
+						<i class="icon-ok-circle">
+						</i>&nbsp;
+						<strong>
+							Aplicar Alterações!
+						</strong>
+					</button><br/>
+					<span class="title">
+						Cons<sub>MCP</sub>:<span class="val-consmcp"></span>
+					</span>
+					<span class="title">
+						Cons<sub>MCA</sub>:<span class="val-consmca"></span>
+					</span>
+					<span class="title">
+						Cons<sub>MCA+MCP</sub>:<span class="val-totalcons"></span>
+					</span>
+					<span class="title">
+						Hrs<sub>MCP</sub>:<span class="val-hmcp"></span>
+					</span>
+					<span class="title">
+						Hrs<sub>MCA</sub>:<span class="val-hmca"></span>
+					</span>
+					
+					<span class="title">
+						Litros/Horas:<span class="val-litroshora"></span>
+					</span>
+				</div>
+				
+				
+				<button class="btn-erro btn item_fx btn-danger" style="display:none;opacity:0"><i class="icon-arrow-right" style="
+    margin-right: 14px;
+"></i>Ir para error!</button>
+
+			
+			
+            </div>
+         </div>
+      </div>
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h3 id="myModalLabel">Meta/Orçamento</h3>
+  </div>
+  <div class="modal-body">
+    <form>
+		  <fieldset>
+		    <legend><strong id="modal-rebname">SN Abrolhos</strong> em <strong id="modal-data">2030/Janeiro</strong></legend>
+		    
+		    <label>Valor da Meta</label>
+		    <input id="vlr_meta" type="text" placeholder="0" />
+		    
+		    <label>Valor Orçado</label>
+		    <input id="vlr_orcado" type="text" placeholder="0" />
+		    
+		    <label>Preço do Litro</label>
+		    <input id="vlr_preco_litro" type="text" placeholder="0" />
+		    
+		  </fieldset>
+		</form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary">Salvar</button>
+  </div>
+</div>
+      <div class="container" style="margin-left: 4%;">
+      <br/>
+         <h1>Controle de combustível</h1>
+         <br/>
+         <div class="alert alert-info userInfo" style="display:none">
+         	Bem vindo, Usuário <strong><span class="userName"></span></strong>!
+         </div>
+         <br/><br/>
+         <strong>Rebocador:</strong>
+         <div class="btn-group">
+            <a class="btn btn-primary rebocadorDrop" href="#"><i class="icon-wrench icon-white"></i> <span>Rebocador</span></a>
+            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu rebocador-dropdown">
+            </ul>
+         </div> Por equanto estão disponíveis todos os rebocadores(fora de posição atual) para correção de lançamentos antigos. 
+         <br/>
+         <br/>
+         <strong>Mes:</strong>
+         <div class="btn-group">
+            <a class="btn btn-primary mesDrop" href="#"><i class="icon-calendar icon-white"></i> <span>Mês</span></a>
+            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu mes-dropdown">
+               <li><a href="#1">Janeiro</a></li>
+               <li><a href="#2">Fevereiro</a></li>
+               <li><a href="#3">Março</a></li>
+               <li><a href="#4">Abril</a></li>
+               <li><a href="#5">Maio</a></li>
+               <li><a href="#6">Junho</a></li>
+               <li><a href="#7">Julho</a></li>
+               <li><a href="#8">Agosto</a></li>
+               <li><a href="#9">Setembro</a></li>
+               <li><a href="#10">Outubro</a></li>
+               <li><a href="#11">Novembro</a></li>
+               <li><a href="#12">Dezembro</a></li>
+            </ul>
+         </div>
+         <br/>
+         <br/>
+         <strong>Ano:</strong>
+         <div class="btn-group">
+            <a class="btn btn-primary anoDrop" href="#"><i class="icon-calendar icon-white "></i> <span>Ano</span></a>
+            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu ano-dropdown">
+               <li><a href="#2012">2012</a></li>
+               <li><a href="#2013">2013</a></li>
+               <li><a href="#2014">2014</a></li>
+               <li><a href="#2015">2015</a></li>
+            </ul>
+         </div>
+         <br/>
+         <br/>
+         
+
+         <div class="alert alert-warning fade in alert-rebocador" style="display:none">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong>Ops...</strong> Faltou escolher o <strong>rebocador</strong>,
+         </div>
+         <div class="alert alert-warning fade in alert-mes" style="display:none">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong>Ops...</strong> Faltou escolher o <strong>mês</strong>,
+         </div>
+         <div class="alert alert-warning fade in alert-ano" style="display:none">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong>Ops...</strong> Faltou escolher o <strong>ano</strong>,
+         </div>
+         <br/><br/>
+         <form class="form-inline" role="form">
+            <div class="form-group">
+               <table class="table table-striped valores-table">
+                  <tr>
+					<th class="edit-mode false">#</th>
+                     <th><i class="icon-calendar"></i>Data</th>
+                     <th>Saldo</th>
+                     <th><i class="icon-shopping-cart"></i>Compra</th>
+                     <th><span class="zz" data-toggle="tooltip" data-placement="top" title="" data-original-title="Acerto / Perda / Descarte">Ac./Pd./Dc.</span></th>
+                     <th>
+                        <li class="icon-resize-full"></li>
+                        Receb.
+                     </th>
+                     <th>
+                        <li class="icon-resize-full"></li>
+                        Fornec.
+                     </th>
+                     <th><i class="icon-tint"></i>MCP</th>
+                     <th><i class="icon-tint"></i>MCA</th>
+                     <th><i class="icon-time"></i>MCP</th>
+                     <th><i class="icon-time"></i>MCA</th>
+                     <th>Tp. Consumo</th>
+                     <th>$ Saldo Final</th>
+                     <th><i class="icon-user"></i>ACA</th>
+                     <th><i class="icon-remove"></i>ASA</th>
+                     <th><i class="icon-leaf"></i>AA</th>
+                     <th><i class="icon-fire"></i>AM</th>
+                  </tr>
+               </table>
+               <!-- 
+                  <input type="text" class="form-control" placeholder="Data">
+                  <input type="text" class="form-control" placeholder="Saldo">
+                  <input type="text" class="form-control" placeholder="Compra">
+                  <input type="text" class="form-control" placeholder="Acerto/Perda/Descarte">
+                  <input type="text" class="form-control" placeholder="Transferência Recebido">
+                  <input type="text" class="form-control" placeholder="Transferência Fornecido">
+                  <input type="text" class="form-control" placeholder="Consumo MCP">
+                  <input type="text" class="form-control" placeholder="Consumo MCA">
+                  <input type="text" class="form-control" placeholder="Horas MCP">
+                  <input type="text" class="form-control" placeholder="Horas MCA">
+                   -->
+            </div>
+         </form>
+      </div>
+      <script type="text/javascript" src="controllers/CombustivelController.js"></script>
+      <script type="text/javascript" src="controllers/FrotaController.js"></script>
+      <script type="text/javascript" src="controllers/TableControllerrz.js?s=189029304"></script>
+      <script type="text/javascript" src="factory/RegistroFactory.js"></script>
+      <script type="text/javascript" src="models/RegistroCombustivel.js"></script>
+      <script src="assert/js/jquery.js"></script>
+      <script src="assert/js/bootstrap-transition.js"></script>
+      <script src="assert/js/bootstrap-alert.js"></script>
+      <script src="assert/js/bootstrap-modal.js"></script>
+      <script src="assert/js/bootstrap-dropdown.js"></script>
+      <script src="assert/js/bootstrap-scrollspy.js"></script>
+      <script src="assert/js/bootstrap-tab.js"></script>
+      <script src="assert/js/bootstrap-tooltip.js"></script>
+      <script src="assert/js/bootstrap-popover.js"></script>
+      <script src="assert/js/bootstrap-button.js"></script>
+      <script src="assert/js/bootstrap-collapse.js"></script>
+      <script src="assert/js/bootstrap-carousel.js"></script>
+      <script src="assert/js/bootstrap-typeahead.js"></script>
+      <script src="assert/js/bootstrap-affix.js"></script>
+      <script src="assert/js/bootstrap-affix.js"></script>
+      <script src="assert/js/TweenMax.min.js"></script>
+      <script src="assert/js/google-code-prettify/prettify.js"></script>
+      <script src="assert/js/application.js"></script>
+            <script>
+      /*
+ * ******************************************************************************
+ *  jquery.mb.components
+ *  file: jquery.mb.browser.js
+ *
+ *  Copyright (c) 2001-2013. Matteo Bicocchi (Pupunzi);
+ *  Open lab srl, Firenze - Italy
+ *  email: matteo@open-lab.com
+ *  site: http://pupunzi.com
+ *  blog: http://pupunzi.open-lab.com
+ * 	http://open-lab.com
+ *
+ *  Licences: MIT, GPL
+ *  http://www.opensource.org/licenses/mit-license.php
+ *  http://www.gnu.org/licenses/gpl.html
+ *
+ *  last modified: 02/10/13 22.42
+ *  *****************************************************************************
+ *
+ * jquery.mb.browser
+ * Author: pupunzi
+ * Creation date: 16/01/13
+ *
+ ******************************************************************************/
+/*Browser detection patch*/
+
+(function ($) {
+
+    if (jQuery.browser) return;
+
+    jQuery.browser = {};
+    jQuery.browser.mozilla = false;
+    jQuery.browser.webkit = false;
+    jQuery.browser.opera = false;
+    jQuery.browser.msie = false;
+
+    var nAgt = navigator.userAgent;
+    jQuery.browser.ua = nAgt;
+
+    jQuery.browser.name = navigator.appName;
+    jQuery.browser.fullVersion = '' + parseFloat(navigator.appVersion);
+    jQuery.browser.majorVersion = parseInt(navigator.appVersion, 10);
+    var nameOffset, verOffset, ix;
+
+    // In Opera, the true version is after "Opera" or after "Version"
+    if ((verOffset = nAgt.indexOf("Opera")) != -1) {
+        jQuery.browser.opera = true;
+        jQuery.browser.name = "Opera";
+        jQuery.browser.fullVersion = nAgt.substring(verOffset + 6);
+        if ((verOffset = nAgt.indexOf("Version")) != -1) jQuery.browser.fullVersion = nAgt.substring(verOffset + 8);
+    }
+
+    // In MSIE < 11, the true version is after "MSIE" in userAgent
+    else if ((verOffset = nAgt.indexOf("MSIE")) != -1) {
+        jQuery.browser.msie = true;
+        jQuery.browser.name = "Microsoft Internet Explorer";
+        jQuery.browser.fullVersion = nAgt.substring(verOffset + 5);
+    }
+
+    // In TRIDENT (IE11) => 11, the true version is after "rv:" in userAgent
+    else if (nAgt.indexOf("Trident") != -1) {
+        jQuery.browser.msie = true;
+        jQuery.browser.name = "Microsoft Internet Explorer";
+        var start = nAgt.indexOf("rv:") + 3;
+        var end = start + 4;
+        jQuery.browser.fullVersion = nAgt.substring(start, end);
+    }
+
+    // In Chrome, the true version is after "Chrome"
+    else if ((verOffset = nAgt.indexOf("Chrome")) != -1) {
+        jQuery.browser.webkit = true;
+        jQuery.browser.name = "Chrome";
+        jQuery.browser.fullVersion = nAgt.substring(verOffset + 7);
+    }
+    // In Safari, the true version is after "Safari" or after "Version"
+    else if ((verOffset = nAgt.indexOf("Safari")) != -1) {
+        jQuery.browser.webkit = true;
+        jQuery.browser.name = "Safari";
+        jQuery.browser.fullVersion = nAgt.substring(verOffset + 7);
+        if ((verOffset = nAgt.indexOf("Version")) != -1) jQuery.browser.fullVersion = nAgt.substring(verOffset + 8);
+    }
+    // In Safari, the true version is after "Safari" or after "Version"
+    else if ((verOffset = nAgt.indexOf("AppleWebkit")) != -1) {
+        jQuery.browser.webkit = true;
+        jQuery.browser.name = "Safari";
+        jQuery.browser.fullVersion = nAgt.substring(verOffset + 7);
+        if ((verOffset = nAgt.indexOf("Version")) != -1) jQuery.browser.fullVersion = nAgt.substring(verOffset + 8);
+    }
+    // In Firefox, the true version is after "Firefox"
+    else if ((verOffset = nAgt.indexOf("Firefox")) != -1) {
+        jQuery.browser.mozilla = true;
+        jQuery.browser.name = "Firefox";
+        jQuery.browser.fullVersion = nAgt.substring(verOffset + 8);
+    }
+    // In most other browsers, "name/version" is at the end of userAgent
+    else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) < (verOffset = nAgt.lastIndexOf('/'))) {
+        jQuery.browser.name = nAgt.substring(nameOffset, verOffset);
+        jQuery.browser.fullVersion = nAgt.substring(verOffset + 1);
+        if (jQuery.browser.name.toLowerCase() == jQuery.browser.name.toUpperCase()) {
+            jQuery.browser.name = navigator.appName;
+        }
+    }
+    // trim the fullVersion string at semicolon/space if present
+    if ((ix = jQuery.browser.fullVersion.indexOf(";")) != -1) jQuery.browser.fullVersion = jQuery.browser.fullVersion.substring(0, ix);
+    if ((ix = jQuery.browser.fullVersion.indexOf(" ")) != -1) jQuery.browser.fullVersion = jQuery.browser.fullVersion.substring(0, ix);
+
+    jQuery.browser.majorVersion = parseInt('' + jQuery.browser.fullVersion, 10);
+    if (isNaN(jQuery.browser.majorVersion)) {
+        jQuery.browser.fullVersion = '' + parseFloat(navigator.appVersion);
+        jQuery.browser.majorVersion = parseInt(navigator.appVersion, 10);
+    }
+    jQuery.browser.version = jQuery.browser.majorVersion;
+})(jQuery);
+      $(document).ready(function()
+      {
+      		function f()
+      		{
+      			var drops =$('a.tipoConsumoDrop');
+	      		drops.each(function()
+	      		{
+	      			$(this).attr('class','');
+	      			
+	      			var t = $(this).text();
+	      			var c = "";
+	      			switch(t)
+	      			{
+	      				case 'Apoio Portuario':
+	      					c = "btn-warning";
+	      					break;
+	      				case 'Retorno a Base':
+	      				case 'Viajando':
+	      					c = "btn-info";
+	      					break;
+	      				case 'Docando':
+	      					c = "btn-success";
+	      					break;
+	      				case 'Saida da Base':
+	      					c = "btn-primary";
+	      					break;
+	      				case 'Teste':
+	      					c = "btn";
+	      					break;
+	      				case 'Teste de Maquina':
+	      					c = "btn";
+	      					break;
+	      				case 'Manutencao':
+	      					c = "btn-inverse";
+	      					break;
+	      				case 'Operacao Especial':
+	      					c = "btn-danger";
+	      					break;
+	      				case 'Reboque':
+	      					c = "btn-danger";
+	      					break;
+	      					
+	      			}
+	      			$(this).attr('class','btn tipoConsumoDrop '+c);
+	      			$(this).next().attr('class','btn dropdown-toggle '+c)
+	      		});
+      		}
+      		setInterval(f,200);
+      });
+      </script>
+      <script src="main.js"></script>
+
+   </body>
+   <center>Desenvolvido por: <a href="mailto:lucas.silva@sulnorte.com.br;lucas.orionn@gmail.com">Lucas Silva</a></center>
+</html>

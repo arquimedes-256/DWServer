@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="44B2DA48-FFAB-30F1-946E-557AE7FA38B9" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[FUK HING STEAMSHIP CO., LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BEIBU GULF SHIPPING LIMITED]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PRIMINDS SHIPPING (HK) COMPANY LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PRIMINDS SHIPPING (HK) LTD.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SOUTH OCEAN SHIPPING CO., LTD. SHIP OPER]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BILGENT SHIPPING PTE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SINORICHES, DLN]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SDTR MARINE PTE LTD.&#x9;&#x9;&#x9;&#x9;&#x9;]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[WISCO SHIPPING CO., LTD.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SAFE ARRIVAL BULK C LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BRILLIANT AMANDA LTD.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HONGKONG LONGSHENG HOLDING LIMITED]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[Huayang hongkong shipping limited]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SUCCESS YELD ASIA LIMITED]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HANWIN SHIPPING LIMITED]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HONG XIANG SHIPPING (HONG KONG)CO.,LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[DRAGON CARRIERS LIMITED]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PACIFIC BULK CHARTERING LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[FAR EAST HORIZON CHARTERING CO., LTD]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Nota Fiscal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Nota Fiscal" type="level" node="[(Operacao) Nota Fiscal.default].[Nota Fiscal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="level" node="[(Local) Filial.default].[Filial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tabela) Faixa DWT" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tabela) Faixa DWT" type="level" node="[(Tabela) Faixa DWT.default].[Faixa DWT Inicial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Faturado Liquido Corrigido R$]} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Empresa) Cliente.default].[FUK HING STEAMSHIP CO., LTD]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[BEIBU GULF SHIPPING LIMITED]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[PRIMINDS SHIPPING (HK) COMPANY LTD]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[PRIMINDS SHIPPING (HK) LTD.]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[SOUTH OCEAN SHIPPING CO., LTD. SHIP OPER]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[BILGENT SHIPPING PTE LTD]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[SINORICHES, DLN]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[SDTR MARINE PTE LTD.					]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[WISCO SHIPPING CO., LTD.]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[SAFE ARRIVAL BULK C LTD]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[BRILLIANT AMANDA LTD.]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[HONGKONG LONGSHENG HOLDING LIMITED]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[Huayang hongkong shipping limited]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[SUCCESS YELD ASIA LIMITED]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[HANWIN SHIPPING LIMITED]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[HONG XIANG SHIPPING (HONG KONG)CO.,LTD]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[DRAGON CARRIERS LIMITED]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[PACIFIC BULK CHARTERING LTD]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members))), CrossJoin({[(Empresa) Cliente.default].[FAR EAST HORIZON CHARTERING CO., LTD]}, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members)))))))))))))))))))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE {[(Tempo) Anual.default].[2015]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="8A0194FA-BDD7-CB41-B7D7-29D0F1AD950D" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[ACE TANKERS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[ACE TANKERS CV A/C PORTS-DIRECT FZE ]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[AET UK LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[AMAGGI SA C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[AMN BULK CARRIERS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BRYGGEN SHIP. ITL. AS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BTG PACTUAL COMMODITIES S.A - A/C PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CLDM COBELFRET C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CROSSBRIDGE SHIP. SING. C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[DANNEBROG REDERI AS A/C. PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[EASTERN BULK CARRIERS C/O PORTS DIRECT &#x9;&#x9;&#x9;&#x9;&#x9;]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[EDF TRADING MARKETS LIMITED C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[EDF TRADING MARKETS LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[ESHIPS C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[FALCON MARITIME C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[FLINTER SHIPPING C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[GLOBAL TANKER P PTE LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HAFNIA MANAGEMENT AS C/O J. LAURITZEN AS C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HAFNIA MANAGEMENT AS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HANSA TANKERS AS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HANSSY SHIPPING PTE.LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[INTERSEE SCHIFFAHRTS GMBH C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[ISLAND VIEW SHIPPING A/C PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[JUMBO SHIPPING-KAHN S. C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[K Line Pte Ltd  C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[KOCH SHIPPING INC C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[K/S COMBI LIFT C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[LANSING TRADE GROUP,LLC C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[LR1 MANAGEMENT K/S C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MAESTRO SHIP BV HOLLAND C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MISC BERHAD C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MOL BULK CARRIERS PTE LTD. C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MR MANAGEMENT K/S C/O PORTS-DIRECT FZE]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NCC JLT C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NORDANA LINE A/S - C/O PORTS-DIRECT FZE]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[Nordana Project Chartering C/O Ports Direct]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NORDIC BULK A/S C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NORDIC TANKERS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NYK BULKSHIP (ASIA) PTE LTD. C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[OVERSEAS SHIPHOLDING GROUP, INC. C/O PORTS DIRECT.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[POLA MARIS NV C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[RWE SUPLLY &amp; TRADING GMBH C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SE SHIPPING LINES PTE. LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SHIH WEI NAVIGA. CO LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SIVA BULK LIMITED C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[ST SHIPPING&amp;TRANSPORT C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[STENA BULK AB C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[STENA BULK GROUP C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[STENA WECO A/S C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[STRAITS TANKERS PTE LTD AC PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SWISSMARINE ASIA PTE C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[T. K. B. SHIPPINS AS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TA BULK CARRIERS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[THORCO SHIPPING A/S C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[THORCO SHIPPING A/S C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[THORESEN CO. LTD. A/C PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[T.K.B. SHIPPING A/S C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[T.K.B. SHIPPING A/S PORTS DIRECT FZE]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TORM A/S - LR1 TANKERS AC PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TORM A/S - MR MANAGEMENT A/C PORTS DIRECT ]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TORM A/S BULK DIVISION C/O PORTS-DIRECT]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Nota Fiscal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Nota Fiscal" type="level" node="[(Operacao) Nota Fiscal.default].[Nota Fiscal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2013]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Local) Filial">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[VIT]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Faturado Liquido Corrigido U$], [Measures].[Faturado Liquido Corrigido R$]} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Empresa) Cliente.default].[ACE TANKERS C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[ACE TANKERS CV A/C PORTS-DIRECT FZE ]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[AET UK LTD C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[AMAGGI SA C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[AMN BULK CARRIERS C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[BRYGGEN SHIP. ITL. AS C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[BTG PACTUAL COMMODITIES S.A - A/C PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[CLDM COBELFRET C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[CROSSBRIDGE SHIP. SING. C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[DANNEBROG REDERI AS A/C. PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[EASTERN BULK CARRIERS C/O PORTS DIRECT 					]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[EDF TRADING MARKETS LIMITED C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[EDF TRADING MARKETS LTD C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[ESHIPS C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[FALCON MARITIME C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[FLINTER SHIPPING C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[GLOBAL TANKER P PTE LTD C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[HAFNIA MANAGEMENT AS C/O J. LAURITZEN AS C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[HAFNIA MANAGEMENT AS C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[HANSA TANKERS AS C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[HANSSY SHIPPING PTE.LTD C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[INTERSEE SCHIFFAHRTS GMBH C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[ISLAND VIEW SHIPPING A/C PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[JUMBO SHIPPING-KAHN S. C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[K Line Pte Ltd  C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[KOCH SHIPPING INC C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[K/S COMBI LIFT C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[LANSING TRADE GROUP,LLC C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[LR1 MANAGEMENT K/S C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[MAESTRO SHIP BV HOLLAND C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[MISC BERHAD C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[MOL BULK CARRIERS PTE LTD. C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[MR MANAGEMENT K/S C/O PORTS-DIRECT FZE]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[NCC JLT C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[NORDANA LINE A/S - C/O PORTS-DIRECT FZE]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[Nordana Project Chartering C/O Ports Direct]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[NORDIC BULK A/S C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[NORDIC TANKERS C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[NYK BULKSHIP (ASIA) PTE LTD. C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[OVERSEAS SHIPHOLDING GROUP, INC. C/O PORTS DIRECT.]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[POLA MARIS NV C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[RWE SUPLLY &amp; TRADING GMBH C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[SE SHIPPING LINES PTE. LTD C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[SHIH WEI NAVIGA. CO LTD C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[SIVA BULK LIMITED C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[ST SHIPPING&amp;TRANSPORT C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[STENA BULK AB C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[STENA BULK GROUP C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[STENA WECO A/S C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[STRAITS TANKERS PTE LTD AC PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[SWISSMARINE ASIA PTE C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[T. K. B. SHIPPINS AS C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[TA BULK CARRIERS C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[THORCO SHIPPING A/S C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[THORCO SHIPPING A/S C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[THORESEN CO. LTD. A/C PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[T.K.B. SHIPPING A/S C/O PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[T.K.B. SHIPPING A/S PORTS DIRECT FZE]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[TORM A/S - LR1 TANKERS AC PORTS DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), Union(CrossJoin({[(Empresa) Cliente.default].[TORM A/S - MR MANAGEMENT A/C PORTS DIRECT ]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members), CrossJoin({[(Empresa) Cliente.default].[TORM A/S BULK DIVISION C/O PORTS-DIRECT]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE CrossJoin({[(Tempo) Anual.default].[2013]}, {[(Local) Filial.default].[VIT]})</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

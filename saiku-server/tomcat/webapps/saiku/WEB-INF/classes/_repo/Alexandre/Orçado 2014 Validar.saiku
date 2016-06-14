@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="6CDA1CCD-7AC2-3D6B-8060-4683A273F637" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Grupo Nvl 4" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Grupo Nvl 4" type="member" node="[Grupo Nvl 4.default].[-]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Grupo Nvl 1" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Grupo Nvl 1" type="member" node="[Grupo Nvl 1.default].[Custo de Combustível]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(PRD) Conta Contabil" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(PRD) Conta Contabil" type="level" node="[(PRD) Conta Contabil.default].[Nome Conta Contabil]" operator="MEMBERS" />
+              <Selection dimension="(PRD) Conta Contabil" type="level" node="[(PRD) Conta Contabil.default].[Cod Conta Contabil]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[MAC]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="level" node="[(Tempo) Mensal.Mensal].[Mes]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Realizado R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Orcado(2014) R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2013]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, {[Measures].[Valor Realizado R$]})), CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, {[Measures].[Valor Orcado(2014) R$]})))) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[Grupo Nvl 4.default].[-]}, CrossJoin({[Grupo Nvl 1.default].[Custo de Combustível]}, [(PRD) Conta Contabil.default].[Nome Conta Contabil].Members)), CrossJoin({[Grupo Nvl 4.default].[-]}, CrossJoin({[Grupo Nvl 1.default].[Custo de Combustível]}, [(PRD) Conta Contabil.default].[Cod Conta Contabil].Members)))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE {[(Tempo) Anual.default].[2013]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

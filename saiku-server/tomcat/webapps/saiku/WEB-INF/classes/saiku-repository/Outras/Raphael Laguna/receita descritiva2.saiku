@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="8A0194FA-BDD7-CB41-B7D7-29D0F1AD950D" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[RGD]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[ITA]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[PNG]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[STR]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SEP]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[VIT]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SDR]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[TMD]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[MAC]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[APM]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[GUA]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[MTZ]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="level" node="[(Tempo) Mensal.Mensal].[Mes]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="level" node="[(Empresa) Cliente.default].[Nome do Cliente]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Armador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Armador" type="level" node="[(Empresa) Armador.default].[Armador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Nota Fiscal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Nota Fiscal" type="level" node="[(Operacao) Nota Fiscal.default].[Nota Fiscal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Dwt do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Operacoes]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Cambio U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Faturado US$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Faturado Liquido Corrigido R$], [Measures].[QTD. Operacoes], [Measures].[Valor Cambio U$], [Measures].[Faturado Liquido Corrigido U$], [Measures].[Valor Faturado US$]} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Local) Filial.default].[RGD]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[RGD]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[ITA]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[ITA]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[PNG]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[PNG]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[VIT]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[VIT]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[SDR]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[SDR]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[TMD]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[TMD]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[APM]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[APM]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[GUA]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[GUA]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))), Union(CrossJoin({[(Local) Filial.default].[MTZ]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))))), CrossJoin({[(Local) Filial.default].[MTZ]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))))))))))))))))))))))))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE {[(Tempo) Anual.default].[2015]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

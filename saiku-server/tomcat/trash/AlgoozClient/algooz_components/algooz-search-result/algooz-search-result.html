@@ -1,0 +1,144 @@
+
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<polymer-element name="algooz-search-result" attributes="bus">
+  <template>
+      <div layout horizontal>
+        <template repeat="{{ prod in bus.search_result.paramClassifier.linearProducts }}">
+          <template if="{{ prod.visible }}">
+            <paper-shadow flex cell header>
+                {{ prod.attribute.name || prod.stringValue }}
+            </paper-shadow>
+          </template>
+        </template>
+      </div>
+      <div layout vertical>
+        <template repeat="{{ row,i in bus.search_result.data }}">
+          <div layout horizontal>
+            <template repeat="{{ col,j in row }}">
+              <paper-shadow flex
+                  class="tdspaner"
+                  num-row="{{ i }}"
+                  num-col="{{ j }}"
+                  content="{{ col }}"
+                  rowspan="1" cell>
+                {{ col }}
+              </paper-shadow>
+            </template>
+          </div>
+        </template>
+      </div>
+      <textarea>
+        {{ bus.search_result.paramClassifier.querys }}
+      </textarea>
+      <style>
+        [cell]
+        {
+          background:#fbfbfb;
+          padding:16px;
+          margin:5px;
+        }
+        [header]
+        {
+          background: #00BCD4;
+          color: #fff;
+        }
+      </style>
+  </template>
+  <script>
+    Polymer({
+      	virtualID:0,
+				getNumCol:function(element)
+				{
+					return parseInt(element.getAttribute('num-col'));
+				},
+				getNumRow:function(element)
+				{
+					return parseInt(element.getAttribute('num-row'));
+				},
+				isNumeric:function(element)
+				{
+					var numeric = (element.getAttribute("content").match(/^-?[0-9\.\,]+$/)||[]).length > 0;
+					if(numeric)
+					{
+						element.getAttribute("numeric","");
+					}
+					return numeric;
+				},
+				equals:function(el_0,el_1)
+				{
+					return (el_0.innerText == el_1.innerText
+						&& el_0.getAttribute("virtual-id") == el_1.getAttribute("virtual-id"));
+				},
+				getTD:function(element,rowDif,colDif)
+				{
+					var colIndex = this.getNumCol(element);
+					var rowIndex = this.getNumRow(element);
+					var q = ('.tdspaner[num-row="'+(rowIndex+rowDif)+'"][num-col="'+(colIndex+colDif)+'"]');
+					var r = this.shadowRoot.querySelector(q);
+					return r;
+				},
+				getLeftTD:function(element)
+				{
+					return getTD(element,0,-1);
+				},
+				getUpTD:function(element)
+				{
+					return getTD(element,-1,0);
+				},
+				setParentTD:function(element)
+				{
+					if(this.getNumCol(element) == 0)
+					{
+						++this.virtualID;
+
+						element.setAttribute("virtual-id",this.virtualID);
+					}
+					element.setAttribute("is-parent","");
+					element.setAttribute('rowspan',"1");
+				},
+				getParentWithSameContent:function(element)
+				{
+				  var q = '.tdspaner[virtual-id="'+
+				    element.getAttribute("virtual-id")+'"][content="'+
+				    element.getAttribute("content")+'"][is-parent]';
+
+					return this.shadowRoot.querySelector(q);
+				},
+				incrementRowSpan:function(element)
+				{
+					element.setAttribute('rowspan',parseInt(element.getAttribute('rowspan'))+1);
+				},
+				main:function()
+				{
+					this.virtualID = 0;
+					var allTDSpanner = this.shadowRoot.querySelectorAll('.tdspaner');
+
+					for(var i=0;i<allTDSpanner.length;i++)
+					{
+						var currentTD = allTDSpanner[i];
+						var upTD = this.getUpTD(currentTD);
+
+						currentTD.setAttribute("virtual-id",this.virtualID);
+						if(upTD.length == 0 || (!this.equals(currentTD,upTD)))
+						{
+							this.setParentTD(currentTD);
+						}
+						else
+						{
+							var parentTD = this.getParentWithSameContent(currentTD);
+							if(parentTD.length > 0 && this.equals(this.getLeftTD(currentTD),this.getLeftTD(parentTD))
+									&& !this.isNumeric(parentTD) && !this.isNumeric(currentTD))
+							{
+								this.currentTD.hide();
+								this.incrementRowSpan(parentTD);
+							}
+						}
+					}
+				},
+				ready:function()
+				{
+					this.main();
+				}
+    });
+  </script>
+</polymer-element>

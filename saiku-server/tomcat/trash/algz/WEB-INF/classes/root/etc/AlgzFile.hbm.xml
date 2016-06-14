@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/12/2014 16:45:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="root.etc.AlgzFile" table="ALGZFILE" abstract="true">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <many-to-one name="fileStatus" class="algz.model.FileStatus" fetch="join">
+            <column name="FILESTATUS" />
+        </many-to-one>
+        <bag name="childrens" table="ALGZFILE" inverse="false" lazy="true">
+            <key></key>
+            <element type="? extends root.etc.AlgzFile">
+                <column name="CHILDRENS" />
+            </element>
+        </bag>
+    </class>
+</hibernate-mapping>

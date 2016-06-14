@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>Indisponibilidade</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+  <link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="bower_components/iron-icons/maps-icons.html">
+  <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="bower_components/font-roboto/roboto.html"> 
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+  <link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="bower_components/paper-material/paper-material.html">
+  <link rel="import" href="bower_components/paper-item/paper-item.html">
+  <link rel="import" href="bower_components/iron-pages/iron-pages.html">
+
+  <link rel="import" href="bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="bower_components/paper-item/paper-item.html">
+  <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+  <link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+  
+  <script type="text/javascript" src="libs/underscore-min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="pivottable-master/pivottable-master/dist/pivot.js"></script>
+  <script src="pivottable-master/pivottable-master/dist/pivot.pt.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pivottable-master/pivottable-master/dist/pivot.css">
+</head>
+
+<body unresolved>
+  <dom-module id="x-primes-table">
+  	<template>
+  		<iron-ajax
+	    auto
+	    url="out3.json"
+	    handle-as="json"
+	    on-response="handleResponse"
+	    last-response="{{ajaxResponse}}"></iron-ajax>
+  		<style>
+  			:host {
+  				display: block;
+  			}
+  		</style>
+  		<div id="output"></div>
+  		prime-table
+  	</template>
+  	<script>
+  		Polymer({
+  			is: 'x-primes-table',
+  			handleResponse:function(){
+
+var testData = [{"$p":1,"$k":1,"x":0},{"$p":2,"$k":3}];
+var testData2 = [
+{"$k":0,"$p":0,"$π(k)":0,"$k/π(k)":2,"2^":1,"x^1":2},
+{"$k":1,"$p":0,"$π(k)":0,"$k/π(k)":2,"2^":1,"x^1":2},
+{"$k":2,"$p":1,"$π(k)":1,"$k/π(k)":2,"2^":1,"x^1":2}];
+
+
+
+		        console.log(this.ajaxResponse)
+  				 jQuery(this.$.output).pivotUI(this.ajaxResponse,
+  				 	{ rows: ["$k",'power','prime'],cols: ["$p"]});
+  			}
+  		});
+  	</script>
+  </dom-module>
+  <x-primes-table></x-primes-table>
+<style>
+</style>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="D23833F7-885A-7B11-A994-BB9AD409D468" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING B.V.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING PTE.]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="level" node="[(Local) Filial.default].[Filial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tabela) Faixa DWT" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tabela) Faixa DWT" type="level" node="[(Tabela) Faixa DWT.default].[Faixa DWT Inicial]" operator="MEMBERS" />
+              <Selection dimension="(Tabela) Faixa DWT" type="level" node="[(Tabela) Faixa DWT.default].[Faixa DWT Final]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Vetorial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2013/Jun]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2013/Jul]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2013/Ago]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2013/Set]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2013/Out]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2013/Nov]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2013/Dez]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2014/Jan]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2014/Fev]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2014/Mar]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2014/Abr]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2014/Mai]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2014/Jun]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Vetorial" type="member" node="[(Tempo) Vetorial.default].[2014/Jul]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Operacoes]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Jun]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Jun]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Jul]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Jul]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Ago]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Ago]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Set]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Set]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Out]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Out]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Nov]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Nov]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Dez]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2013/Dez]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Jan]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Jan]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Fev]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Fev]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Mar]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Mar]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Abr]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Abr]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Mai]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Mai]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Jun]}, {[Measures].[Faturado Liquido Corrigido U$]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Jun]}, {[Measures].[QTD. Operacoes]}), Union(CrossJoin({[(Tempo) Vetorial.default].[2014/Jul]}, {[Measures].[Faturado Liquido Corrigido U$]}), CrossJoin({[(Tempo) Vetorial.default].[2014/Jul]}, {[Measures].[QTD. Operacoes]}))))))))))))))))))))))))))))) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING B.V.]}, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members)), Union(CrossJoin({[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING B.V.]}, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Final].Members)), Union(CrossJoin({[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING PTE.]}, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members)), CrossJoin({[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING PTE.]}, CrossJoin([(Local) Filial.default].[Filial].Members, [(Tabela) Faixa DWT.default].[Faixa DWT Final].Members)))))) ON ROWS&#xD;
+FROM [Sulnorte]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

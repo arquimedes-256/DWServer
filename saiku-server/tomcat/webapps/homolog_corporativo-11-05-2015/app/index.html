@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="snapp">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SN App</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript"
+	src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}">
+	
+</script>
+</head>
+<body ng-controller="TableController"
+	class="{{isEvolucao ? 'evolucao-body' : ''}}">
+	<div class="login-modal">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-4 col-md-offset-4">
+					<h1 class="text-center login-title">SN App</h1>
+					<div class="account-wall">
+						<img class="profile-img" src="image/logo2.png"
+							style="width: inherit; height: inherit;" alt="">
+						<form class="form-signin">
+							Essa versão de implementação já foi corrigida.
+							Para acessar a nova versão, por favor acesse: <a href="http://sig.sulnorte.com.br/homolog_corporativo-18-05-2015/app/">
+							Clique aqui para ir até a nova versão!</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div style="display: none; opacity: 0" class="main-app">
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">SN App @{{loginResult.nome}} <span
+						style="font-size: 13px; margin-left: 20px;">$
+							{{relatorioAtual.title}} - <b style="color: #fff">{{mesAtualLabel}}</b> / <span style="color:#64FFDA;font-size:17px">{{labelAno(anoAtual)}}</span>
+					</span></a>
+				</div>
+
+
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="main">
+					<Br /> <br />
+					<h2 class="sub-header" ng-if="relatorioAtual">
+						{{relatorioAtual.title}} -
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							{{ labelAno(anoAtual) }}<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li> <a style="cursor: pointer" ng-click="changeAno(2013)">2013</a></li>
+								<li> <a style="cursor: pointer" ng-click="changeAno(2014)">2014</a></li>
+								<li> <a style="cursor: pointer" ng-click="changeAno(2015)">2015</a></li>
+								<li> <a style="cursor: pointer" ng-click="changeAno(2016)">{{ labelAno(2016) }}</a></li>
+							</ul>
+						</div>
+						<div class="btn-group">
+							<button type="button"
+								class="btn btn-default dropdown-toggle btn-lg"
+								data-toggle="dropdown">
+								{{mesAtualLabel}} <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a style="cursor: pointer"
+									ng-click="
+									$parent.mesesUtilizaveis = $parent.mesesUtilizaveis_aloc;
+									$parent.isEvolucao = false;
+									changeMes(null,'Acumulado')
+									
+									">Acumulado
+										de {{ labelAno(anoAtual) }}<i ng-show="!$parent.isEvolucao"
+										class="glyphicon glyphicon-ok ng-scope"></i>
+								</a></li>
+<!-- 
+								<li><a style="cursor: pointer"
+									ng-click="
+			            			
+			            			$parent.isEvolucao = true; 
+			            				$parent.mesesUtilizaveis = $parent.meses;
+			            				changeMes(null,'Evolucao')
+			            				
+			            			">Evolução
+										de {{anoAtual}}<i ng-show="$parent.isEvolucao"
+										class="glyphicon glyphicon-ok ng-scope"></i>
+								</a></li>
+ -->
+
+								<li class="divider"></li>
+								<li ng-repeat="mes in meses" style="cursor: pointer"><a>
+										<span ng-click="changeMes($index,mes,mes)">{{mes}}</span>&nbsp;
+										<button
+											class="btn {{meses[mesAtual-1] == mes ? 'btn-warning' : 'btn-link'}}"
+											ng-click="changeMes($index,mes)">
+											<i class="glyphicon glyphicon-hand-right"> </i>
+										</button>
+										<button
+											class="btn {{meses[mesFinal-1] == mes ? 'btn-warning' : 'btn-link'}}"
+											ng-click="changeMes($index,null,mes)">
+											<i class="glyphicon glyphicon-hand-left"> </i>
+										</button>
+								</a></li>
+							</ul>
+						</div>
+						
+
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle"
+								data-toggle="dropdown">
+								{{principalFilial}} <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li style="cursor: pointer" ng-if="loginResult.perfil.isMaster">
+									<a
+									ng-click="
+		    	openRelatorio('orcadorealizado',
+		    		{
+		    			idGrupoMaster:idGrupoMaster,
+		    			filial:'Total Empresa',
+		    			nomeGrupoMaster:subTitleRowsModal
+		    		})">
+										Total Empresa</a>
+								</li>
+								<li class="divider" ng-if="loginResult.perfil.isMaster"></li>
+								<li style="cursor: pointer" ng-repeat="filial in filiais">
+									<a
+									ng-click="
+		    	openRelatorio(
+		    		'orcadorealizado',
+		    		{
+		    			idGrupoMaster:idGrupoMaster,
+		    			filial:filial,
+		    			nomeGrupoMaster:subTitleRowsModal
+		    		})">
+										{{filial}} </a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle"
+								data-toggle="dropdown">
+								Relatórios Consolidados <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li style="cursor: pointer"><a
+									ng-click="
+		    	openRelatorio('orcadorealizado_detalhado_intern',
+		    		{
+		    			idGrupoMaster:3,
+		    			idGrupo:1,
+		    			filial:'LISTAR',
+		    			nomeGrupoMaster:'Pessoal Consolidado / Embarcado',
+		    			isConsolidado:true,
+		    			inModal:true
+		    		})">
+										Pessoal Consolidado </a></li>
+								<li style="cursor: pointer"><a
+									ng-click="
+		    	openRelatorio('orcadorealizado_detalhado_intern',
+		    		{
+		    			idGrupoMaster:13,
+		    			idGrupo:98,
+		    			filial:'LISTAR',
+		    			nomeGrupoMaster:'Outras DGA Consolidado',
+		    			isConsolidado:true,
+		    			inModal:true
+		    		})">
+										Outras DGA Consolidado</a></li>
+										
+							</ul>
+						</div>
+
+					</h2>
+
+
+					<div ng-if="isPeriodoAberto" class="alert alert-danger">
+						<i class="glyphicon glyphicon-warning-sign"></i> &nbsp;Período de
+						<b>{{meses[mesFinal-1]}}</b> em Aberto!
+					</div>
+					<div ng-if="!isPeriodoAberto" class="alert alert-info">
+						<i class="glyphicon glyphicon-time"></i> &nbsp;Período de <b>{{meses[mesFinal-1]}}</b>
+						está Fechado!
+					</div>
+					<span>R$/MIL</span>
+
+					<div class="progress progress-striped active" ng-show="rowsRequest">
+						<div class="progress-bar" role="progressbar" aria-valuenow="45"
+							aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+						</div>
+					</div>
+
+					<div ng-init="colunasSelecionadas = evolucaoColInUse"
+						ng-show="isEvolucao">
+						<span>Colunas:</span>
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle"
+								data-toggle="dropdown">
+								{{list(colunasSelecionadas)}} <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li style="cursor: pointer"><a
+									ng-click="inverter(colunasSelecionadas)"> <i
+										class="glyphicon glyphicon-random"></i>&nbsp; Inverter
+										sele&ccedil;&atilde;o!
+								</a></li>
+								<li class="divider"></li>
+								<li style="cursor: pointer" ng-repeat="col in colunas"><a
+									ng-click="colunasSelecionadas[col] = !colunasSelecionadas[col]">
+										{{col}} <i class="glyphicon glyphicon-ok"
+										ng-show="colunasSelecionadas[col]"></i>
+								</a></li>
+							</ul>
+						</div>
+					</div>
+					<br />
+
+					<div class="table-responsive">
+						<div class="template-rel"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- :::::Modal::::: -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg"">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">{{relatorioAtualInModal.title}}</h4>
+
+
+
+						<modalheader
+							ng-if="relatorioAtualInModal.method == 'orcadorealizado_detalhado'"></modalheader>
+						<div class="progress progress-striped active"
+							ng-show="rowsModalRequest">
+							<div class="progress-bar" role="progressbar" aria-valuenow="45"
+								aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+							</div>
+						</div>
+
+						<div class="progress progress-striped active"
+							ng-show="rowsCentroDeCustoRequest">
+							<div class="progress-bar" role="progressbar" aria-valuenow="45"
+								aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-body" style="height: 512px; overflow: scroll;">
+
+						<div class="template-rel-modal"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<style>
+.result-true {
+	color: red;
+}
+
+.dropdown-menu {
+	z-index: 99999999999;
+}
+
+.result-false {
+	color: green;
+}
+
+@media ( min-width : 1000px) {
+	.modal-lg {
+		width: 90%;
+		top: 30px;
+	}
+}
+
+table.filialColTable {
+	float: left;
+	min-width: 120px;
+	max-width: 90px;
+	margin-bottom: 0px;
+	border-right: 2px solid #EEE;
+}
+
+.siglaTh {
+	text-align: center;
+}
+
+th.thAttribute {
+	min-width: 71px;
+	text-align: center;
+}
+
+.rowValores td {
+	text-align: center;
+}
+
+.table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>td,.table>tbody>tr>td,.table>tfoot>tr>td
+	{
+	padding: 8px 0px !important;
+}
+
+td.thAttribute {
+	display: block;
+	width: 309px;
+	word-break: break-all;
+}
+
+.table-hover>tbody>tr:hover>td,.table-hover>tbody>tr:hover>th {
+	background-color: #D2CDCD;
+}
+
+.fvalues tr {
+	border-left: 1px #E4DBDB double;
+}
+
+.table-evolucao-old {
+	float: left;
+	display: block;
+	margin-right: 52px;
+	width: inherit;
+}
+
+td {
+	vertical-align: middle !important;
+}
+
+@media ( min-width :641px) {
+	.table-evolucao {
+		float: left;
+		width: 344px;
+		margin-right: 11px;
+		display: block
+	}
+	.evolucao-body {
+		width: 5000px;
+	}
+	.fist-table-evolucao {
+		width: inherit;
+		margin-right: -153px;
+	}
+	td {
+		min-width: 84px;
+	}
+	.snapp-scrollable {
+		/*
+		position:absolute;
+		left:0;
+		padding-left:42px!important;
+		word-break: break-all;
+		width: 377px;
+		height: 54px;
+		margin-top: -2px;
+		z-index: 300;
+		*/
+		
+	}
+	.pd-grupomaster {
+		padding-left: 63px;
+	}
+	.bolder {
+		font-weight: bold;
+		border-top: 2px dashed #AAA;
+	}
+	.bolder-bottom {
+		border-bottom: 2px dashed #AAA;
+	}
+	.th-cc {
+		width: 369px;
+	}
+	.th-cc-imp {
+		padding-left: 42px !important
+	}
+	.main {
+		padding: 0 41px;
+	}
+}
+
+.pop-ind {
+	right: 8px;
+	top: 67px;
+	width: 397px;
+	display: block;
+	max-width: 3000px;
+	left: inherit;
+}
+
+.popover.bottom {
+	margin-top: 89px !important;
+}
+/** login.css */
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,.form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+	font-weight: normal;
+}
+
+.form-signin .form-control {
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+.form-signin input[type="text"] {
+	margin-bottom: -1px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.account-wall {
+	margin-top: 20px;
+	padding: 40px 0px 20px 0px;
+	background-color: #f7f7f7;
+	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-title {
+	color: #555;
+	font-size: 18px;
+	font-weight: 400;
+	display: block;
+}
+
+.profile-img {
+	width: 96px;
+	height: 96px;
+	margin: 0 auto 10px;
+	display: block;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.need-help {
+	margin-top: 10px;
+}
+
+.new-account {
+	display: block;
+	margin-top: 10px;
+}
+
+th.siglaTh,.thAttribute {
+	width: 100%;
+	position: relative;
+	top: 0;
+	background: #FFF;
+}
+
+.template-rel-centrocusto {
+	z-index: 100000071;
+	position: fixed;
+	top: 59px;
+	left: 1px;
+}
+
+.disabled {
+	cursor: no-drop !important;
+}
+
+.full-toper {
+	z-index: 999999;
+}
+
+.thsigla-fixed {
+	position: relative;
+}
+
+.hide-it {
+	display: none !important;
+}
+
+div#scrollLedContainer tr {
+	height: 36px !important;
+}
+
+.calculator {
+	width: 61%;
+	max-width: 484px;
+	height: 360px;
+	position: absolute;
+	bottom: 1px;
+	z-index: 9999999999999999;
+	overflow: hidden;
+}
+
+.calculator iframe {
+	border: none;
+	width: 100%;
+	height: 315px;
+}
+</style>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<!--  
+	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular.min.js"></script> 
+		-->
+	<script type="text/javascript" src="js/query.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bindonce.js"></script>
+	<script src="js/quickrepeat.js"></script>
+	
+	<script src="controller/TableController.js?v=8"></script>
+	
+	<script src="js/TweenMax.min.js"></script>
+
+	<script>
+		var snapp = angular.module("snapp", [ 'pasvaz.bindonce' ]);
+
+		snapp.controller("TableController", TableController);
+		snapp.directive('orcadorealizadotable', function() {
+			return {
+				restrict : 'E',
+				templateUrl : 'views/orcadorealizadotable.html?_='
+						+ Math.random()
+			}
+		});
+		snapp.directive('modalheader', function() {
+			return {
+				restrict : 'E',
+				templateUrl : 'views/modalheader.html?_=' + Math.random()
+			}
+		});
+		snapp.directive('dirinter', function() {
+			return {
+				restrict : 'E',
+				templateUrl : 'views/dir.itern.html?_=' + Math.random()
+
+			}
+		});
+		Number.prototype.formatMoney = function(decPlaces, thouSeparator,
+				decSeparator) {
+			var n = this, decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2
+					: decPlaces, decSeparator = decSeparator == undefined ? ","
+					: decSeparator, thouSeparator = thouSeparator == undefined ? "."
+					: thouSeparator, sign = n < 0 ? "-" : "", i = parseInt(n = Math
+					.abs(+n || 0).toFixed(decPlaces))
+					+ "", j = (j = i.length) > 3 ? j % 3 : 0;
+			return sign
+					+ (j ? i.substr(0, j) + thouSeparator : "")
+					+ i.substr(j).replace(/(\d{3})(?=\d)/g,
+							"$1" + thouSeparator)
+					+ (decPlaces ? decSeparator
+							+ Math.abs(n - i).toFixed(decPlaces).slice(2) : "");
+		};
+
+		$(document).ready(function() {
+
+			$(window).scroll(function() {
+				$('.snapp-scrollable').css({
+					'left' : $(this).scrollLeft()
+				});
+			});
+
+		});
+	</script>
+
+	<div class="template-rel-centrocusto popoverde"></div>
+	<div
+		style="height: 350px; overflow: hidden; position: absolute; width: 411px; top: 238px; margin-top: 0px !important; z-index: 999999999999999999999; right: 30px;"
+		ng-if="linhaSelecionada">
+		<div class="popover bottom pop-ind"
+			style="margin-top: -13px !important;">
+			<!-- div class="arrow"></div> -->
+			<button ng-click="$parent.linhaSelecionada = null"
+				style="float: right" class="btn btn-danger">x</button>
+
+			<h3 class="popover-title" style="font-weight: bold;">
+				{{linhaSelecionada.filial}}-{{linhaSelecionada.nomeContaContabil}} <sub
+					style="font-size: 12px; font-weight: normal;">{{linhaSelecionada.idContaContabil}}</sub>
+			</h3>
+			<div class="popover-content">
+				<div style="text-align: right"
+					ng-click="openRelatorio('centro_de_custo_mtz',
+			{
+				idGrupoMaster:linhaSelecionada.idGrupoMaster,
+				idContaContabil:linhaSelecionada.idContaContabil,
+				idGrupo:linhaSelecionada.idGrupo,
+				mes:mesAtual-1,
+				mesFinal:mesFinal-1,
+				filial:linhaSelecionada.filial,
+				inCentroDeCusto:true,
+				ano:linhaSelecionada.anoAtual,
+				isConsolidado:isConsolidado
+			})">
+					<button
+						ng-class="{'disabled':linhaSelecionada.vlrRealizado === 0 && linhaSelecionada.idGrupo}"
+						class="btn btn-success">
+						<i class="glyphicon glyphicon-zoom-in"></i> &nbsp; Detalhar por
+						Centro de Custo
+					</button>
+				</div>
+
+				<table class="table">
+					<tr>
+						<th>Or&ccedil;ado:</th>
+						<th>Realizado:</th>
+						<th>Diferen&ccedil;a</th>
+						<th>Var %</th>
+					</tr>
+					<tr
+						class="{{linhaSelecionada.vlrOrcado == linhaSelecionada.vlrRealizado ? 'info' :
+							 linhaSelecionada.vlrOrcado > linhaSelecionada.vlrRealizado ? 'danger' : 'success'}}">
+						<td style="text-align: right;">{{linhaSelecionada.vlrOrcado.formatMoney()}}</td>
+						<td style="text-align: right;">{{linhaSelecionada.vlrRealizado.formatMoney()}}</td>
+						<td style="text-align: right;">{{(linhaSelecionada.vlrRealizado
+							- linhaSelecionada.vlrOrcado).formatMoney()}}</td>
+						<td style="text-align: right;">{{perc((linhaSelecionada.vlrRealizado
+							- linhaSelecionada.vlrOrcado) / linhaSelecionada.vlrOrcado)}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+		<!-- 
+	<div class="panel panel-default calculator" ng-show="showCalendar">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="glyphicon glyphicon-leaf"></i> Calculadora
+			</h3>
+		</div>
+		
+		<div class="panel-body" style="padding: 0;">
+			<iframe src="bower_components/paper-calculator/demo.html">
+
+			</iframe>
+		</div> 
+		<script>
+			$('.calculator .panel-heading').click(function() {
+				if ($('.calculator').height() > 32) {
+					TweenMax.to($('.calculator'), 1, {
+						css : {
+							height : 32,
+							width : 52
+						}
+					});
+				} else {
+					TweenMax.to($('.calculator'), 1, {
+						css : {
+							height : 360,
+							width : '62%'
+						}
+					});
+				}
+
+			}).trigger('click');
+		</script>
+		 
+	</div>-->
+	<script>
+	/*
+		setInterval(function() {
+			TweenMax.to($('.calculator'), 1, {
+				css : {
+					top : $(this).scrollTop() + $(window).height()
+							- $('.calculator').height() - 5
+				}
+			});
+
+			if ($('.calculator').offset().top > $('body').height()) {
+				$('.calculator').css({
+					'top' : $('body').height()
+				});
+			}
+
+		}, 500);
+*/
+		window.onbeforeunload = function(e) {
+			return 'Você está analistando relatórios frequentemente.';
+		};
+	</script>
+<style ng-if="anoAtual == 2016">
+.table > thead > tr > td.success,
+.table > tbody > tr > td.success,
+.table > tfoot > tr > td.success,
+.table > thead > tr > th.success,
+.table > tbody > tr > th.success,
+.table > tfoot > tr > th.success,
+.table > thead > tr.success > td,
+.table > tbody > tr.success > td,
+.table > tfoot > tr.success > td,
+.table > thead > tr.success > th,
+.table > tbody > tr.success > th,
+.table > tfoot > tr.success > th {
+  background-color: #f2dede !important;
+}
+.table-hover > tbody > tr > td.success:hover,
+.table-hover > tbody > tr > th.success:hover,
+.table-hover > tbody > tr.success:hover > td,
+.table-hover > tbody > tr.success:hover > th {
+  background-color: #ebcccc !important;
+}
+.table > thead > tr > td.danger,
+.table > tbody > tr > td.danger,
+.table > tfoot > tr > td.danger,
+.table > thead > tr > th.danger,
+.table > tbody > tr > th.danger,
+.table > tfoot > tr > th.danger,
+.table > thead > tr.danger > td,
+.table > tbody > tr.danger > td,
+.table > tfoot > tr.danger > td,
+.table > thead > tr.danger > th,
+.table > tbody > tr.danger > th,
+.table > tfoot > tr.danger > th {
+  background-color: #dff0d8 !important;
+}
+.table-hover > tbody > tr > td.danger:hover,
+.table-hover > tbody > tr > th.danger:hover,
+.table-hover > tbody > tr.danger:hover > td,
+.table-hover > tbody > tr.danger:hover > th {
+  background-color: #d0e9c6 !important;
+}
+.result-true {
+	color: green !important;
+}
+
+.result-false {
+	color: red !important;
+}
+
+</style>
+</body>
+</html>

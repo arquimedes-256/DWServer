@@ -1,0 +1,37 @@
+
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<polymer-element name="algooz-agenda-event" attributes="event" relative>
+  <template>
+    <paper-button raised>
+        <pre>
+          {{ event.title }}
+        </pre>
+    </paper-button>
+    <style>
+    paper-button,
+    :host
+    {
+      max-width: 250px!important;
+      margin-bottom: 7px;
+    }
+    paper-button {
+      background:#00BCD4;
+      color:#fff;
+      right: 14px;
+    }
+    pre {
+      text-align: left;
+      max-width: 108px;
+      word-break: break-word;
+      position: relative;
+      right: 5px;
+    }
+    </style>
+  </template>
+  <script>
+    Polymer({
+
+    });
+  </script>
+</polymer-element>

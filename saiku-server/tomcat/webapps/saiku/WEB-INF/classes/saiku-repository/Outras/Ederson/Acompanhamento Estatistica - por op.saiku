@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="3BD74CA1-8895-CBA2-98DB-EBBE97BCA009" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Dia da Saida do Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Dia da Saida do Navio" type="level" node="[(Tempo) Dia da Saida do Navio.default].[Dia da Saida do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao)" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao)" type="level" node="[(Operacao).default].[Id da Operacao]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Dwt do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Terminal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Terminal" type="level" node="[Terminal.default].[Nome do Terminal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Manobra)" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Manobra)" type="level" node="[(Manobra).default].[Nome Manobra]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Rebocador) Rebocador" type="level" node="[(Rebocador) Rebocador.default].[Nome do Rebocador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Dono do Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Dono do Rebocador" type="level" node="[(Empresa) Dono do Rebocador.default].[Dono do Rebocador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Agente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Agente" type="level" node="[(Empresa) Agente.default].[Agente]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Armador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Armador" type="level" node="[(Empresa) Armador.default].[Armador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[VIT]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Referencia R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual Saida do Navio">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual Saida do Navio" type="member" node="[(Tempo) Anual Saida do Navio.default].[2014]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal Saida do Navio">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal Saida do Navio" type="member" node="[(Tempo) Mensal Saida do Navio.Mensal].[Julho]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY CrossJoin({[(Local) Filial.default].[VIT]}, {[Measures].[Valor Referencia R$]}) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin([(Tempo) Dia da Saida do Navio.default].[Dia da Saida do Navio].Members, CrossJoin([(Operacao).default].[Id da Operacao].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([Terminal.default].[Nome do Terminal].Members, CrossJoin([(Manobra).default].[Nome Manobra].Members, CrossJoin([(Rebocador) Rebocador.default].[Nome do Rebocador].Members, CrossJoin([(Empresa) Dono do Rebocador.default].[Dono do Rebocador].Members, CrossJoin([(Empresa) Agente.default].[Agente].Members, [(Empresa) Armador.default].[Armador].Members)))))))), CrossJoin([(Tempo) Dia da Saida do Navio.default].[Dia da Saida do Navio].Members, CrossJoin([(Operacao).default].[Id da Operacao].Members, CrossJoin([(Embarcacao) Navio.default].[Dwt do Navio].Members, CrossJoin([Terminal.default].[Nome do Terminal].Members, CrossJoin([(Manobra).default].[Nome Manobra].Members, CrossJoin([(Rebocador) Rebocador.default].[Nome do Rebocador].Members, CrossJoin([(Empresa) Dono do Rebocador.default].[Dono do Rebocador].Members, CrossJoin([(Empresa) Agente.default].[Agente].Members, [(Empresa) Armador.default].[Armador].Members)))))))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE CrossJoin({[(Tempo) Anual Saida do Navio.default].[2014]}, {[(Tempo) Mensal Saida do Navio.Mensal].[Julho]})</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.ui.render.type" value="" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

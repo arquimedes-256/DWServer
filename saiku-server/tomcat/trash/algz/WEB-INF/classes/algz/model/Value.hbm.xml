@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/12/2014 17:31:26 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="algz.model.Value" table="VALUE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="stringData" type="java.lang.String">
+            <column name="STRINGDATA" />
+        </property>
+        <property name="numberData" type="java.lang.Double">
+            <column name="NUMBERDATA" />
+        </property>
+        <property name="dateTimeData" type="java.util.Calendar">
+            <column name="DATETIMEDATA" />
+        </property>
+        <many-to-one name="location" class="algz.model.Location" fetch="join">
+            <column name="LOCATION" />
+        </many-to-one>
+        <list name="locationHistory" inverse="false" table="LOCATION" lazy="true">
+            <key>
+                <column name="SERIALVERSIONUID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="algz.model.Location" />
+        </list>
+        <property name="createdDate" type="java.util.Calendar">
+            <column name="CREATEDDATE" />
+        </property>
+        <many-to-one name="user" class="algz.model.User" fetch="join">
+            <column name="USER" />
+        </many-to-one>
+        <list name="refferences" inverse="false" table="OBJECT" lazy="true">
+            <key>
+                <column name="SERIALVERSIONUID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="algz.model.Object" />
+        </list>
+        <property name="bornDate" type="java.util.Calendar">
+            <column name="BORNDATE" />
+        </property>
+        <one-to-one name="attribute" class="algz.model.Attribute"></one-to-one>
+    </class>
+</hibernate-mapping>

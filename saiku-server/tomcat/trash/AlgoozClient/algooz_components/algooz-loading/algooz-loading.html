@@ -1,0 +1,15 @@
+
+<link rel="import" href="../../bower_components/paper-progress/paper-progress.html">
+
+<polymer-element name="algooz-loading" attributes="response" layout horizontal>
+  <template>
+    <link rel="stylesheet" href="algooz-loading.css">
+    <!-- Spinner -->
+    <paper-progress flex use-showing showing?="{{ !response }}" indeterminate></paper-progress>
+    <style>
+    </style>
+  </template>
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>

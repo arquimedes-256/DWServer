@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/12/2014 17:31:26 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="algz.model.Location" table="LOCATION">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="lat" type="java.lang.String">
+            <column name="LAT" />
+        </property>
+        <property name="lng" type="java.lang.String">
+            <column name="LNG" />
+        </property>
+        <property name="formatted_address" type="java.lang.String">
+            <column name="FORMATTED_ADDRESS" />
+        </property>
+        <property name="street_number" type="java.lang.String">
+            <column name="STREET_NUMBER" />
+        </property>
+        <property name="route" type="java.lang.String">
+            <column name="ROUTE" />
+        </property>
+        <property name="neighborhood" type="java.lang.String">
+            <column name="NEIGHBORHOOD" />
+        </property>
+        <property name="locality" type="java.lang.String">
+            <column name="LOCALITY" />
+        </property>
+        <property name="administrative_area_level_2" type="java.lang.String">
+            <column name="ADMINISTRATIVE_AREA_LEVEL_2" />
+        </property>
+        <property name="administrative_area_level_1" type="java.lang.String">
+            <column name="ADMINISTRATIVE_AREA_LEVEL_1" />
+        </property>
+        <property name="country" type="java.lang.String">
+            <column name="COUNTRY" />
+        </property>
+        <property name="postal_code" type="java.lang.String">
+            <column name="POSTAL_CODE" />
+        </property>
+    </class>
+</hibernate-mapping>

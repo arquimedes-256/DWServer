@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="3BD74CA1-8895-CBA2-98DB-EBBE97BCA009" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="level" node="[(Local) Filial.default].[Filial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Dono do Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[RIO GRANDE MARÍTIMA LTDA]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[SAVEIROS]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[SMIT REBRAS]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[SULNORTE]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[TUGBRASIL]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[WILSON SONS AGENCIA MARITIMA LTDA]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[WILSON SONS AGÊNCIA MARÍTIMA LTDA]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[WILSON SONS AGÊNCIA MARÍTIMA LTDA.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[WILSON SONS AGENCIA MARITIMA LTDA - SDR]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[WILSON SONS AGÊNCIA MARÍTIMA LTDA - STS]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[WILSON SONS AGÊNCIA MARÍTIMA LTDA - VIT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[CAMORIM]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[VALE S.A]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Dono do Rebocador" type="member" node="[(Empresa) Dono do Rebocador.default].[VALE S/A]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Mensal Saida do Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal Saida do Navio" type="level" node="[(Tempo) Mensal Saida do Navio.Mensal].[Mes Saida do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Referencia %]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual Saida do Navio">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual Saida do Navio" type="member" node="[(Tempo) Anual Saida do Navio.default].[2014]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY CrossJoin([(Tempo) Mensal Saida do Navio.Mensal].[Mes Saida do Navio].Members, {[Measures].[Valor Referencia %]}) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[RIO GRANDE MARÍTIMA LTDA]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[SAVEIROS]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[SMIT REBRAS]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[SULNORTE]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[TUGBRASIL]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[WILSON SONS AGENCIA MARITIMA LTDA]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[WILSON SONS AGÊNCIA MARÍTIMA LTDA]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[WILSON SONS AGÊNCIA MARÍTIMA LTDA.]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[WILSON SONS AGENCIA MARITIMA LTDA - SDR]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[WILSON SONS AGÊNCIA MARÍTIMA LTDA - STS]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[WILSON SONS AGÊNCIA MARÍTIMA LTDA - VIT]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[CAMORIM]}), Union(CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[VALE S.A]}), CrossJoin([(Local) Filial.default].[Filial].Members, {[(Empresa) Dono do Rebocador.default].[VALE S/A]}))))))))))))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE {[(Tempo) Anual Saida do Navio.default].[2014]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.ui.render.type" value="" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+
