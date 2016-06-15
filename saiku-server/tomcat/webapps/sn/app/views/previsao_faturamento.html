@@ -1,0 +1,145 @@
+
+<div ng-if="rowsModal == 'null'">
+	Não existe valores para esse mês.
+</div>
+<div ng-if="loadingOrcamento">
+	Carrengando orçamento...
+</div>
+<div ng-if="loadingFaturamento">
+	Carrengando faturamento...
+</div>
+<div ng-if="loadingRecibos">
+	Carrengando recibos...
+</div>
+<div ng-if="rowsModal != 'null'">
+	<div ng-repeat="key in filiais" ng-init="value = rowsModal[key]" ng-if="key!='MTZ'" >
+	<h4>{{key}}</h4>
+		<table class="table table-filial table-striped">
+			<tr>
+				<th>#</th>	
+				<th style="text-align: right;">Faturas(R$)</th>
+				<th style="text-align: right;">Invoices(R$)</th>
+				<th style="text-align: right;">Total(R$)</th>
+			</tr>
+			<tr>
+				<td>Faturados</td>
+				<td 	style="position:relative;text-align: right;">{{(value.faturas.faturado).formatMoney(0)}}</td>
+				<td  	style="position:relative;text-align: right;">{{(value.invoices.faturado).formatMoney(0)}} </td>
+				<td style="text-align: right;">{{(value.faturas.faturado + value.invoices.faturado).formatMoney(0) }} </td>
+			</tr>
+			<tr>
+				<td>Realizados n&atilde;o faturados<sub>(TOP)</sub></td>
+				<td  	style="position:relative;text-align: right;">{{(value.faturas['realizado-nao-faturado']).formatMoney(0)}} </td>
+				<td		style="position:relative;text-align: right;">{{(value.invoices['realizado-nao-faturado']).formatMoney(0)}} </td>
+				<td style="text-align: right;">{{(value.invoices['realizado-nao-faturado'] + value.faturas['realizado-nao-faturado']).formatMoney(0) }} </td>
+			</tr>
+			<tr>
+			<td>Realizados n&atilde;o faturados<sub>(Outros)</sub></td>
+				<td  
+				filial="{{key}}" 
+				namespace="faturas.realizado-nao-faturado-outros" 
+				ng-click="edit('faturas.realizado-nao-faturado-outros',key)"	
+				style="position:relative;text-align: right;"
+				>
+				
+					{{(value.faturas['realizado-nao-faturado-outros']).formatMoney(0)}} 
+				</td>
+				<td	 
+				filial="{{key}}" 
+				namespace="invoices.realizado-nao-faturado-outros" 
+				ng-click="edit('invoices.realizado-nao-faturado-outros',key)"	
+				style="position:relative;text-align: right;">
+					{{(value.invoices['realizado-nao-faturado-outros']).formatMoney(0)}} 
+				</td>
+				<td style="text-align: right;">
+					{{(value.invoices['realizado-nao-faturado-outros-outros'] + value.faturas['realizado-nao-faturado-outros']).formatMoney(0) }} 
+				</td>
+			</tr>
+			<tr>
+				<td>Esperados</td>		
+				<td filial="{{key}}" namespace="faturas.esperado" ng-click="edit('faturas.esperado',key)" 	style="position:relative;text-align: right;">{{(value.faturas['esperado']).formatMoney(0)}}</td>
+				<td filial="{{key}}" namespace="invoices.esperado"  ng-click="edit('invoices.esperado',key)" 	style="position:relative;text-align: right;">{{(value.invoices['esperado']).formatMoney(0)}} </td>
+				<td style="text-align: right;">{{(value.faturas['esperado'] + value.invoices['esperado']).formatMoney(0)}} </td>
+			</tr>
+			<tr>
+				<td>Carta de credito</td>
+				<td  style="position:relative;text-align: right;">{{value.faturas['carta-de-credito'].formatMoney(0)}} </td>
+				<td  style="position:relative;text-align: right;">{{value.invoices['carta-de-credito'].formatMoney(0)}} </td>
+				<td style="text-align: right;">{{(value.faturas['carta-de-credito'] + value.invoices['carta-de-credito']).formatMoney(0)}} </td>
+			</tr>
+			<tr>
+				<td>
+				Recibos/CC Manuais
+				</td>
+				<td>-
+				</td>
+				<td>-
+				</td>
+				<td style="text-align: right;">
+				{{value.recibos.formatMoney(0)}}
+				</td>
+			</tr>
+			<tr>
+				<td><b>Faturados + Nao Faturados + CC + Recibos</b></td>
+				<td style="text-align: right;">
+					<b>{{(value.faturas.faturado 	
+					+ value.faturas['realizado-nao-faturado'] 	
+					+ value.faturas['realizado-nao-faturado-outros'] 	
+					+ value.faturas['carta-de-credito']
+					).formatMoney(0)}} 
+					</b>
+				</td>
+				<td style="text-align: right;">
+					<b>{{
+					(value.invoices.faturado 	
+					+ value.invoices['realizado-nao-faturado'] 	
+					+ value.invoices['realizado-nao-faturado-outros'] 	
+					+ value.invoices['carta-de-credito']).formatMoney(0)
+					}} 
+					</b>
+				</td>
+				<td style="text-align: right;"><b>{{
+				(Real = (value.faturas.faturado 	
+				+ value.faturas['realizado-nao-faturado'] 
+				+ value.faturas['realizado-nao-faturado-outros'] 	
+				+ value.faturas['carta-de-credito'] 
+				+
+				value.invoices.faturado 	
+				+ value.invoices['realizado-nao-faturado'] 	
+				+ value.invoices['realizado-nao-faturado-outros'] 	
+				+ value.invoices['carta-de-credito']
+				+ value.recibos)).formatMoney(0)}}
+						</b>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Orcado</b></td>
+				<td style="text-align: right;"><b>{{value.orcado.formatMoney(0)}}</b></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><b>Orcado(proporcional aos dias analisados)</b></td>
+				<td style="text-align: right;"><b>{{value.orcadoProporcional.formatMoney(0)}}</b></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><b>Var %</b></td>
+				<td style="text-align: right;" class="result-{{p<0}}"><b>{{ perc((p=(Real/value.orcadoProporcional)-1)) }}</b></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	<style>
+	.vlInput {
+		position: absolute;
+		top: 0px;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	</style>
+</div>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
