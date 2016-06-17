@@ -1,2 +1,89 @@
-2016-06-14 17:00:42,035 WARN  [mondrian.rolap.RolapUtil] Mondrian: Warning: JDBC driver sun.jdbc.odbc.JdbcOdbcDriver not found
-2016-06-14 17:00:43,252 WARN  [mondrian.rolap.RolapCube] RolapCube.createUsage: duplicate HierarchyUsage: kind=SHARED, hierarchyName=(Estoque) Item.default, fullName=(Estoque) Item.default, foreignKey=ID_PRD_ITEM, source=(Estoque) Item.default, level=null, name=(Estoque) Item
+2016-06-17 09:28:12,824 DEBUG [org.saiku.web.service.SessionService] Logging in with [org.springframework.security.core.userdetails.User@400731df: Username: COMERCIAL; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_COMERCIAL,ROLE_USER]
+2016-06-17 09:28:21,388 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8	POST	 xml:false
+2016-06-17 09:28:23,214 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/resultflattened	GET
+2016-06-17 09:28:23,214 INFO  [org.saiku.service.olap.OlapQueryService] runId:42	Type:QM:
+SELECT
+NON EMPTY {[Measures].[Faturado Liquido Corrigido U$]} ON COLUMNS,
+NON EMPTY CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Tempo) Mensal Manobra.Mensal].[Mes da Manobra].Members)))) ON ROWS
+FROM [Sulnorte]
+WHERE Hierarchize(Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[NIDERA S.P.A.]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[NIDERA SPA C/O P.R. INTERNATIONAL SAM]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING B.V. - Wilhelminakade 197 3072 AP Rotterdam \nThe Netherlands - P.O. Box 676 3000 AR Rotterdam]}), CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING PTE.]})))))
+2016-06-17 09:28:34,617 INFO  [org.saiku.service.olap.OlapQueryService] runId:42	Size: 6/44	Execute:	11403ms	Format:	0ms	 Total: 11403ms
+2016-06-17 09:29:06,597 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/axis/ROWS/dimension/(Tempo) Mensal Manobra/hierarchy/[(Tempo) Mensal Manobra.Mensal]/[(Tempo) Mensal Manobra.Mensal].[Mes da Manobra]	DELETE
+2016-06-17 09:29:06,597 DEBUG [org.saiku.service.olap.OlapQueryService] move query: A1328B4F-FE71-720C-9EF1-3A5EB005FCD8 dimension (Tempo) Mensal Manobra to axis UNUSED  position-1
+2016-06-17 09:29:13,789 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/axis/ROWS/dimension/(Tempo) Mensal/hierarchy/[(Tempo) Mensal.Mensal]/[(Tempo) Mensal.Mensal].[Mes]	POST
+2016-06-17 09:29:13,789 DEBUG [org.saiku.service.olap.OlapQueryService] move query: A1328B4F-FE71-720C-9EF1-3A5EB005FCD8 dimension (Tempo) Mensal to axis ROWS  position4
+2016-06-17 09:29:15,380 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/resultflattened	GET
+2016-06-17 09:29:15,380 INFO  [org.saiku.service.olap.OlapQueryService] runId:43	Type:QM:
+SELECT
+NON EMPTY {[Measures].[Faturado Liquido Corrigido U$]} ON COLUMNS,
+NON EMPTY CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Tempo) Mensal.Mensal].[Mes].Members)))) ON ROWS
+FROM [Sulnorte]
+WHERE Hierarchize(Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[NIDERA S.P.A.]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[NIDERA SPA C/O P.R. INTERNATIONAL SAM]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING B.V. - Wilhelminakade 197 3072 AP Rotterdam \nThe Netherlands - P.O. Box 676 3000 AR Rotterdam]}), CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING PTE.]})))))
+2016-06-17 09:29:21,620 INFO  [org.saiku.service.olap.OlapQueryService] runId:43	Size: 6/40	Execute:	6116ms	Format:	124ms	 Total: 6240ms
+2016-06-17 09:30:48,185 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/export/xls/	GET
+2016-06-17 09:30:48,185 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/export/xls/flattened	GET
+2016-06-17 09:35:22,045 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/axis/ROWS/dimension/(Tabela) Faixa DWT/hierarchy/[(Tabela) Faixa DWT.default]/[(Tabela) Faixa DWT.default].[Faixa DWT Inicial]	DELETE
+2016-06-17 09:35:22,045 DEBUG [org.saiku.service.olap.OlapQueryService] move query: A1328B4F-FE71-720C-9EF1-3A5EB005FCD8 dimension (Tabela) Faixa DWT to axis UNUSED  position-1
+2016-06-17 09:35:26,912 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/axis/ROWS/dimension/(Embarcacao) Navio/hierarchy/[(Embarcacao) Navio.default]/[(Embarcacao) Navio.default].[Dwt do Navio]	POST
+2016-06-17 09:35:26,912 DEBUG [org.saiku.service.olap.OlapQueryService] move query: A1328B4F-FE71-720C-9EF1-3A5EB005FCD8 dimension (Embarcacao) Navio to axis ROWS  position3
+2016-06-17 09:35:37,286 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/axis/ROWS/dimension/(Embarcacao) Navio	POST
+2016-06-17 09:35:37,286 DEBUG [org.saiku.service.olap.OlapQueryService] move query: A1328B4F-FE71-720C-9EF1-3A5EB005FCD8 dimension (Embarcacao) Navio to axis ROWS  position3
+2016-06-17 09:35:47,551 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/resultflattened	GET
+2016-06-17 09:35:47,582 INFO  [org.saiku.service.olap.OlapQueryService] runId:44	Type:QM:
+SELECT
+NON EMPTY {[Measures].[Faturado Liquido Corrigido U$]} ON COLUMNS,
+NON EMPTY Hierarchize(Union(CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members))), CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Embarcacao) Navio.default].[Dwt do Navio].Members))))) ON ROWS
+FROM [Sulnorte]
+WHERE Hierarchize(Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[NIDERA S.P.A.]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[NIDERA SPA C/O P.R. INTERNATIONAL SAM]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING B.V. - Wilhelminakade 197 3072 AP Rotterdam \nThe Netherlands - P.O. Box 676 3000 AR Rotterdam]}), CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING PTE.]})))))
+2016-06-17 09:36:03,120 INFO  [org.saiku.service.olap.OlapQueryService] runId:44	Size: 6/40	Execute:	15554ms	Format:	15ms	 Total: 15569ms
+2016-06-17 09:37:09,545 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/export/xls/	GET
+2016-06-17 09:37:09,545 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/A1328B4F-FE71-720C-9EF1-3A5EB005FCD8/export/xls/flattened	GET
+2016-06-17 11:44:26,496 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A	POST	 xml:false
+2016-06-17 11:44:31,426 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/properties	POST
+2016-06-17 11:44:35,342 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/COLUMNS/dimension/(Empresa) Cliente/hierarchy/[(Empresa) Cliente.default]/[(Empresa) Cliente.default].[Nome do Cliente]	POST
+2016-06-17 11:44:35,342 DEBUG [org.saiku.service.olap.OlapQueryService] move query: E52CE9E4-D730-AE4E-8614-4E33E45C338A dimension (Empresa) Cliente to axis COLUMNS  position0
+2016-06-17 11:44:41,192 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/ROWS/dimension/(Local) Filial/hierarchy/[(Local) Filial.default]/[(Local) Filial.default].[Filial]	POST
+2016-06-17 11:44:41,192 DEBUG [org.saiku.service.olap.OlapQueryService] move query: E52CE9E4-D730-AE4E-8614-4E33E45C338A dimension (Local) Filial to axis ROWS  position0
+2016-06-17 11:44:45,076 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/ROWS/dimension/(Operacao) Nota Fiscal/hierarchy/[(Operacao) Nota Fiscal.default]/[(Operacao) Nota Fiscal.default].[Nota Fiscal]	POST
+2016-06-17 11:44:45,076 DEBUG [org.saiku.service.olap.OlapQueryService] move query: E52CE9E4-D730-AE4E-8614-4E33E45C338A dimension (Operacao) Nota Fiscal to axis ROWS  position1
+2016-06-17 11:44:48,352 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/ROWS/dimension/(Tempo) Anual/hierarchy/[(Tempo) Anual.default]/[(Tempo) Anual.default].[Ano]	POST
+2016-06-17 11:44:48,352 DEBUG [org.saiku.service.olap.OlapQueryService] move query: E52CE9E4-D730-AE4E-8614-4E33E45C338A dimension (Tempo) Anual to axis ROWS  position2
+2016-06-17 11:44:53,219 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/COLUMNS/dimension/Measures/member/[Measures].[Faturado Liquido Corrigido U$]	POST
+2016-06-17 11:44:53,219 DEBUG [org.saiku.service.olap.OlapQueryService] move query: E52CE9E4-D730-AE4E-8614-4E33E45C338A dimension Measures to axis COLUMNS  position1
+2016-06-17 11:44:54,670 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Empresa) Cliente	POST
+2016-06-17 11:44:54,670 DEBUG [org.saiku.service.olap.OlapQueryService] move query: E52CE9E4-D730-AE4E-8614-4E33E45C338A dimension (Empresa) Cliente to axis FILTER  position0
+2016-06-17 11:44:55,076 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/result/metadata/dimensions/(Empresa) Cliente/hierarchies/[(Empresa) Cliente.default]/levels/[(Empresa) Cliente.default].[Nome do Cliente]	GET
+2016-06-17 11:44:55,325 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Empresa) Cliente	GET
+2016-06-17 11:45:04,748 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Empresa) Cliente	PUT	
+2016-06-17 11:45:04,779 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Empresa) Cliente	GET
+2016-06-17 11:45:06,417 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Tempo) Anual	POST
+2016-06-17 11:45:06,417 DEBUG [org.saiku.service.olap.OlapQueryService] move query: E52CE9E4-D730-AE4E-8614-4E33E45C338A dimension (Tempo) Anual to axis FILTER  position1
+2016-06-17 11:45:07,228 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/result/metadata/dimensions/(Tempo) Anual/hierarchies/[(Tempo) Anual.default]/levels/[(Tempo) Anual.default].[Ano]	GET
+2016-06-17 11:45:07,259 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Tempo) Anual	GET
+2016-06-17 11:45:09,709 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Tempo) Anual	PUT	
+2016-06-17 11:45:09,709 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Tempo) Anual	GET
+2016-06-17 11:45:11,752 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/resultflattened	GET
+2016-06-17 11:45:11,752 INFO  [org.saiku.service.olap.OlapQueryService] runId:45	Type:QM:
+SELECT
+NON EMPTY {[Measures].[Faturado Liquido Corrigido U$]} ON COLUMNS,
+NON EMPTY CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members) ON ROWS
+FROM [Sulnorte]
+WHERE CrossJoin({[(Empresa) Cliente.default].[Cosco Container Lines Co. Ltd]}, {[(Tempo) Anual.default].[2016]})
+2016-06-17 11:45:13,687 INFO  [org.saiku.service.olap.OlapQueryService] runId:45	Size: 3/12	Execute:	1935ms	Format:	0ms	 Total: 1935ms
+2016-06-17 11:45:37,446 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/ROWS/dimension/(Tempo) Mensal/hierarchy/[(Tempo) Mensal.Mensal]/[(Tempo) Mensal.Mensal].[Mes]	POST
+2016-06-17 11:45:37,446 DEBUG [org.saiku.service.olap.OlapQueryService] move query: E52CE9E4-D730-AE4E-8614-4E33E45C338A dimension (Tempo) Mensal to axis ROWS  position2
+2016-06-17 11:45:39,520 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Tempo) Mensal	POST
+2016-06-17 11:45:39,520 DEBUG [org.saiku.service.olap.OlapQueryService] move query: E52CE9E4-D730-AE4E-8614-4E33E45C338A dimension (Tempo) Mensal to axis FILTER  position2
+2016-06-17 11:45:40,004 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/result/metadata/dimensions/(Tempo) Mensal/hierarchies/[(Tempo) Mensal.Mensal]/levels/[(Tempo) Mensal.Mensal].[Mes]	GET
+2016-06-17 11:45:40,082 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Tempo) Mensal	GET
+2016-06-17 11:45:45,402 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Tempo) Mensal	PUT	
+2016-06-17 11:45:45,417 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/axis/FILTER/dimension/(Tempo) Mensal	GET
+2016-06-17 11:45:46,852 DEBUG [org.saiku.web.rest.resources.QueryResource] TRACK		/query/E52CE9E4-D730-AE4E-8614-4E33E45C338A/resultflattened	GET
+2016-06-17 11:45:46,852 INFO  [org.saiku.service.olap.OlapQueryService] runId:46	Type:QM:
+SELECT
+NON EMPTY {[Measures].[Faturado Liquido Corrigido U$]} ON COLUMNS,
+NON EMPTY CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members) ON ROWS
+FROM [Sulnorte]
+WHERE Hierarchize(Union(CrossJoin({[(Empresa) Cliente.default].[Cosco Container Lines Co. Ltd]}, CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Março]})), Union(CrossJoin({[(Empresa) Cliente.default].[Cosco Container Lines Co. Ltd]}, CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Abril]})), Union(CrossJoin({[(Empresa) Cliente.default].[Cosco Container Lines Co. Ltd]}, CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Maio]})), CrossJoin({[(Empresa) Cliente.default].[Cosco Container Lines Co. Ltd]}, CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Junho]}))))))
+2016-06-17 11:45:47,055 INFO  [org.saiku.service.olap.OlapQueryService] runId:46	Size: 3/12	Execute:	203ms	Format:	0ms	 Total: 203ms
+2016-06-17 15:35:13,506 DEBUG [org.saiku.web.service.SessionService] Logging in with [org.springframework.security.core.userdetails.User@13caf: Username: RGD; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_FILIAL,ROLE_RGD,ROLE_USER]

@@ -101,6 +101,37 @@ TableController = function($scope,$http,$sce,$compile)
 		-12*1e3,
 		-13*1e3,
 		-10*1e3];
+   
+   $scope.orcamentoProvDocagem = [
+   	-29*1e3,
+	-29*1e3,
+	-30*1e3,
+	-30*1e3,
+	-30*1e3,
+	-30*1e3,
+	-30*1e3,
+	-30*1e3,
+	-30*1e3,
+	-30*1e3,
+	-30*1e3,
+	-30*1e3
+
+   ];
+   $scope.orcamentoSegurosPEI = [
+	-21*1e3,
+	-24*1e3,
+	-31*1e3,
+	-21*1e3,
+	-32*1e3,
+	-21*1e3,
+	-32*1e3,
+	-21*1e3,
+	-11*1e3,
+	-23*1e3,
+	-34*1e3,
+	-23*1e3
+   ];
+
    $scope.currentMousePos = { x: -1, y: -1 };
    
 	jQuery(function($) {
@@ -437,20 +468,20 @@ TableController = function($scope,$http,$sce,$compile)
 							row.vlrOrcado = TOTAL_SDRTMD - (x - x*0.0925);
 						}
 						//orcamentoTemadreCombust
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "CUSTO DE COMBUSTÃVEL")) 
+						if(row.filial == "TMD" && (row.nomeGrupoMaster == "CUSTO DE COMBUSTÍVEL")) 
 						{
 							row.vlrOrcado = SumBetween($scope.orcamentoTemadreCombust, $scope.mesAtual-1,$scope.mesFinal-1 );
 						}
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "CUSTO DE COMBUSTÃVEL")) 
+						if(row.filial == "SDR" && (row.nomeGrupoMaster == "CUSTO DE COMBUSTÍVEL")) 
 						{
 							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoTemadreCombust, $scope.mesAtual-1,$scope.mesFinal-1 );
 						}
 						//orcamentoDespTec
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "DESP TÃ‰CN E MANUTENÃ‡ÃƒO")) 
+						if(row.filial == "TMD" && (row.nomeGrupoMaster == "DESP TÉCN E MANUTENÇÃO")) 
 						{
 							row.vlrOrcado = SumBetween($scope.orcamentoDespTec, $scope.mesAtual-1,$scope.mesFinal-1 );
 						}
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "DESP TÃ‰CN E MANUTENÃ‡ÃƒO")) 
+						if(row.filial == "SDR" && (row.nomeGrupoMaster == "DESP TÉCN E MANUTENÇÃO")) 
 						{
 							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoDespTec, $scope.mesAtual-1,$scope.mesFinal-1  );
 						}
@@ -463,12 +494,57 @@ TableController = function($scope,$http,$sce,$compile)
 						{
 							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoDespOperacionais, $scope.mesAtual-1,$scope.mesFinal-1  );
 						}
-					})
+						//orcamentoProvDocagem
+						if(row.filial == "TMD" && (row.nomeGrupoMaster == "PROVISÕES PARA DOCAGEM")) 
+						{
+							row.vlrOrcado = SumBetween($scope.orcamentoProvDocagem, $scope.mesAtual-1,$scope.mesFinal-1 );
+						}
+						if(row.filial == "SDR" && (row.nomeGrupoMaster == "PROVISÕES PARA DOCAGEM")) 
+						{
+							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoProvDocagem, $scope.mesAtual-1,$scope.mesFinal-1  );
+						}
+						//orcamentoSegurosPEI
+						if(row.filial == "TMD" && (row.nomeGrupoMaster == "SEGUROS E P&I")) 
+						{
+							row.vlrOrcado = SumBetween($scope.orcamentoSegurosPEI, $scope.mesAtual-1,$scope.mesFinal-1 );
+						}
+						if(row.filial == "SDR" && (row.nomeGrupoMaster == "SEGUROS E P&I")) 
+						{
+							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoSegurosPEI, $scope.mesAtual-1,$scope.mesFinal-1  );
+						}
+						if(row.filial == "TMD" && (row.nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS")) 
+						{
+							row.vlrRealizado = 0;
+						}
+						if(row.filial == "SDR" && (row.nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS")) 
+						{
+							row.vlrRealizado = row.vlrRealizado + _.first(_.filter(tableController.rows,function(r){ return r.filial == "TMD" & r.nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS"})).vlrRealizado;
+						}
+
+					});
+
+					if(options && options.isTMD) {
+						setTimeout(function() {
+							$scope.principalFilial = "TMD"
+							$scope.$apply(function() {
+								
+								$scope.rows = _.filter($scope.rows,function(r){ return r.filial == "TMD" });
+
+							})
+						},1000)
+						setTimeout(function() {
+						$('tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="RECEITA LÍQUIDA"],tr[grupomaster="PESSOAL OPERACIONAL"],tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="CUSTOS DE AFRETAMENTO"],tr[grupomaster="CUSTO DE COMBUSTÍVEL"],tr[grupomaster="DESP TÉC E MANUTENÇÃO"],tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="SEGUROS E P&I"],tr[grupomaster="PROVISÕES PARA DOCAGEM"],tr[grupomaster="OUTRAS DESPESAS OPERACIONAIS"],tr[grupomaster="DESPESAS ADMINISTRATIVAS"],tr[grupomaster="DESP. COMERCIAIS E COMISSÕES"]')
+							.show().css('opacity',1)
+						$('tr[grupomasternegrito]').hide().css('opacity',0)
+						$('tr#ebt-gerencial,tr#desp-corporativa').hide();
+						},1000)
+
+					}
 		 		}
 		 	},
 			{
 				method:'consumo_de_frota',
-				title:'Consumo de Frota (ConferÃªncia)',
+				title:'Consumo de Frota (Conferencia)',
 				bus:"http://www.topweb.sulnorte.com.br/top/xml/action/PRDAction.php?metodo=snapp_consumofrota&_="+new Date().getTime(),
 				onComplete:function(rel,options){
 			/*
@@ -938,11 +1014,11 @@ TableController = function($scope,$http,$sce,$compile)
 	};
 	function refreshRel(rel,options)
 	{
-			
+		
 		if(options && (rel.method != 'orcadorealizado_detalhado_intern' 
 			&& rel.method != 'centro_de_custo_mtz' && rel.method != 'evolucao_grafico'))
 			$scope.idGrupo = options.idGrupo = null;
-		 
+		
 		var locMesAtual = (options && parseInt(options.__mes)) || $scope.mesAtual;
 		var locMesFinal = $scope.mesFinal;
 		var locIsEvolucao = options && options.isEvolucao || $scope.isEvolucao;
@@ -952,7 +1028,10 @@ TableController = function($scope,$http,$sce,$compile)
 		{
 			$scope.isConsolidado = options.isConsolidado;
 		}
-		
+		if(options && options.filial == "TMD" && rel.method == "orcadorealizado") {
+			options.filial = "Total Empresa";
+			options.isTMD = true;
+		}
 		
 		if(options && angular.isDefined(options.isConsolidado))
 			locIsConsolidado = options.isConsolidado;
@@ -1475,18 +1554,18 @@ TableController = function($scope,$http,$sce,$compile)
 	$scope.labelGrupoMaster = function(nomeGrupoMaster) {
 		if(nomeGrupoMaster == "CUSTOS DE AFRETAMENTO")
 			return "CUSTOS DE AFRET."
-		if(nomeGrupoMaster == "DESP TÃ‰CN E MANUTENÃ‡ÃƒO")
-			return "DESP TÃ‰CN/MANUNT."
+		if(nomeGrupoMaster == "DESP TÉCN E MANUTENÃ‡ÃƒO")
+			return "DESP TÉCN/MANUNT."
 		if(nomeGrupoMaster == "PROVISÃ•ES PARA DOCAGEM")
 			return "PROV. PARA DOCAGEM"
 		if(nomeGrupoMaster == "OUTRAS DESPESAS OPERACIONAIS")
 			return "DESP. OPERACIONAIS"
 		if(nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS")
 			return "DESP. ADMINISTRATIVAS";
-		if(nomeGrupoMaster == "DESP. COMERCIAIS E COMISSÃ•ES")
-			return "COMERCIAIS/COMISSÃ•ES"
-		if(nomeGrupoMaster == "DESPESAS EXTRAORDINÃRIAS")
-			return "DESP. EXTRAORDINÃRIAS";
+		if(nomeGrupoMaster == "DESP. COMERCIAIS E COMISSÕES")
+			return "COMERCIAIS/COMISSÕES"
+		if(nomeGrupoMaster == "DESPESAS EXTRAORDINÁRIAS")
+			return "DESP. EXTRAORDINÁRIAS";
 		return nomeGrupoMaster;
 	}
 	$scope.miniCarga = function() {

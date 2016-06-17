@@ -6,7 +6,7 @@ var config = {
 	
 	"Bloquear a partir do mes":7, //significa que todo mes >= n estara bloqueado, 
 								  //ou seja, se você escreve n=3, entao de marco para frente estara BLOQUEADO
-	//"Forcar abrir dia":"01-02-2016" //**(marcar como null ou "dd-mm-yyyy")
+	"Forcar abrir dia":"01-06-2016" //**(marcar como null ou "dd-mm-yyyy")
 								   //forca abrir uma determinada data para todas as filiais,  
 }
 

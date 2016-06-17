@@ -30,6 +30,7 @@
 			   
 			   ng-init="p = ($index > 0 && r.nomeGrupoMaster != $parent.rows[$index-1].nomeGrupoMaster);">
 			<tr 
+			   grupomasternegrito
 			   id="{{ r.idGrupoMaster }}"
 			   ng-show="!inBlackList(r) && p || $index == 0"
 			            ng-click="!inShowButtonBlackList(r) && (principalFilial == 'Total Empresa') && openGrupoMaster(r.nomeGrupoMaster)" 
