@@ -1,211 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Query name="E0039D5E-8CF6-9355-8B70-898AC621D635" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+<Query name="726F9AA4-9414-BB1B-A3ED-27144CADC50E" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
   <QueryModel>
     <Axes>
       <Axis location="ROWS" nonEmpty="true">
         <Dimensions>
-          <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
             <Inclusions>
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ABUSADO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ANDROMEDA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ANTARES]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[APOLO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[AQUARIUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ARCIMBALDO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ARIES]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ARROJADO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ARTHUR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ASSANHADO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ATALAIA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ATIRADO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ATLAS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ATREVIDO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ATRIA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[AURIGA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[BAYOVAR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[BELLATRIX]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[BERNARD]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[BRIGANTIA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[BRILHANTE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[BRUCUTU]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[C DIAMANTE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CABURAI]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CAILLEAN]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CARAJAS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CARINA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CARLA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CASTOR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CEPHEUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CETUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CICLONE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CNL AMETISTA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CNL RUBI]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CRATER]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CRISTAL]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[DECIO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[DELPHINIUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[DIAMANTE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[DRACO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[EDGAR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[EKTOR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ENGENHEIRO MASCARENHAS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ERIDANUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[EXCALIBUR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[F.ANDREIS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[F.ANDREIS I]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[FORNAX]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[FURACAO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[GALAHAD]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[GAROTINHO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[GODOFREDO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[GUAIBA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[HADAR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[HAMAL]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[HARIS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[HELIO FERRAZ]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[HERCULES]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[HUGO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[HUMBERTO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[HYDRUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[IMPERATRIZ I]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ITABIRA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ITAQUI]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[JACOB BORGES]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[JAIME]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[JOAO TRICHES ]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[JULIAO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[JUPITER]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[LANCELOT]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[LEONIDAS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[LOT]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[LUGOS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[LYNX]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[LYRA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MARTE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MATRERO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MBR I]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MBR II]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MBR III]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MERCURIO IV]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MERCURIUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MERLIM]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MOATIZE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MOSSORO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[MUTUCA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[NEBLINA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[NEPTUNO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[NETUNO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[NEVOEIRO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[NYCOLE M]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[OCTANS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ONIX]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[OPALA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ORION]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PALMARES]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PEGASUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PELAGIUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PEROLA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PERSEUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PERSIVAL]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PHILLIPE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PICTOR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PIRAJA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PITUBA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PLUTAO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[POLLUX II]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PROCYON]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PRUDENTE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[QUARTZO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[REGULUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[RELAMPAGO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[RENAULD]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[S. JOÃƒO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SAAM XALAPA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SAFIRA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SANTOS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SAVEIROS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SCULPTOR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SIRIUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT CAIAPO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT CANINDE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT CARAJA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT CARIPUNA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT DANE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT MANZANILLO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT PAITER]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT PANARA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT PARECI]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT PATAXO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT TABOGUILLA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT TERENA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT TORÃ]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT TUXÃ]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SMIT VENTA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN ABAIS I]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN ABROLHOS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN ARAGIPE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN ARARUAMA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN CAETE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN CHUI]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN DAVID]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN GUARAPARI]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN JATOBA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN JAUA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN MARAU]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN OIAPOQUE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN PIRAMBU]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SOCO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[S.PAULO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SST CHILE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SST HOLANDA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SST PAITER]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SST PARINTINS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SST POTIGUAR]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[STARNAV ORION]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[STARNAV SIRIUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[S.THIAGO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SUPERPESA XV]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SUPERPESA XVI]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TAMOIO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TANARUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TAPAJOS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TAPEBA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TARIANA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TAURUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TELESCOPIUM]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TEMPESTADE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TEMPORAL]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TICUNA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TIMBOPEBA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TIRRENO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TITAN]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TORA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TORMENTA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TORNADO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TROVÃƒO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TUFAO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TUPI]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TUPINAMBA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[TUXA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[URANUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[URSA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[URUPEMA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[VALENTE]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[VEGA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[VELA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[VENDAVAL]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[VENTANIA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[VICTORIO]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[VIGO MAXIMUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[VITORIA LX]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[VOLANS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[WEZEN]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[WS ANTARES]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[WS BELLATRIX]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[WS PEGASUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[WS PERSEUS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[WS PHOENIX ]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[ZANGADO]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2017]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Hora MCP]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Valor Litros Hora]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Consumo MCA]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Consumo MCP]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Hora MCA]" operator="MEMBER" />
             </Inclusions>
             <Exclusions />
           </Dimension>
@@ -213,15 +25,8 @@
       </Axis>
       <Axis location="COLUMNS" nonEmpty="true">
         <Dimensions>
-          <Dimension name="Measures">
-            <Inclusions>
-              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Valor Litros Hora]" operator="MEMBER" />
-            </Inclusions>
-            <Exclusions />
-          </Dimension>
           <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
             <Inclusions>
-              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Outubro]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Janeiro]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Fevereiro]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Março]" operator="MEMBER" />
@@ -231,7 +36,9 @@
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Julho]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Agosto]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Setembro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Outubro]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Novembro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Dezembro]" operator="MEMBER" />
             </Inclusions>
             <Exclusions />
           </Dimension>
@@ -239,15 +46,9 @@
       </Axis>
       <Axis location="FILTER" nonEmpty="false">
         <Dimensions>
-          <Dimension name="(Local) Filial">
+          <Dimension name="(Rebocador) Rebocador">
             <Inclusions>
-              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[STR]" operator="MEMBER" />
-            </Inclusions>
-            <Exclusions />
-          </Dimension>
-          <Dimension name="(Tempo) Anual">
-            <Inclusions>
-              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN PIRAMBU]" operator="MEMBER" />
             </Inclusions>
             <Exclusions />
           </Dimension>
@@ -256,10 +57,10 @@
     </Axes>
   </QueryModel>
   <MDX>SELECT&#xD;
-NON EMPTY Hierarchize(Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Outubro]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Janeiro]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Fevereiro]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Março]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Abril]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Maio]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Junho]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Julho]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Agosto]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Setembro]}), CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Novembro]})))))))))))) ON COLUMNS,&#xD;
-NON EMPTY {Hierarchize({{[(Rebocador) Rebocador.default].[ABUSADO], [(Rebocador) Rebocador.default].[ANDROMEDA], [(Rebocador) Rebocador.default].[ANTARES], [(Rebocador) Rebocador.default].[APOLO], [(Rebocador) Rebocador.default].[AQUARIUS], [(Rebocador) Rebocador.default].[ARCIMBALDO], [(Rebocador) Rebocador.default].[ARIES], [(Rebocador) Rebocador.default].[ARROJADO], [(Rebocador) Rebocador.default].[ARTHUR], [(Rebocador) Rebocador.default].[ASSANHADO], [(Rebocador) Rebocador.default].[ATALAIA], [(Rebocador) Rebocador.default].[ATIRADO], [(Rebocador) Rebocador.default].[ATLAS], [(Rebocador) Rebocador.default].[ATREVIDO], [(Rebocador) Rebocador.default].[ATRIA], [(Rebocador) Rebocador.default].[AURIGA], [(Rebocador) Rebocador.default].[BAYOVAR], [(Rebocador) Rebocador.default].[BELLATRIX], [(Rebocador) Rebocador.default].[BERNARD], [(Rebocador) Rebocador.default].[BRIGANTIA], [(Rebocador) Rebocador.default].[BRILHANTE], [(Rebocador) Rebocador.default].[BRUCUTU], [(Rebocador) Rebocador.default].[C DIAMANTE], [(Rebocador) Rebocador.default].[CABURAI], [(Rebocador) Rebocador.default].[CAILLEAN], [(Rebocador) Rebocador.default].[CARAJAS], [(Rebocador) Rebocador.default].[CARINA], [(Rebocador) Rebocador.default].[CARLA], [(Rebocador) Rebocador.default].[CASTOR], [(Rebocador) Rebocador.default].[CEPHEUS], [(Rebocador) Rebocador.default].[CETUS], [(Rebocador) Rebocador.default].[CICLONE], [(Rebocador) Rebocador.default].[CNL AMETISTA], [(Rebocador) Rebocador.default].[CNL RUBI], [(Rebocador) Rebocador.default].[CRATER], [(Rebocador) Rebocador.default].[CRISTAL], [(Rebocador) Rebocador.default].[DECIO], [(Rebocador) Rebocador.default].[DELPHINIUS], [(Rebocador) Rebocador.default].[DIAMANTE], [(Rebocador) Rebocador.default].[DRACO], [(Rebocador) Rebocador.default].[EDGAR], [(Rebocador) Rebocador.default].[EKTOR], [(Rebocador) Rebocador.default].[ENGENHEIRO MASCARENHAS], [(Rebocador) Rebocador.default].[ERIDANUS], [(Rebocador) Rebocador.default].[EXCALIBUR], [(Rebocador) Rebocador.default].[F.ANDREIS], [(Rebocador) Rebocador.default].[F.ANDREIS I], [(Rebocador) Rebocador.default].[FORNAX], [(Rebocador) Rebocador.default].[FURACAO], [(Rebocador) Rebocador.default].[GALAHAD], [(Rebocador) Rebocador.default].[GAROTINHO], [(Rebocador) Rebocador.default].[GODOFREDO], [(Rebocador) Rebocador.default].[GUAIBA], [(Rebocador) Rebocador.default].[HADAR], [(Rebocador) Rebocador.default].[HAMAL], [(Rebocador) Rebocador.default].[HARIS], [(Rebocador) Rebocador.default].[HELIO FERRAZ], [(Rebocador) Rebocador.default].[HERCULES], [(Rebocador) Rebocador.default].[HUGO], [(Rebocador) Rebocador.default].[HUMBERTO], [(Rebocador) Rebocador.default].[HYDRUS], [(Rebocador) Rebocador.default].[IMPERATRIZ I], [(Rebocador) Rebocador.default].[ITABIRA], [(Rebocador) Rebocador.default].[ITAQUI], [(Rebocador) Rebocador.default].[JACOB BORGES], [(Rebocador) Rebocador.default].[JAIME], [(Rebocador) Rebocador.default].[JOAO TRICHES ], [(Rebocador) Rebocador.default].[JULIAO], [(Rebocador) Rebocador.default].[JUPITER], [(Rebocador) Rebocador.default].[LANCELOT], [(Rebocador) Rebocador.default].[LEONIDAS], [(Rebocador) Rebocador.default].[LOT], [(Rebocador) Rebocador.default].[LUGOS], [(Rebocador) Rebocador.default].[LYNX], [(Rebocador) Rebocador.default].[LYRA], [(Rebocador) Rebocador.default].[MARTE], [(Rebocador) Rebocador.default].[MATRERO], [(Rebocador) Rebocador.default].[MBR I], [(Rebocador) Rebocador.default].[MBR II], [(Rebocador) Rebocador.default].[MBR III], [(Rebocador) Rebocador.default].[MERCURIO IV], [(Rebocador) Rebocador.default].[MERCURIUS], [(Rebocador) Rebocador.default].[MERLIM], [(Rebocador) Rebocador.default].[MOATIZE], [(Rebocador) Rebocador.default].[MOSSORO], [(Rebocador) Rebocador.default].[MUTUCA], [(Rebocador) Rebocador.default].[NEBLINA], [(Rebocador) Rebocador.default].[NEPTUNO], [(Rebocador) Rebocador.default].[NETUNO], [(Rebocador) Rebocador.default].[NEVOEIRO], [(Rebocador) Rebocador.default].[NYCOLE M], [(Rebocador) Rebocador.default].[OCTANS], [(Rebocador) Rebocador.default].[ONIX], [(Rebocador) Rebocador.default].[OPALA], [(Rebocador) Rebocador.default].[ORION], [(Rebocador) Rebocador.default].[PALMARES], [(Rebocador) Rebocador.default].[PEGASUS], [(Rebocador) Rebocador.default].[PELAGIUS], [(Rebocador) Rebocador.default].[PEROLA], [(Rebocador) Rebocador.default].[PERSEUS], [(Rebocador) Rebocador.default].[PERSIVAL], [(Rebocador) Rebocador.default].[PHILLIPE], [(Rebocador) Rebocador.default].[PICTOR], [(Rebocador) Rebocador.default].[PIRAJA], [(Rebocador) Rebocador.default].[PITUBA], [(Rebocador) Rebocador.default].[PLUTAO], [(Rebocador) Rebocador.default].[POLLUX II], [(Rebocador) Rebocador.default].[PROCYON], [(Rebocador) Rebocador.default].[PRUDENTE], [(Rebocador) Rebocador.default].[QUARTZO], [(Rebocador) Rebocador.default].[REGULUS], [(Rebocador) Rebocador.default].[RELAMPAGO], [(Rebocador) Rebocador.default].[RENAULD], [(Rebocador) Rebocador.default].[S. JOÃƒO], [(Rebocador) Rebocador.default].[SAAM XALAPA], [(Rebocador) Rebocador.default].[SAFIRA], [(Rebocador) Rebocador.default].[SANTOS], [(Rebocador) Rebocador.default].[SAVEIROS], [(Rebocador) Rebocador.default].[SCULPTOR], [(Rebocador) Rebocador.default].[SIRIUS], [(Rebocador) Rebocador.default].[SMIT CAIAPO], [(Rebocador) Rebocador.default].[SMIT CANINDE], [(Rebocador) Rebocador.default].[SMIT CARAJA], [(Rebocador) Rebocador.default].[SMIT CARIPUNA], [(Rebocador) Rebocador.default].[SMIT DANE], [(Rebocador) Rebocador.default].[SMIT MANZANILLO], [(Rebocador) Rebocador.default].[SMIT PAITER], [(Rebocador) Rebocador.default].[SMIT PANARA], [(Rebocador) Rebocador.default].[SMIT PARECI], [(Rebocador) Rebocador.default].[SMIT PATAXO], [(Rebocador) Rebocador.default].[SMIT TABOGUILLA], [(Rebocador) Rebocador.default].[SMIT TERENA], [(Rebocador) Rebocador.default].[SMIT TORÃ], [(Rebocador) Rebocador.default].[SMIT TUXÃ], [(Rebocador) Rebocador.default].[SMIT VENTA], [(Rebocador) Rebocador.default].[SN ABAIS I], [(Rebocador) Rebocador.default].[SN ABROLHOS], [(Rebocador) Rebocador.default].[SN ARAGIPE], [(Rebocador) Rebocador.default].[SN ARARUAMA], [(Rebocador) Rebocador.default].[SN CAETE], [(Rebocador) Rebocador.default].[SN CHUI], [(Rebocador) Rebocador.default].[SN DAVID], [(Rebocador) Rebocador.default].[SN GUARAPARI], [(Rebocador) Rebocador.default].[SN JATOBA], [(Rebocador) Rebocador.default].[SN JAUA], [(Rebocador) Rebocador.default].[SN MARAU], [(Rebocador) Rebocador.default].[SN OIAPOQUE], [(Rebocador) Rebocador.default].[SN PIRAMBU], [(Rebocador) Rebocador.default].[SOCO], [(Rebocador) Rebocador.default].[S.PAULO], [(Rebocador) Rebocador.default].[SST CHILE], [(Rebocador) Rebocador.default].[SST HOLANDA], [(Rebocador) Rebocador.default].[SST PAITER], [(Rebocador) Rebocador.default].[SST PARINTINS], [(Rebocador) Rebocador.default].[SST POTIGUAR], [(Rebocador) Rebocador.default].[STARNAV ORION], [(Rebocador) Rebocador.default].[STARNAV SIRIUS], [(Rebocador) Rebocador.default].[S.THIAGO], [(Rebocador) Rebocador.default].[SUPERPESA XV], [(Rebocador) Rebocador.default].[SUPERPESA XVI], [(Rebocador) Rebocador.default].[TAMOIO], [(Rebocador) Rebocador.default].[TANARUS], [(Rebocador) Rebocador.default].[TAPAJOS], [(Rebocador) Rebocador.default].[TAPEBA], [(Rebocador) Rebocador.default].[TARIANA], [(Rebocador) Rebocador.default].[TAURUS], [(Rebocador) Rebocador.default].[TELESCOPIUM], [(Rebocador) Rebocador.default].[TEMPESTADE], [(Rebocador) Rebocador.default].[TEMPORAL], [(Rebocador) Rebocador.default].[TICUNA], [(Rebocador) Rebocador.default].[TIMBOPEBA], [(Rebocador) Rebocador.default].[TIRRENO], [(Rebocador) Rebocador.default].[TITAN], [(Rebocador) Rebocador.default].[TORA], [(Rebocador) Rebocador.default].[TORMENTA], [(Rebocador) Rebocador.default].[TORNADO], [(Rebocador) Rebocador.default].[TROVÃƒO], [(Rebocador) Rebocador.default].[TUFAO], [(Rebocador) Rebocador.default].[TUPI], [(Rebocador) Rebocador.default].[TUPINAMBA], [(Rebocador) Rebocador.default].[TUXA], [(Rebocador) Rebocador.default].[URANUS], [(Rebocador) Rebocador.default].[URSA], [(Rebocador) Rebocador.default].[URUPEMA], [(Rebocador) Rebocador.default].[VALENTE], [(Rebocador) Rebocador.default].[VEGA], [(Rebocador) Rebocador.default].[VELA], [(Rebocador) Rebocador.default].[VENDAVAL], [(Rebocador) Rebocador.default].[VENTANIA], [(Rebocador) Rebocador.default].[VICTORIO], [(Rebocador) Rebocador.default].[VIGO MAXIMUS], [(Rebocador) Rebocador.default].[VITORIA LX], [(Rebocador) Rebocador.default].[VOLANS], [(Rebocador) Rebocador.default].[WEZEN], [(Rebocador) Rebocador.default].[WS ANTARES], [(Rebocador) Rebocador.default].[WS BELLATRIX], [(Rebocador) Rebocador.default].[WS PEGASUS], [(Rebocador) Rebocador.default].[WS PERSEUS], [(Rebocador) Rebocador.default].[WS PHOENIX ], [(Rebocador) Rebocador.default].[ZANGADO]}})} ON ROWS&#xD;
+NON EMPTY {Hierarchize({{[(Tempo) Mensal.Mensal].[Janeiro], [(Tempo) Mensal.Mensal].[Fevereiro], [(Tempo) Mensal.Mensal].[Março], [(Tempo) Mensal.Mensal].[Abril], [(Tempo) Mensal.Mensal].[Maio], [(Tempo) Mensal.Mensal].[Junho], [(Tempo) Mensal.Mensal].[Julho], [(Tempo) Mensal.Mensal].[Agosto], [(Tempo) Mensal.Mensal].[Setembro], [(Tempo) Mensal.Mensal].[Outubro], [(Tempo) Mensal.Mensal].[Novembro], [(Tempo) Mensal.Mensal].[Dezembro]}})} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[Measures].[(Combustivel) Hora MCP]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[Measures].[(Combustivel) Valor Litros Hora]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[Measures].[(Combustivel) Consumo MCA]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[Measures].[(Combustivel) Consumo MCP]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[Measures].[(Combustivel) Hora MCA]}), Union(CrossJoin({[(Tempo) Anual.default].[2017]}, {[Measures].[(Combustivel) Hora MCP]}), Union(CrossJoin({[(Tempo) Anual.default].[2017]}, {[Measures].[(Combustivel) Valor Litros Hora]}), Union(CrossJoin({[(Tempo) Anual.default].[2017]}, {[Measures].[(Combustivel) Consumo MCA]}), Union(CrossJoin({[(Tempo) Anual.default].[2017]}, {[Measures].[(Combustivel) Consumo MCP]}), CrossJoin({[(Tempo) Anual.default].[2017]}, {[Measures].[(Combustivel) Hora MCA]}))))))))))) ON ROWS&#xD;
 FROM [Sulnorte]&#xD;
-WHERE CrossJoin({[(Local) Filial.default].[STR]}, {[(Tempo) Anual.default].[2015]})</MDX>
+WHERE {[(Rebocador) Rebocador.default].[SN PIRAMBU]}</MDX>
   <Properties>
     <Property name="saiku.ui.render.mode" value="table" />
     <Property name="org.saiku.query.explain" value="true" />

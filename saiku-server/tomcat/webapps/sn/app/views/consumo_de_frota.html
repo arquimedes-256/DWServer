@@ -52,3 +52,18 @@
 	</style>
 	
 </div>
+<h4>Lançamentos Apoio portuário vazios</h4>
+<div>
+	<table class="table table-striped">
+		<tr>
+			<th>Filial</th>
+			<th>Rebocador</th>
+			<th>Dia</th>
+		</tr>
+		<tr ng-repeat="r in vazioRows">
+			<td>{{ r.filial }}</td>
+			<td>{{ r.reb}}</td>
+			<td>{{ r.dia}}</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="3BEE9EFF-9817-512A-A24F-101365DFF618" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[AET INC LIMITED A/C PORTS DIRECT FZE]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[AET UK LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[AMAGGI SA C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[AMN BULK CARRIERS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[ARKON SHIPPING GMBH &amp; CO KG C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BRYGGEN SHIP. ITL. AS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BTG PACTUAL COMMODITIES S.A - A/C PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BW MARITIME PTE LTD C/O PORTS DIRECT FZE]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CETRAGPA S.N.C. C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CLDM COBELFRET C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[EAGLE SHIPPING INTERNATIONAL (USA) LLC C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[EASTERN BULK CARRIERS C/O PORTS DIRECT &#x9;&#x9;&#x9;&#x9;&#x9;]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[EDF TRADING MARKETS LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[FALCON MARITIME C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BW PACIFIC C/O PORTS DIRECT ]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[FUJIAN GUOHANG OCEAN SHIPPING (HONG KONG) LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[GULF ENERGY MARITIME (GEM) PJSC C/O PORTS DIRECT ]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HAFNIA MANAGEMENT AS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HANSA TANKERS AS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[INTEGRITY BULK APS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HBC HAMBURG BULK CARIES GMBH &amp; CO. KG C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[INTERSEE SCHIFFAHRTS GMBH C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[JUMBO SHIPPING-KAHN S. C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[K Line Pte Ltd  C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[KOCH SHIPPING INC C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[K/S COMBI LIFT C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MAESTRO SHIPPING S.A. C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MOL BULK CARRIERS PTE LTD. C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NCC JLT C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NORDIC TANKERS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NYK BULKSHIP (ASIA) PTE LTD. C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[OCEAN 7 PROJECTS APS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[ORION BULKERS GmgH &amp; Co. KG C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MINA SHIPPING DMCC C/O PORTS DIRECT ]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[Nordana Project Chartering C/O Ports Direct]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[OVERSEAS SHIPHOLDING GROUP, INC. C/O PORTS DIRECT.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[Paccship (UK) Ltd C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PARAKOU TANKERS INC AC PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PENFIELD SHIPPING CO. LLC A/C PORTS DIRECT FZE]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[POLA MARIS NV C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SE SHIPPING LINES PTE. LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SETAF SAGET C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SHIH WEI NAVIGA. CO LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[STENA BULK AB C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PCL SHIPPING PTE  LTD C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PENFIELD SHIPPING CO. LLC A/C PORTS DIRE]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[STENA WECO A/S C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[STRAITS TANKERS PTE LTD AC PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SWISSMARINE ASIA PTE C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[T. K. B. SHIPPINS AS C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TBS SHIPPING SERVICES C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[THE CHINA NAVIGATION CO C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[THORCO SHIPPING A/S C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[T.K.B. SHIPPING A/S C/O PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[T.K.B. SHIPPING A/S PORTS DIRECT FZE]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TORM A/S - LR1 TANKERS AC PORTS DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TORM A/S - MR MANAGEMENT A/C PORTS DIRECT ]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[Nordana Project Chartering C/O Ports Dir]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[RWE SUPLLY &amp; TRADING GMBH C/O PORTS-DIRECT]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[OSLO BULK HOLKDING PTE LTD. A/C PORTS DI]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Local) Filial">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SEP]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal Manobra">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal Manobra" type="member" node="[(Tempo) Mensal Manobra.Mensal].[Janeiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal Manobra" type="member" node="[(Tempo) Mensal Manobra.Mensal].[Fevereiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal Manobra" type="member" node="[(Tempo) Mensal Manobra.Mensal].[Março]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal Manobra" type="member" node="[(Tempo) Mensal Manobra.Mensal].[Abril]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal Manobra" type="member" node="[(Tempo) Mensal Manobra.Mensal].[Maio]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Faturado Liquido Corrigido R$]} ON COLUMNS,&#xD;
+NON EMPTY {Hierarchize({{[(Empresa) Cliente.default].[AET INC LIMITED A/C PORTS DIRECT FZE], [(Empresa) Cliente.default].[AET UK LTD C/O PORTS DIRECT], [(Empresa) Cliente.default].[AMAGGI SA C/O PORTS DIRECT], [(Empresa) Cliente.default].[AMN BULK CARRIERS C/O PORTS DIRECT], [(Empresa) Cliente.default].[ARKON SHIPPING GMBH &amp; CO KG C/O PORTS DIRECT], [(Empresa) Cliente.default].[BRYGGEN SHIP. ITL. AS C/O PORTS DIRECT], [(Empresa) Cliente.default].[BTG PACTUAL COMMODITIES S.A - A/C PORTS DIRECT], [(Empresa) Cliente.default].[BW MARITIME PTE LTD C/O PORTS DIRECT FZE], [(Empresa) Cliente.default].[CETRAGPA S.N.C. C/O PORTS DIRECT], [(Empresa) Cliente.default].[CLDM COBELFRET C/O PORTS DIRECT], [(Empresa) Cliente.default].[EAGLE SHIPPING INTERNATIONAL (USA) LLC C/O PORTS DIRECT], [(Empresa) Cliente.default].[EASTERN BULK CARRIERS C/O PORTS DIRECT 					], [(Empresa) Cliente.default].[EDF TRADING MARKETS LTD C/O PORTS DIRECT], [(Empresa) Cliente.default].[FALCON MARITIME C/O PORTS DIRECT], [(Empresa) Cliente.default].[BW PACIFIC C/O PORTS DIRECT ], [(Empresa) Cliente.default].[FUJIAN GUOHANG OCEAN SHIPPING (HONG KONG) LTD C/O PORTS DIRECT], [(Empresa) Cliente.default].[GULF ENERGY MARITIME (GEM) PJSC C/O PORTS DIRECT ], [(Empresa) Cliente.default].[HAFNIA MANAGEMENT AS C/O PORTS DIRECT], [(Empresa) Cliente.default].[HANSA TANKERS AS C/O PORTS DIRECT], [(Empresa) Cliente.default].[INTEGRITY BULK APS C/O PORTS DIRECT], [(Empresa) Cliente.default].[HBC HAMBURG BULK CARIES GMBH &amp; CO. KG C/O PORTS DIRECT], [(Empresa) Cliente.default].[INTERSEE SCHIFFAHRTS GMBH C/O PORTS DIRECT], [(Empresa) Cliente.default].[JUMBO SHIPPING-KAHN S. C/O PORTS DIRECT], [(Empresa) Cliente.default].[K Line Pte Ltd  C/O PORTS DIRECT], [(Empresa) Cliente.default].[KOCH SHIPPING INC C/O PORTS DIRECT], [(Empresa) Cliente.default].[K/S COMBI LIFT C/O PORTS DIRECT], [(Empresa) Cliente.default].[MAESTRO SHIPPING S.A. C/O PORTS DIRECT], [(Empresa) Cliente.default].[MOL BULK CARRIERS PTE LTD. C/O PORTS DIRECT], [(Empresa) Cliente.default].[NCC JLT C/O PORTS DIRECT], [(Empresa) Cliente.default].[NORDIC TANKERS C/O PORTS DIRECT], [(Empresa) Cliente.default].[NYK BULKSHIP (ASIA) PTE LTD. C/O PORTS DIRECT], [(Empresa) Cliente.default].[OCEAN 7 PROJECTS APS C/O PORTS DIRECT], [(Empresa) Cliente.default].[ORION BULKERS GmgH &amp; Co. KG C/O PORTS DIRECT], [(Empresa) Cliente.default].[MINA SHIPPING DMCC C/O PORTS DIRECT ], [(Empresa) Cliente.default].[Nordana Project Chartering C/O Ports Direct], [(Empresa) Cliente.default].[OVERSEAS SHIPHOLDING GROUP, INC. C/O PORTS DIRECT.], [(Empresa) Cliente.default].[Paccship (UK) Ltd C/O PORTS DIRECT], [(Empresa) Cliente.default].[PARAKOU TANKERS INC AC PORTS DIRECT], [(Empresa) Cliente.default].[PENFIELD SHIPPING CO. LLC A/C PORTS DIRECT FZE], [(Empresa) Cliente.default].[POLA MARIS NV C/O PORTS DIRECT], [(Empresa) Cliente.default].[SE SHIPPING LINES PTE. LTD C/O PORTS DIRECT], [(Empresa) Cliente.default].[SETAF SAGET C/O PORTS DIRECT], [(Empresa) Cliente.default].[SHIH WEI NAVIGA. CO LTD C/O PORTS DIRECT], [(Empresa) Cliente.default].[STENA BULK AB C/O PORTS DIRECT], [(Empresa) Cliente.default].[PCL SHIPPING PTE  LTD C/O PORTS DIRECT], [(Empresa) Cliente.default].[PENFIELD SHIPPING CO. LLC A/C PORTS DIRE], [(Empresa) Cliente.default].[STENA WECO A/S C/O PORTS DIRECT], [(Empresa) Cliente.default].[STRAITS TANKERS PTE LTD AC PORTS DIRECT], [(Empresa) Cliente.default].[SWISSMARINE ASIA PTE C/O PORTS DIRECT], [(Empresa) Cliente.default].[T. K. B. SHIPPINS AS C/O PORTS DIRECT], [(Empresa) Cliente.default].[TBS SHIPPING SERVICES C/O PORTS DIRECT], [(Empresa) Cliente.default].[THE CHINA NAVIGATION CO C/O PORTS DIRECT], [(Empresa) Cliente.default].[THORCO SHIPPING A/S C/O PORTS DIRECT], [(Empresa) Cliente.default].[T.K.B. SHIPPING A/S C/O PORTS DIRECT], [(Empresa) Cliente.default].[T.K.B. SHIPPING A/S PORTS DIRECT FZE], [(Empresa) Cliente.default].[TORM A/S - LR1 TANKERS AC PORTS DIRECT], [(Empresa) Cliente.default].[TORM A/S - MR MANAGEMENT A/C PORTS DIRECT ], [(Empresa) Cliente.default].[Nordana Project Chartering C/O Ports Dir], [(Empresa) Cliente.default].[RWE SUPLLY &amp; TRADING GMBH C/O PORTS-DIRECT], [(Empresa) Cliente.default].[OSLO BULK HOLKDING PTE LTD. A/C PORTS DI]}})} ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE Hierarchize(Union(CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Local) Filial.default].[SEP]}, {[(Tempo) Mensal Manobra.Mensal].[Janeiro]})), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Local) Filial.default].[SEP]}, {[(Tempo) Mensal Manobra.Mensal].[Fevereiro]})), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Local) Filial.default].[SEP]}, {[(Tempo) Mensal Manobra.Mensal].[Março]})), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Local) Filial.default].[SEP]}, {[(Tempo) Mensal Manobra.Mensal].[Abril]})), CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Local) Filial.default].[SEP]}, {[(Tempo) Mensal Manobra.Mensal].[Maio]})))))))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

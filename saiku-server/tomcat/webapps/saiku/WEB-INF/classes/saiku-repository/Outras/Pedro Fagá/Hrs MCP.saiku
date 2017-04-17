@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="7028244D-5AB0-06F7-A9D4-4530F9F9D79F" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[RGD]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[PNG]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[STR]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SEP]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[RJ1]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[VIT]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SDR]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[TMD]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[MAC]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="level" node="[(Tempo) Mensal.Mensal].[Mes]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="level" node="[(Tempo) Anual.default].[Ano]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Combustivel)Tipo Consumo" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Combustivel)Tipo Consumo" type="member" node="[(Combustivel)Tipo Consumo.default].[Apoio Portuario]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Hora MCA]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Consumo MCP]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {Hierarchize({[(Combustivel)Tipo Consumo.default].[Apoio Portuario]})} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Local) Filial.default].[RGD]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Tempo) Anual.default].[Ano].Members)), Union(CrossJoin({[(Local) Filial.default].[PNG]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Tempo) Anual.default].[Ano].Members)), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Tempo) Anual.default].[Ano].Members)), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Tempo) Anual.default].[Ano].Members)), Union(CrossJoin({[(Local) Filial.default].[RJ1]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Tempo) Anual.default].[Ano].Members)), Union(CrossJoin({[(Local) Filial.default].[VIT]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Tempo) Anual.default].[Ano].Members)), Union(CrossJoin({[(Local) Filial.default].[SDR]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Tempo) Anual.default].[Ano].Members)), Union(CrossJoin({[(Local) Filial.default].[TMD]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Tempo) Anual.default].[Ano].Members)), CrossJoin({[(Local) Filial.default].[MAC]}, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, [(Tempo) Anual.default].[Ano].Members))))))))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE {[Measures].[(Combustivel) Hora MCA], [Measures].[(Combustivel) Consumo MCP]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

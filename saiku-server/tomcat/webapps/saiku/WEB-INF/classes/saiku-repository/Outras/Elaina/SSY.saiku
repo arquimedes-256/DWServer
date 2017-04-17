@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="91306948-BF70-4135-A292-8BDFCA305416" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[AQUAVITA INTERNACIONAL S.A.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BLUSHIPS C/O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BOGAZICI DENIZ TASIMACILIGI LTD STI C/O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[BOGAZICI SHIPPING BV A/C SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CHAMPION TANKERS(SSY)]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[D¿AMICO DRY LIMITED AC SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[D'AMICO GROUP C/O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[D'AMICO TANKERS LTD C/O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[DANA SHIPPING AND TRADING S.A A/C SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[DELFI SA C/O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[EVALEND SHIPPING S.A(SSY)]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HANSA TANKERS C/ O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HELIKON SHIPPING ENTERPRISES LTD(SSY)]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[JOHANN M. K. BLUMENTHAL &amp; CO. KG A/C SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MARMARAS NAVIGATION LTD(SSY)]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MEDMAR LINES INC(SSY)]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[MICHELE BOTTIGLIERI ARMATORE SPA C/O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NGM ENERGY S.A C/O SSY.]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[OPERA S.A C/O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PCL (SHIPPING) PTE LTD C/O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PK DRYCARGO SRL(SSY)]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[PROTON MARINE LIMITED C/O Product Shipping &amp; Trading S.A. / SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[RBD ARMATORI SPA C/O SSY]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SAMOS STEAMSHIP CO.A/C SSY ]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[SIVA BULK LIMITED. C/O SSY  ]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[UNITED BULK CARRIES INT LTD (SSY LONDON) - STS]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[TESORO FAR EAST MARITIME C/O SSY]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="level" node="[(Local) Filial.default].[Filial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Nota Fiscal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Nota Fiscal" type="level" node="[(Operacao) Nota Fiscal.default].[Nota Fiscal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido U$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Tempo) Mensal">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Janeiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Fevereiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Março]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Abril]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Maio]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Junho]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Julho]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Agosto]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Setembro]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Faturado Liquido Corrigido U$]} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Empresa) Cliente.default].[AQUAVITA INTERNACIONAL S.A.]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[BLUSHIPS C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[BOGAZICI DENIZ TASIMACILIGI LTD STI C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[BOGAZICI SHIPPING BV A/C SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[CHAMPION TANKERS(SSY)]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[D¿AMICO DRY LIMITED AC SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[D'AMICO GROUP C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[D'AMICO TANKERS LTD C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[DANA SHIPPING AND TRADING S.A A/C SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[DELFI SA C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[EVALEND SHIPPING S.A(SSY)]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[HANSA TANKERS C/ O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[HELIKON SHIPPING ENTERPRISES LTD(SSY)]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[JOHANN M. K. BLUMENTHAL &amp; CO. KG A/C SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[MARMARAS NAVIGATION LTD(SSY)]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[MEDMAR LINES INC(SSY)]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[MICHELE BOTTIGLIERI ARMATORE SPA C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[NGM ENERGY S.A C/O SSY.]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[OPERA S.A C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[PCL (SHIPPING) PTE LTD C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[PK DRYCARGO SRL(SSY)]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[PROTON MARINE LIMITED C/O Product Shipping &amp; Trading S.A. / SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[RBD ARMATORI SPA C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[SAMOS STEAMSHIP CO.A/C SSY ]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[SIVA BULK LIMITED. C/O SSY  ]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), Union(CrossJoin({[(Empresa) Cliente.default].[UNITED BULK CARRIES INT LTD (SSY LONDON) - STS]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members))), CrossJoin({[(Empresa) Cliente.default].[TESORO FAR EAST MARITIME C/O SSY]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Local) Filial.default].[Filial].Members, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))))))))))))))))))))))))))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE Hierarchize(Union(CrossJoin({[(Tempo) Mensal.Mensal].[Janeiro]}, {[(Tempo) Anual.default].[2016]}), Union(CrossJoin({[(Tempo) Mensal.Mensal].[Fevereiro]}, {[(Tempo) Anual.default].[2016]}), Union(CrossJoin({[(Tempo) Mensal.Mensal].[Março]}, {[(Tempo) Anual.default].[2016]}), Union(CrossJoin({[(Tempo) Mensal.Mensal].[Abril]}, {[(Tempo) Anual.default].[2016]}), Union(CrossJoin({[(Tempo) Mensal.Mensal].[Maio]}, {[(Tempo) Anual.default].[2016]}), Union(CrossJoin({[(Tempo) Mensal.Mensal].[Junho]}, {[(Tempo) Anual.default].[2016]}), Union(CrossJoin({[(Tempo) Mensal.Mensal].[Julho]}, {[(Tempo) Anual.default].[2016]}), Union(CrossJoin({[(Tempo) Mensal.Mensal].[Agosto]}, {[(Tempo) Anual.default].[2016]}), CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Anual.default].[2016]}))))))))))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

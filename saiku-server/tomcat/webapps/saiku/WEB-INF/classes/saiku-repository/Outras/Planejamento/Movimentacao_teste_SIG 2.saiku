@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="1593F008-BF2C-4154-8FBA-9A70B4BABCC9" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SDR]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Dia Manobra" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Dia Manobra" type="level" node="[(Tempo) Dia Manobra.default].[Dia da Manobra]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Dono do Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Dono do Rebocador" type="level" node="[(Empresa) Dono do Rebocador.default].[Dono do Rebocador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Dono da Manobra" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Dono da Manobra" type="level" node="[(Empresa) Dono da Manobra.default].[Dono da Manobra]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Rebocador) Rebocador" type="level" node="[(Rebocador) Rebocador.default].[Nome do Rebocador]" operator="MEMBERS" />
+              <Selection dimension="(Rebocador) Rebocador" type="level" node="[(Rebocador) Rebocador.default].[Rebocador Proprio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Manobra)" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Manobra)" type="level" node="[(Manobra).default].[Nome Manobra]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="level" node="[(Empresa) Cliente.default].[Nome do Cliente]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Maio]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido U$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY CrossJoin({[(Tempo) Mensal.Mensal].[Maio]}, CrossJoin({[(Tempo) Anual.default].[2016]}, {[Measures].[Faturado Liquido Corrigido U$]})) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Local) Filial.default].[SDR]}, CrossJoin([(Tempo) Dia Manobra.default].[Dia da Manobra].Members, CrossJoin([(Empresa) Dono do Rebocador.default].[Dono do Rebocador].Members, CrossJoin([(Empresa) Dono da Manobra.default].[Dono da Manobra].Members, CrossJoin([(Rebocador) Rebocador.default].[Nome do Rebocador].Members, CrossJoin([(Manobra).default].[Nome Manobra].Members, [(Empresa) Cliente.default].[Nome do Cliente].Members)))))), CrossJoin({[(Local) Filial.default].[SDR]}, CrossJoin([(Tempo) Dia Manobra.default].[Dia da Manobra].Members, CrossJoin([(Empresa) Dono do Rebocador.default].[Dono do Rebocador].Members, CrossJoin([(Empresa) Dono da Manobra.default].[Dono da Manobra].Members, CrossJoin([(Rebocador) Rebocador.default].[Rebocador Proprio].Members, CrossJoin([(Manobra).default].[Nome Manobra].Members, [(Empresa) Cliente.default].[Nome do Cliente].Members)))))))) ON ROWS&#xD;
+FROM [Sulnorte]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

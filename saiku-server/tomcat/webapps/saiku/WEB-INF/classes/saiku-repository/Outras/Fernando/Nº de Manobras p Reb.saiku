@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="9A2E01DF-9DA9-6842-A7C7-E004BE3B5B42" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Empresa) Dono do Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Dono do Rebocador" type="level" node="[(Empresa) Dono do Rebocador.default].[Dono do Rebocador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Rebocador) Rebocador" type="level" node="[(Rebocador) Rebocador.default].[Nome do Rebocador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Manobras]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Local) Filial">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SDR]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Setembro]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[QTD. Manobras]} ON COLUMNS,&#xD;
+NON EMPTY CrossJoin([(Empresa) Dono do Rebocador.default].[Dono do Rebocador].Members, [(Rebocador) Rebocador.default].[Nome do Rebocador].Members) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE CrossJoin({[(Local) Filial.default].[SDR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Anual.default].[2016]}))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

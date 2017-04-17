@@ -1,3 +1,8 @@
+
+function SumBetween(X,a,b)
+{var S=0;_.each(X,function(x,k){ if(a <= k && k <= b) { S+= x } }); return S;}
+
+
 TableController = function($scope,$http,$sce,$compile)
 {
 	window.tableController = $scope;
@@ -47,18 +52,18 @@ TableController = function($scope,$http,$sce,$compile)
 	-1384296.76	,
 	-1389455.1	
 	*/
-		-181966.15,
-		-181966.15,
-		-181966.15,
-		-181966.15,
-		-181966.15,
-		-181966.15,
-		-181966.15,
-		-181966.15,
-		-181966.15,
-		-181966.15,
-		-181966.15,
-		-281873.80
+		-181966.15,		//jan
+		-181966.15,		//fev
+		-181966.15,		//mar
+		-181966.15,		//abr
+		-181966.15,		//mai
+		-181966.15,		//jun
+		-181966.15,		//jul
+		-181966.15,		//ago
+		-181966.15,		//set
+		-181966.15,		//out
+		-181966.15,		//nov
+		-281873.80		//dez
 	];
 	$scope.orcamentoTemadreCombust = [
 	 -74754, 	 
@@ -445,83 +450,112 @@ TableController = function($scope,$http,$sce,$compile)
 			 			$scope.openDespCorporativa(true)
 			 			
  					},3000);
-					function SumBetween(X,a,b){var S=0;_.each(X,function(x,k){ if(a <= k && k <= b) { S+= x } }); return S;}
-					_.each($scope.rows,function(row){
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "RECEITA BRUTA" || row.nomeGrupoMaster == "RECEITA LÃQUIDA")) 
-						{
-							row.vlrOrcado = SumBetween($scope.orcamentoTemadre,$scope.mesAtual-1,$scope.mesFinal-1);
-						}
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "RECEITA BRUTA" || row.nomeGrupoMaster == "RECEITA LÃQUIDA")) 
-						{
-							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoTemadre,$scope.mesAtual-1,$scope.mesFinal-1);
-						}
-						//orcamentoTemadreAfret
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "CUSTOS DE AFRETAMENTO")) 
-						{
-							var x = SumBetween($scope.orcamentoTemadreAfret, $scope.mesAtual-1,$scope.mesFinal-1 );
-							row.vlrOrcado =  x - x*0.0925;
-						}
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "CUSTOS DE AFRETAMENTO")) 
-						{
-							var x = SumBetween($scope.orcamentoTemadreAfret, $scope.mesAtual-1,$scope.mesFinal-1 );
-							var TOTAL_SDRTMD = _($scope.rows).filter(function(r){ return r.filial == "SDR + TMD" && (r.nomeGrupoMaster == "CUSTOS DE AFRETAMENTO") })[0].vlrOrcado
-							row.vlrOrcado = TOTAL_SDRTMD - (x - x*0.0925);
-						}
-						//orcamentoTemadreCombust
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "CUSTO DE COMBUSTÍVEL")) 
-						{
-							row.vlrOrcado = SumBetween($scope.orcamentoTemadreCombust, $scope.mesAtual-1,$scope.mesFinal-1 );
-						}
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "CUSTO DE COMBUSTÍVEL")) 
-						{
-							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoTemadreCombust, $scope.mesAtual-1,$scope.mesFinal-1 );
-						}
-						//orcamentoDespTec
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "DESP TÉCN E MANUTENÇÃO")) 
-						{
-							row.vlrOrcado = SumBetween($scope.orcamentoDespTec, $scope.mesAtual-1,$scope.mesFinal-1 );
-						}
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "DESP TÉCN E MANUTENÇÃO")) 
-						{
-							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoDespTec, $scope.mesAtual-1,$scope.mesFinal-1  );
-						}
-						//orcamentoDespOperacionais
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "OUTRAS DESPESAS OPERACIONAIS")) 
-						{
-							row.vlrOrcado = SumBetween($scope.orcamentoDespOperacionais, $scope.mesAtual-1,$scope.mesFinal-1 );
-						}
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "OUTRAS DESPESAS OPERACIONAIS")) 
-						{
-							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoDespOperacionais, $scope.mesAtual-1,$scope.mesFinal-1  );
-						}
-						//orcamentoProvDocagem
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "PROVISÕES PARA DOCAGEM")) 
-						{
-							row.vlrOrcado = SumBetween($scope.orcamentoProvDocagem, $scope.mesAtual-1,$scope.mesFinal-1 );
-						}
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "PROVISÕES PARA DOCAGEM")) 
-						{
-							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoProvDocagem, $scope.mesAtual-1,$scope.mesFinal-1  );
-						}
-						//orcamentoSegurosPEI
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "SEGUROS E P&I")) 
-						{
-							row.vlrOrcado = SumBetween($scope.orcamentoSegurosPEI, $scope.mesAtual-1,$scope.mesFinal-1 );
-						}
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "SEGUROS E P&I")) 
-						{
-							row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoSegurosPEI, $scope.mesAtual-1,$scope.mesFinal-1  );
-						}
-						if(row.filial == "TMD" && (row.nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS")) 
-						{
-							row.vlrRealizado = 0;
-						}
-						if(row.filial == "SDR" && (row.nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS")) 
-						{
-							row.vlrRealizado = row.vlrRealizado + _.first(_.filter(tableController.rows,function(r){ return r.filial == "TMD" & r.nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS"})).vlrRealizado;
-						}
+ 					
+ 					if(tableController.anoAtual == 2016)
+ 					{
+						_.each($scope.rows,function(row){
+							if(row.filial == "TMD" && (row.nomeGrupoMaster == "RECEITA BRUTA")) 
+							{
+								row.vlrOrcado = SumBetween($scope.orcamentoTemadre,$scope.mesAtual-1,$scope.mesFinal-1);
+							}
+							if(row.filial == "SDR" && (row.nomeGrupoMaster == "RECEITA BRUTA")) 
+							{
+								row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoTemadre,$scope.mesAtual-1,$scope.mesFinal-1);
+							}
+							//orcamentoTemadreAfret
+							if(row.filial == "SDR" && (row.nomeGrupoMaster == "CUSTOS DE AFRETAMENTO")) 
+							{
+								var x = SumBetween($scope.orcamentoTemadreAfret, $scope.mesAtual-1,$scope.mesFinal-1 );
+								row.vlrOrcado =  x - x*0.0925;
+							}
+							if(row.filial == "TMD" && (row.nomeGrupoMaster == "CUSTOS DE AFRETAMENTO")) 
+							{
+								var x = SumBetween($scope.orcamentoTemadreAfret, $scope.mesAtual-1,$scope.mesFinal-1 );
+								var TOTAL_SDRTMD = _($scope.rows).filter(function(r){ return r.filial == "SDR + TMD" && (r.nomeGrupoMaster == "CUSTOS DE AFRETAMENTO") })[0].vlrOrcado
+								row.vlrOrcado = TOTAL_SDRTMD - (x - x*0.0925);
+							}
+							//orcamentoTemadreCombust
+							if(row.filial == "TMD" && (row.nomeGrupoMaster == "CUSTO DE COMBUSTÍVEL")) 
+							{
+								row.vlrOrcado = SumBetween($scope.orcamentoTemadreCombust, $scope.mesAtual-1,$scope.mesFinal-1 );
+							}
+							if(row.filial == "SDR" && (row.nomeGrupoMaster == "CUSTO DE COMBUSTÍVEL")) 
+							{
+								row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoTemadreCombust, $scope.mesAtual-1,$scope.mesFinal-1 );
+							}
+							//orcamentoDespTec
+							if(row.filial == "TMD" && (row.nomeGrupoMaster == "DESP TÉCN E MANUTENÇÃO")) 
+							{
+								row.vlrOrcado = SumBetween($scope.orcamentoDespTec, $scope.mesAtual-1,$scope.mesFinal-1 );
+							}
+							if(row.filial == "SDR" && (row.nomeGrupoMaster == "DESP TÉCN E MANUTENÇÃO")) 
+							{
+								row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoDespTec, $scope.mesAtual-1,$scope.mesFinal-1  );
+							}
+							//orcamentoDespOperacionais
+							if(row.filial == "TMD" && (row.nomeGrupoMaster == "OUTRAS DESPESAS OPERACIONAIS")) 
+							{
+								row.vlrOrcado = SumBetween($scope.orcamentoDespOperacionais, $scope.mesAtual-1,$scope.mesFinal-1 );
+							}
+							if(row.filial == "SDR" && (row.nomeGrupoMaster == "OUTRAS DESPESAS OPERACIONAIS")) 
+							{
+								row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoDespOperacionais, $scope.mesAtual-1,$scope.mesFinal-1  );
+							}
+							//orcamentoProvDocagem
+							if(row.filial == "TMD" && (row.nomeGrupoMaster == "PROVISÕES PARA DOCAGEM")) 
+							{
+								row.vlrOrcado = SumBetween($scope.orcamentoProvDocagem, $scope.mesAtual-1,$scope.mesFinal-1 );
+							}
+							if(row.filial == "SDR" && (row.nomeGrupoMaster == "PROVISÕES PARA DOCAGEM")) 
+							{
+								row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoProvDocagem, $scope.mesAtual-1,$scope.mesFinal-1  );
+							}
+							//orcamentoSegurosPEI
+							if(row.filial == "TMD" && (row.nomeGrupoMaster == "SEGUROS E P&I")) 
+							{
+								row.vlrOrcado = SumBetween($scope.orcamentoSegurosPEI, $scope.mesAtual-1,$scope.mesFinal-1 );
+							}
+							if(row.filial == "SDR" && (row.nomeGrupoMaster == "SEGUROS E P&I")) 
+							{
+								row.vlrOrcado = row.vlrOrcado - SumBetween($scope.orcamentoSegurosPEI, $scope.mesAtual-1,$scope.mesFinal-1  );
+							}
+							if(row.filial == "TMD" && (row.nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS")) 
+							{
+								row.vlrRealizado = 0;
+							}
+							if(row.filial == "SDR" && (row.nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS")) 
+							{
+								row.vlrRealizado = row.vlrRealizado + _.first(_.filter(tableController.rows,function(r){ return r.filial == "TMD" && r.nomeGrupoMaster == "DESPESAS ADMINISTRATIVAS"})).vlrRealizado;
+							}
 
-					});
+						});
+
+ 					}
+
+					if(tableController.anoAtual == 2016)
+					_.each($scope.rows,function(row){
+
+						if(row.filial == "TMD" && 
+							(row.nomeGrupoMaster == "RECEITA LÍQUIDA" )) 
+						{
+							row.vlrOrcado = row.vlrOrcado + _.first(_.filter(tableController.rows,function(r){ return r.filial == "TMD" && r.nomeGrupoMaster == "RECEITA BRUTA"})).vlrOrcado;
+						}
+						
+
+					})
+					if(tableController.anoAtual == 2016)
+					_.each($scope.rows,function(row){
+						if(row.filial == "SDR" && 
+							(row.nomeGrupoMaster == "RECEITA LÍQUIDA" )) 
+						{
+							row.vlrOrcado = 
+							_.first(_.filter($scope.rows,function(r){ 
+								return r.filial == "SDR + TMD" && r.nomeGrupoMaster == "RECEITA LÍQUIDA"})).vlrOrcado
+							-
+							_.first(_.filter($scope.rows,function(r){ 
+								return r.filial == "TMD" && r.nomeGrupoMaster == "RECEITA LÍQUIDA"})).vlrOrcado;
+						}
+					})
 
 					if(options && options.isTMD) {
 						setTimeout(function() {
@@ -531,13 +565,47 @@ TableController = function($scope,$http,$sce,$compile)
 								$scope.rows = _.filter($scope.rows,function(r){ return r.filial == "TMD" });
 
 							})
+						},100)
+						setTimeout(function() {
+						$('tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="RECEITA LÍQUIDA"],tr[grupomaster="PESSOAL OPERACIONAL"],tr[grupomaster="DESP TÉCN E MANUTENÇÃO"],tr[grupomaster="CUSTOS DE AFRETAMENTO"],tr[grupomaster="CUSTO DE COMBUSTÍVEL"],tr[grupomaster="DESP TÉC E MANUTENÇÃO"],tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="SEGUROS E P&I"],tr[grupomaster="PROVISÕES PARA DOCAGEM"],tr[grupomaster="OUTRAS DESPESAS OPERACIONAIS"],tr[grupomaster="DESPESAS ADMINISTRATIVAS"],tr[grupomaster="DESP. COMERCIAIS E COMISSÕES"]')
+							.show().css('opacity',1)
+						$('tr[grupomasternegrito]').hide().css('opacity',0)
+						$('tr#ebt-gerencial,tr#desp-corporativa').hide();
+						},100)
+
+					}
+					if(options && options.isSDRTMD){
+						setTimeout(function() {
+							$scope.principalFilial = "SDR + TMD"
+							$scope.$apply(function() {
+								
+								$scope.rows = _.filter($scope.rows,function(r){ return r.filial == "SDR + TMD" });
+
+							})
+						},100)
+						setTimeout(function() {
+						$('tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="RECEITA LÍQUIDA"],tr[grupomaster="PESSOAL OPERACIONAL"],tr[grupomaster="DESP TÉCN E MANUTENÇÃO"],tr[grupomaster="CUSTOS DE AFRETAMENTO"],tr[grupomaster="CUSTO DE COMBUSTÍVEL"],tr[grupomaster="DESP TÉC E MANUTENÇÃO"],tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="SEGUROS E P&I"],tr[grupomaster="PROVISÕES PARA DOCAGEM"],tr[grupomaster="OUTRAS DESPESAS OPERACIONAIS"],tr[grupomaster="DESPESAS ADMINISTRATIVAS"],tr[grupomaster="DESP. COMERCIAIS E COMISSÕES"]')
+							.show().css('opacity',1)
+						$('tr[grupomasternegrito]').hide().css('opacity',0)
+						$('tr#ebt-gerencial,tr#desp-corporativa').hide();
+						},100)
+					}
+					if(options && options.isSDR) {
+						setTimeout(function() {
+							$scope.principalFilial = "SDR"
+							$scope.$apply(function() {
+								
+								$scope.rows = _.filter($scope.rows,function(r){ return r.filial == "SDR" });
+
+							})
 						},1000)
 						setTimeout(function() {
-						$('tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="RECEITA LÍQUIDA"],tr[grupomaster="PESSOAL OPERACIONAL"],tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="CUSTOS DE AFRETAMENTO"],tr[grupomaster="CUSTO DE COMBUSTÍVEL"],tr[grupomaster="DESP TÉC E MANUTENÇÃO"],tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="SEGUROS E P&I"],tr[grupomaster="PROVISÕES PARA DOCAGEM"],tr[grupomaster="OUTRAS DESPESAS OPERACIONAIS"],tr[grupomaster="DESPESAS ADMINISTRATIVAS"],tr[grupomaster="DESP. COMERCIAIS E COMISSÕES"]')
+						$('tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="RECEITA LÍQUIDA"],tr[grupomaster="PESSOAL OPERACIONAL"],tr[grupomaster="DESP TÉCN E MANUTENÇÃO"],tr[grupomaster="CUSTOS DE AFRETAMENTO"],tr[grupomaster="CUSTO DE COMBUSTÍVEL"],tr[grupomaster="DESP TÉC E MANUTENÇÃO"],tr[grupomaster="RECEITA BRUTA"],tr[grupomaster="SEGUROS E P&I"],tr[grupomaster="PROVISÕES PARA DOCAGEM"],tr[grupomaster="OUTRAS DESPESAS OPERACIONAIS"],tr[grupomaster="DESPESAS ADMINISTRATIVAS"],tr[grupomaster="DESP. COMERCIAIS E COMISSÕES"]')
 							.show().css('opacity',1)
 						$('tr[grupomasternegrito]').hide().css('opacity',0)
 						$('tr#ebt-gerencial,tr#desp-corporativa').hide();
 						},1000)
+
 
 					}
 		 		}
@@ -652,6 +720,17 @@ TableController = function($scope,$http,$sce,$compile)
 									})
 								}
 								);
+
+$.get("http://www.topweb.sulnorte.com.br/top/xml/action/PRDAction.php?metodo=snapp_consumo_vazio&mes="+$scope.mesAtual+'&ano='+$scope.anoAtual+"&_=",
+								function(data){
+									$scope.$apply(function(){
+										$scope.vazioRows = JSON.parse(data);
+									})
+								}
+								);
+
+
+
 							})
 							
 						});
@@ -706,10 +785,22 @@ TableController = function($scope,$http,$sce,$compile)
 		 		{
 		 			
 		 		}
-		 		,onComplete:function(rel)
+		 		,onComplete:function(rel,options)
 		 		{
 	 				if(!rel.idContaContabil && rel.idGrupoMaster)
 		 				$scope.subTitleRowsModal = $scope.rowsModal.length > 0  ? $scope.rowsModal[0].nomeGrupoMaster : ""; 
+		 			if(options && options.isTMDModal) {
+		 				setTimeout(function(){
+			 					$scope.$apply(function(){
+			 						_.each($scope.rowsModal,function(row){
+										if((row.nomeContaContabil == "Rebocadores")) 
+										{
+											row.vlrOrcado = SumBetween($scope.orcamentoTemadre,$scope.mesAtual-1,$scope.mesFinal-1);
+										}	
+		 							})
+								});
+						},1000)
+		 			}
 		 		}
 		 	},
 		 	{
@@ -825,7 +916,7 @@ TableController = function($scope,$http,$sce,$compile)
 	
 	
 
-	$scope.anoComparativo = 2017;
+	$scope.anoComparativo = 2018;
 	
 	$scope.labelAno = function(ano)
 	{
@@ -856,7 +947,7 @@ TableController = function($scope,$http,$sce,$compile)
 	
 	$scope.tgl = {};
 	$scope.mesFinalLabel = null;
-	$scope.anoAtual = 2016//new Date().getFullYear();//2014
+	$scope.anoAtual = 2017//new Date().getFullYear();//2014
 	$scope.hojeMes  =  new Date().getMonth()+1;//$scope.mesAtual = 3//new Date().getMonth();// 12
 	$scope.mesAtual = $scope.hojeMes - 1;
 	$scope.mesFinal =  $scope.mesAtual;
@@ -950,6 +1041,19 @@ TableController = function($scope,$http,$sce,$compile)
 	
 	$scope.openGrupoMaster = function(nomeGrupoMaster)
 	{
+		$('td:contains("DESPESAS ADMINISTRATIVAS"),td:contains("CUSTO DE COMBUSTÍVEL"),td:contains("DESP TÉCN E MANUTENÇÃO")')
+			.next()
+			.find('button:contains("SDR"),button:contains("TMD")')
+			.not('button:contains("SDR + TMD")')
+			.attr('disabled','')
+
+		$('td:contains("DESPESAS ADMINISTRATIVAS"),td:contains("CUSTO DE COMBUSTÍVEL"),td:contains("DESP TÉCN E MANUTENÇÃO")')
+			.next()
+			.find('button:contains("SDR"),button:contains("TMD")')
+			.not('button:contains("SDR + TMD")')
+			.next('.btn-warning')
+			.attr('disabled','')
+
 		var x = $('[grupoMaster="'+nomeGrupoMaster+'"]')
 		var v = parseInt(x.css('opacity'))
 		var isClosed =  v == 0;
@@ -1032,6 +1136,18 @@ TableController = function($scope,$http,$sce,$compile)
 			options.filial = "Total Empresa";
 			options.isTMD = true;
 		}
+		if(options && options.filial == "SDR" && rel.method == "orcadorealizado") {
+			options.filial = "Total Empresa";
+			options.isSDR = true;
+		}
+		if(options && options.filial == "SDR + TMD" && rel.method == "orcadorealizado") {
+			options.filial = "Total Empresa";
+			options.isSDRTMD = true;
+		}
+		if(options && options.filial == "TMD" && rel.method == "orcadorealizado_detalhado") {
+			options.isTMDModal = true;
+		}
+		
 		
 		if(options && angular.isDefined(options.isConsolidado))
 			locIsConsolidado = options.isConsolidado;
@@ -1573,7 +1689,7 @@ TableController = function($scope,$http,$sce,$compile)
 			setTimeout(function(){
 				
 				$scope.RECEITA_BRUTA_DIFF = 0;
-				$http.get("http://www.topweb.sulnorte.com.br/top/xml/action/PRDAction.php?metodo=snapp_faturamento_realtime&mes="+$scope.mesAtual+"&ano="+$scope.anoAtual+"&_="+new Date().getTime())
+				$http.get("http://www.topweb.sulnorte.com.br/top/xml/action/PRDAction.php?metodo=snapp_faturamento_realtime&mes="+$scope.mesFinal+"&ano="+$scope.anoAtual+"&_="+new Date().getTime())
 				.success(function(F){
 					_.each(F,function(f){
 						_.each($scope.rows,function(row){
@@ -1590,7 +1706,7 @@ TableController = function($scope,$http,$sce,$compile)
 							}
 						})
 					});
-					alert("Carga concluÃ­da com sucesso!");
+					alert("Carga concluída com sucesso!");
 					$scope.loadingCarga = false;
 				})
 			},500)

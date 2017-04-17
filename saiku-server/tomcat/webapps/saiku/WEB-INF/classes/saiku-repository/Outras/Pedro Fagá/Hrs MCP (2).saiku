@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="7028244D-5AB0-06F7-A9D4-4530F9F9D79F" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Combustivel)Tipo Consumo" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Combustivel)Tipo Consumo" type="member" node="[(Combustivel)Tipo Consumo.default].[Apoio Portuario]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Rebocador) Rebocador" type="level" node="[(Rebocador) Rebocador.default].[Nome do Rebocador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[STR]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Janeiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Fevereiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Março]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Abril]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Maio]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Junho]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Julho]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Agosto]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Setembro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Outubro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Novembro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Dezembro]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Hora MCP]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Janeiro]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Fevereiro]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Março]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Abril]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Maio]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Junho]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Julho]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Agosto]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Anual.default].[2016]})), Union(CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Novembro]}, {[(Tempo) Anual.default].[2016]})), CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Mensal.Mensal].[Dezembro]}, {[(Tempo) Anual.default].[2016]})))))))))))))) ON COLUMNS,&#xD;
+NON EMPTY CrossJoin({[(Combustivel)Tipo Consumo.default].[Apoio Portuario]}, [(Rebocador) Rebocador.default].[Nome do Rebocador].Members) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE {[Measures].[(Combustivel) Hora MCP]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

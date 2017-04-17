@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="903A9CA5-4502-18A0-B0CC-E764F9A38647" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Empresa) Contrato" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Contrato" type="level" node="[(Empresa) Contrato.default].[Numero do Contrato]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Dia Manobra" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Dia Manobra" type="level" node="[(Tempo) Dia Manobra.default].[Dia da Manobra]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Porto" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Porto" type="member" node="[(Local) Porto.default].[SANTOS]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[STR]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Operacao)">
+            <Inclusions>
+              <Selection dimension="(Operacao)" type="level" node="[(Operacao).default].[Id da Operacao]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Terminal">
+            <Inclusions>
+              <Selection dimension="Terminal" type="member" node="[Terminal.default].[TEFER]" operator="MEMBER" />
+              <Selection dimension="Terminal" type="member" node="[Terminal.default].[CARGILL]" operator="MEMBER" />
+              <Selection dimension="Terminal" type="member" node="[Terminal.default].[PORTO DE CUBATAO]" operator="MEMBER" />
+              <Selection dimension="Terminal" type="member" node="[Terminal.default].[PORTO DE SANTOS]" operator="MEMBER" />
+              <Selection dimension="Terminal" type="member" node="[Terminal.default].[PORTO DO GUARUJÁ]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY CrossJoin({[(Local) Porto.default].[SANTOS]}, {[(Local) Filial.default].[STR]}) ON COLUMNS,&#xD;
+NON EMPTY CrossJoin([(Empresa) Contrato.default].[Numero do Contrato].Members, [(Tempo) Dia Manobra.default].[Dia da Manobra].Members) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE Hierarchize(Union(CrossJoin([(Operacao).default].[Id da Operacao].Members, {[Terminal.default].[TEFER]}), Union(CrossJoin([(Operacao).default].[Id da Operacao].Members, {[Terminal.default].[CARGILL]}), Union(CrossJoin([(Operacao).default].[Id da Operacao].Members, {[Terminal.default].[PORTO DE CUBATAO]}), Union(CrossJoin([(Operacao).default].[Id da Operacao].Members, {[Terminal.default].[PORTO DE SANTOS]}), CrossJoin([(Operacao).default].[Id da Operacao].Members, {[Terminal.default].[PORTO DO GUARUJÁ]}))))))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

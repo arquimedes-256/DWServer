@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="7556F1C8-16CE-7116-A8DA-871DF402F69E" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Grupo Nvl 2" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Grupo Nvl 2" type="level" node="[Grupo Nvl 2.default].[Grupo Nvl 2]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Grupo Nvl 1" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Grupo Nvl 1" type="level" node="[Grupo Nvl 1.default].[Grupo Nvl 1]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(PRD) Conta Contabil" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(PRD) Conta Contabil" type="level" node="[(PRD) Conta Contabil.default].[Cod Conta Contabil]" operator="MEMBERS" />
+              <Selection dimension="(PRD) Conta Contabil" type="level" node="[(PRD) Conta Contabil.default].[Nome Conta Contabil]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Realizado R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Valor Realizado R$]} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin([Grupo Nvl 2.default].[Grupo Nvl 2].Members, CrossJoin([Grupo Nvl 1.default].[Grupo Nvl 1].Members, [(PRD) Conta Contabil.default].[Cod Conta Contabil].Members)), CrossJoin([Grupo Nvl 2.default].[Grupo Nvl 2].Members, CrossJoin([Grupo Nvl 1.default].[Grupo Nvl 1].Members, [(PRD) Conta Contabil.default].[Nome Conta Contabil].Members)))) ON ROWS&#xD;
+FROM [Sulnorte]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

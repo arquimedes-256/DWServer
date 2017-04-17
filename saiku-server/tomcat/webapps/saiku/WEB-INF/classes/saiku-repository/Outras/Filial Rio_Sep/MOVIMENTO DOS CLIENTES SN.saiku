@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="11370607-47B9-FC5F-99FD-D1A5989A21C0" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="level" node="[(Empresa) Cliente.default].[Nome do Cliente]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao)" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao)" type="level" node="[(Operacao).default].[Id da Operacao]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Dwt do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="Terminal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="Terminal" type="level" node="[Terminal.default].[Nome do Terminal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Afretado R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Valor Faturado R$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Local) Filial">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SEP]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Outubro]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Dia do Mes">
+            <Inclusions>
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[1]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[3]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[2]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[4]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[5]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[6]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[7]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[8]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[9]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[10]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[11]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[13]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[12]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[14]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[15]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[16]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[17]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[18]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Valor Afretado R$], [Measures].[Valor Faturado R$]} ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Operacao).default].[Id da Operacao].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, [Terminal.default].[Nome do Terminal].Members))), CrossJoin([(Empresa) Cliente.default].[Nome do Cliente].Members, CrossJoin([(Operacao).default].[Id da Operacao].Members, CrossJoin([(Embarcacao) Navio.default].[Dwt do Navio].Members, [Terminal.default].[Nome do Terminal].Members))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE Hierarchize(Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[1]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[3]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[2]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[4]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[5]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[6]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[7]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[8]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[9]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[10]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[11]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[13]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[12]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[14]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[15]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[16]}))), Union(CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[17]}))), CrossJoin({[(Local) Filial.default].[SEP]}, CrossJoin({[(Tempo) Anual.default].[2016]}, CrossJoin({[(Tempo) Mensal.Mensal].[Outubro]}, {[(Tempo) Dia do Mes.default].[18]})))))))))))))))))))))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="true" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

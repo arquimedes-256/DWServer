@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="E7769590-117C-765A-8B30-401227CC20C7" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Manobra)" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Manobra)" type="member" node="[(Manobra).default].[GIRO]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Local) Filial" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="level" node="[(Local) Filial.default].[Filial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="level" node="[(Tempo) Anual.default].[Ano]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="level" node="[(Tempo) Mensal.Mensal].[Mes]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Nota Fiscal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Nota Fiscal" type="level" node="[(Operacao) Nota Fiscal.default].[Nota Fiscal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[HOLBUD SHIP MANAGEMENT LIMITED]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tabela) Faixa DWT" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tabela) Faixa DWT" type="level" node="[(Tabela) Faixa DWT.default].[Faixa DWT Inicial]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Agente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Agente" type="level" node="[(Empresa) Agente.default].[Agente]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Operacoes]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido U$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido Corrigido R$]" operator="MEMBER" />
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Rebocadores]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false" />
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[QTD. Operacoes], [Measures].[Faturado Liquido Corrigido U$], [Measures].[Faturado Liquido Corrigido R$], [Measures].[QTD. Rebocadores]} ON COLUMNS,&#xD;
+NON EMPTY CrossJoin({[(Manobra).default].[GIRO]}, CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Tempo) Anual.default].[Ano].Members, CrossJoin([(Tempo) Mensal.Mensal].[Mes].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, CrossJoin({[(Empresa) Cliente.default].[HOLBUD SHIP MANAGEMENT LIMITED]}, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members, [(Empresa) Agente.default].[Agente].Members)))))))) ON ROWS&#xD;
+FROM [Sulnorte]</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

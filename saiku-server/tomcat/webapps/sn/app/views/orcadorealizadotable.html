@@ -49,7 +49,7 @@
 			            </td>
 			            
 			            <td style="width: 94px;">
-			            	<div ng-if="!inShowButtonBlackList(r)">	
+			            	<div ng-if="!inShowButtonBlackList(r)" style="min-width: 162px;">	
 				               <button class="btn btn-{{(principalFilial == 'Total Empresa')  ? 'primary': 'info'}}" 
 				                  ng-click="
 				                  openRelatorio('orcadorealizado_detalhado',
@@ -535,10 +535,6 @@
 				</td>
 			</tr>
 
-			
-			
-			
-			
 			<tr ng-if="$parent.$parent.loginResult.perfil.isMaster" ng-click="openDespCorporativa()"
 				class="{{totalEmpresaOrcadoDespCorp == totalEmpresaRealizadoDespCorp ? 'info' :
 							totalEmpresaOrcadoDespCorp > totalEmpresaRealizadoDespCorp ? 'danger' : 'success'}}"

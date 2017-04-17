@@ -6,9 +6,11 @@
         <Dimensions>
           <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
             <Inclusions>
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN ABROLHOS]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN JATOBA]" operator="MEMBER" />
-              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN MARAU]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN PIRAMBU]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN CAETE]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CABURAI]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SAUIPE]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PITUBA]" operator="MEMBER" />
             </Inclusions>
             <Exclusions />
           </Dimension>
@@ -16,9 +18,14 @@
       </Axis>
       <Axis location="COLUMNS" nonEmpty="true">
         <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Valor Litros Hora]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
           <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
             <Inclusions>
-              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Outubro]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Janeiro]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Fevereiro]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Março]" operator="MEMBER" />
@@ -28,6 +35,7 @@
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Julho]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Agosto]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Setembro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Outubro]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Novembro]" operator="MEMBER" />
               <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Dezembro]" operator="MEMBER" />
             </Inclusions>
@@ -45,13 +53,7 @@
           </Dimension>
           <Dimension name="(Tempo) Anual">
             <Inclusions>
-              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
-            </Inclusions>
-            <Exclusions />
-          </Dimension>
-          <Dimension name="Measures">
-            <Inclusions>
-              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Valor Litros Hora]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
             </Inclusions>
             <Exclusions />
           </Dimension>
@@ -60,10 +62,10 @@
     </Axes>
   </QueryModel>
   <MDX>SELECT&#xD;
-NON EMPTY {Hierarchize({{[(Tempo) Mensal.Mensal].[Outubro], [(Tempo) Mensal.Mensal].[Janeiro], [(Tempo) Mensal.Mensal].[Fevereiro], [(Tempo) Mensal.Mensal].[Março], [(Tempo) Mensal.Mensal].[Abril], [(Tempo) Mensal.Mensal].[Maio], [(Tempo) Mensal.Mensal].[Junho], [(Tempo) Mensal.Mensal].[Julho], [(Tempo) Mensal.Mensal].[Agosto], [(Tempo) Mensal.Mensal].[Setembro], [(Tempo) Mensal.Mensal].[Novembro], [(Tempo) Mensal.Mensal].[Dezembro]}})} ON COLUMNS,&#xD;
-NON EMPTY {Hierarchize({{[(Rebocador) Rebocador.default].[SN ABROLHOS], [(Rebocador) Rebocador.default].[SN JATOBA], [(Rebocador) Rebocador.default].[SN MARAU]}})} ON ROWS&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Janeiro]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Fevereiro]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Março]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Abril]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Maio]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Junho]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Julho]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Agosto]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Setembro]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Outubro]}), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Novembro]}), CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, {[(Tempo) Mensal.Mensal].[Dezembro]}))))))))))))) ON COLUMNS,&#xD;
+NON EMPTY {Hierarchize({{[(Rebocador) Rebocador.default].[SN PIRAMBU], [(Rebocador) Rebocador.default].[SN CAETE], [(Rebocador) Rebocador.default].[CABURAI], [(Rebocador) Rebocador.default].[SAUIPE], [(Rebocador) Rebocador.default].[PITUBA]}})} ON ROWS&#xD;
 FROM [Sulnorte]&#xD;
-WHERE CrossJoin({[(Local) Filial.default].[STR]}, CrossJoin({[(Tempo) Anual.default].[2015]}, {[Measures].[(Combustivel) Valor Litros Hora]}))</MDX>
+WHERE CrossJoin({[(Local) Filial.default].[STR]}, {[(Tempo) Anual.default].[2016]})</MDX>
   <Properties>
     <Property name="saiku.ui.render.mode" value="table" />
     <Property name="org.saiku.query.explain" value="true" />

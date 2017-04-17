@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="5C9EC5BC-48E1-3883-AB95-5355FEEBB797" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Rebocador) Rebocador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN PIRAMBU]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SAUIPE]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[SN CAETE]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[CABURAI]" operator="MEMBER" />
+              <Selection dimension="(Rebocador) Rebocador" type="member" node="[(Rebocador) Rebocador.default].[PIRAJA]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Combustivel) Comandante" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[NILSON CLAUDIONOR DE BRITO]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[CARLOS ALBERTO NUNES PINHEIRO]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[FLAVIO DA SILVA MONTEIRO]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[MANOEL PEREIRA DOS SANTOS]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[GILENO SANTOS RABELO]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[EVERALDO JULIO DOS SANTOS]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[RIVELINO BRITTO RAMOS]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[JOSE CARLOS SILVA DOS SANTOS]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[EDMILSON JULIO DA SILVA]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[CICERO FABIANO DANTAS]" operator="MEMBER" />
+              <Selection dimension="(Combustivel) Comandante" type="member" node="[(Combustivel) Comandante.default].[ANDRE OLIVEIRA RAMOS]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[(Combustivel) Valor Litros Hora]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Setembro]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Dia do Mes" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[1]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[2]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[3]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[4]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[5]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[6]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[7]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[8]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[9]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[10]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[11]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[12]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[13]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[14]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[15]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[16]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[17]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[18]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[19]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[20]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[21]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[22]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[23]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[24]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[25]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[26]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[27]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[28]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[29]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[30]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Dia do Mes" type="member" node="[(Tempo) Dia do Mes.default].[31]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Local) Filial">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[SDR]" operator="MEMBER" />
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[MAC]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[1]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[2]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[3]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[4]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[5]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[6]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[7]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[8]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[9]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[10]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[11]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[12]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[13]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[14]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[15]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[16]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[17]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[18]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[19]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[20]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[21]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[22]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[23]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[24]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[25]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[26]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[27]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[28]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[29]})), Union(CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[30]})), CrossJoin({[Measures].[(Combustivel) Valor Litros Hora]}, CrossJoin({[(Tempo) Mensal.Mensal].[Setembro]}, {[(Tempo) Dia do Mes.default].[31]}))))))))))))))))))))))))))))))))) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[NILSON CLAUDIONOR DE BRITO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[CARLOS ALBERTO NUNES PINHEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[FLAVIO DA SILVA MONTEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[MANOEL PEREIRA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[GILENO SANTOS RABELO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[EVERALDO JULIO DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[RIVELINO BRITTO RAMOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[JOSE CARLOS SILVA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[EDMILSON JULIO DA SILVA]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[CICERO FABIANO DANTAS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN PIRAMBU]}, {[(Combustivel) Comandante.default].[ANDRE OLIVEIRA RAMOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[NILSON CLAUDIONOR DE BRITO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[CARLOS ALBERTO NUNES PINHEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[FLAVIO DA SILVA MONTEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[MANOEL PEREIRA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[GILENO SANTOS RABELO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[EVERALDO JULIO DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[RIVELINO BRITTO RAMOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[JOSE CARLOS SILVA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[EDMILSON JULIO DA SILVA]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[CICERO FABIANO DANTAS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SAUIPE]}, {[(Combustivel) Comandante.default].[ANDRE OLIVEIRA RAMOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[NILSON CLAUDIONOR DE BRITO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[CARLOS ALBERTO NUNES PINHEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[FLAVIO DA SILVA MONTEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[MANOEL PEREIRA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[GILENO SANTOS RABELO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[EVERALDO JULIO DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[RIVELINO BRITTO RAMOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[JOSE CARLOS SILVA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[EDMILSON JULIO DA SILVA]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[CICERO FABIANO DANTAS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[SN CAETE]}, {[(Combustivel) Comandante.default].[ANDRE OLIVEIRA RAMOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[NILSON CLAUDIONOR DE BRITO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[CARLOS ALBERTO NUNES PINHEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[FLAVIO DA SILVA MONTEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[MANOEL PEREIRA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[GILENO SANTOS RABELO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[EVERALDO JULIO DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[RIVELINO BRITTO RAMOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[JOSE CARLOS SILVA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[EDMILSON JULIO DA SILVA]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[CICERO FABIANO DANTAS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[CABURAI]}, {[(Combustivel) Comandante.default].[ANDRE OLIVEIRA RAMOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[NILSON CLAUDIONOR DE BRITO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[CARLOS ALBERTO NUNES PINHEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[FLAVIO DA SILVA MONTEIRO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[MANOEL PEREIRA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[GILENO SANTOS RABELO]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[EVERALDO JULIO DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[RIVELINO BRITTO RAMOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[JOSE CARLOS SILVA DOS SANTOS]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[EDMILSON JULIO DA SILVA]}), Union(CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[CICERO FABIANO DANTAS]}), CrossJoin({[(Rebocador) Rebocador.default].[PIRAJA]}, {[(Combustivel) Comandante.default].[ANDRE OLIVEIRA RAMOS]})))))))))))))))))))))))))))))))))))))))))))))))))))))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE Hierarchize(Union(CrossJoin({[(Local) Filial.default].[SDR]}, {[(Tempo) Anual.default].[2016]}), CrossJoin({[(Local) Filial.default].[MAC]}, {[(Tempo) Anual.default].[2016]})))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

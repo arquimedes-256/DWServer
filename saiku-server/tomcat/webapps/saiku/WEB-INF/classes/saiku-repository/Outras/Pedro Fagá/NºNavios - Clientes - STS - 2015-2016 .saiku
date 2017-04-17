@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="8A0194FA-BDD7-CB41-B7D7-29D0F1AD950D" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[QTD. Operacoes]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Armador" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Armador" type="level" node="[(Empresa) Armador.default].[Armador]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Empresa) Cliente" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[UASC - United Arab Shipping Company]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[YANG MING (AMERICAN) CORPORATION]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[YANG MING MARINE TRANSPORT CORP]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO BRASIL S/A - STS]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[COSCO BRASIL S/A]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CHINA SHIPPING CONTAINERS LINES CO. LTDA]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CHINA SHIPPING DO BRASIL AGENCIAMENTO MARITIMO LTDA. - STS]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[CHINA SHIPPING CONTAINERS LINES CO. LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[EVERGREEN MARINE CORP A/C AG VAP. GRIEG]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[EVERGREEN MARINE CO.]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Operacao) Nota Fiscal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Operacao) Nota Fiscal" type="level" node="[(Operacao) Nota Fiscal.default].[Nota Fiscal]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Tempo) Anual" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2016]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Janeiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Fevereiro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Março]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Abril]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Junho]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Julho]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Agosto]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Setembro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Outubro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Novembro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Dezembro]" operator="MEMBER" />
+              <Selection dimension="(Tempo) Mensal" type="member" node="[(Tempo) Mensal.Mensal].[Maio]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Local) Filial">
+            <Inclusions>
+              <Selection dimension="(Local) Filial" type="member" node="[(Local) Filial.default].[STR]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Janeiro]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Fevereiro]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Março]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Abril]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Junho]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Julho]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Agosto]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Setembro]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Outubro]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Novembro]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Dezembro]}), Union(CrossJoin({[(Tempo) Anual.default].[2015]}, {[(Tempo) Mensal.Mensal].[Maio]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Janeiro]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Fevereiro]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Março]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Abril]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Junho]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Julho]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Agosto]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Setembro]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Outubro]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Novembro]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Dezembro]}), CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Tempo) Mensal.Mensal].[Maio]}))))))))))))))))))))))))) ON COLUMNS,&#xD;
+NON EMPTY Hierarchize(Union(CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[UASC - United Arab Shipping Company]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))), Union(CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[YANG MING (AMERICAN) CORPORATION]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))), Union(CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[YANG MING MARINE TRANSPORT CORP]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))), Union(CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[COSCO BRASIL S/A - STS]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))), Union(CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[COSCO BRASIL S/A]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))), Union(CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[CHINA SHIPPING CONTAINERS LINES CO. LTDA]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))), Union(CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[CHINA SHIPPING DO BRASIL AGENCIAMENTO MARITIMO LTDA. - STS]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))), Union(CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[CHINA SHIPPING CONTAINERS LINES CO. LTD]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))), Union(CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[EVERGREEN MARINE CORP A/C AG VAP. GRIEG]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))), CrossJoin({[Measures].[QTD. Operacoes]}, CrossJoin([(Empresa) Armador.default].[Armador].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin({[(Empresa) Cliente.default].[EVERGREEN MARINE CO.]}, [(Operacao) Nota Fiscal.default].[Nota Fiscal].Members)))))))))))))) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE {[(Local) Filial.default].[STR]}</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

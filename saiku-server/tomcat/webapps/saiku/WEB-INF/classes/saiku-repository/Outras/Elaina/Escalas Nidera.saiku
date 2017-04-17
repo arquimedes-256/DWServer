@@ -28,9 +28,9 @@
             </Inclusions>
             <Exclusions />
           </Dimension>
-          <Dimension name="(Tempo) Mensal Manobra" hierarchizeMode="PRE" hierarchyConsistent="true">
+          <Dimension name="(Tempo) Mensal" hierarchizeMode="PRE" hierarchyConsistent="true">
             <Inclusions>
-              <Selection dimension="(Tempo) Mensal Manobra" type="level" node="[(Tempo) Mensal Manobra.Mensal].[Mes da Manobra]" operator="MEMBERS" />
+              <Selection dimension="(Tempo) Mensal" type="level" node="[(Tempo) Mensal.Mensal].[Mes]" operator="MEMBERS" />
             </Inclusions>
             <Exclusions />
           </Dimension>
@@ -69,7 +69,7 @@
   </QueryModel>
   <MDX>SELECT&#xD;
 NON EMPTY {[Measures].[Faturado Liquido Corrigido U$]} ON COLUMNS,&#xD;
-NON EMPTY CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Tempo) Mensal Manobra.Mensal].[Mes da Manobra].Members)))) ON ROWS&#xD;
+NON EMPTY CrossJoin([(Local) Filial.default].[Filial].Members, CrossJoin([(Embarcacao) Navio.default].[Nome do Navio].Members, CrossJoin([(Tabela) Faixa DWT.default].[Faixa DWT Inicial].Members, CrossJoin([(Operacao) Nota Fiscal.default].[Nota Fiscal].Members, [(Tempo) Mensal.Mensal].[Mes].Members)))) ON ROWS&#xD;
 FROM [Sulnorte]&#xD;
 WHERE Hierarchize(Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[NIDERA S.P.A.]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[NIDERA SPA C/O P.R. INTERNATIONAL SAM]}), Union(CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING B.V. - Wilhelminakade 197 3072 AP Rotterdam \nThe Netherlands - P.O. Box 676 3000 AR Rotterdam]}), CrossJoin({[(Tempo) Anual.default].[2016]}, {[(Empresa) Cliente.default].[TRANSGRAIN SHIPPING PTE.]})))))</MDX>
   <Properties>

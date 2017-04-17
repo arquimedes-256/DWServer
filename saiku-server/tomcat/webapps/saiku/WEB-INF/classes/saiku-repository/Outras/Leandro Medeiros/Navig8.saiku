@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query name="565F3DF5-DD48-20AA-BDEE-6CBF45D7A860" type="QM" connection="sulnorte" cube="[Sulnorte]" catalog="Sulnorte  - Data Warehouse" schema="Sulnorte  - Data Warehouse">
+  <QueryModel>
+    <Axes>
+      <Axis location="ROWS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="(Local) Porto" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Local) Porto" type="level" node="[(Local) Porto.default].[Nome do Porto]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Embarcacao) Navio" hierarchizeMode="PRE" hierarchyConsistent="true">
+            <Inclusions>
+              <Selection dimension="(Embarcacao) Navio" type="level" node="[(Embarcacao) Navio.default].[Nome do Navio]" operator="MEMBERS" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="COLUMNS" nonEmpty="true">
+        <Dimensions>
+          <Dimension name="Measures">
+            <Inclusions>
+              <Selection dimension="Measures" type="member" node="[Measures].[Faturado Liquido U$]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+      <Axis location="FILTER" nonEmpty="false">
+        <Dimensions>
+          <Dimension name="(Empresa) Cliente">
+            <Inclusions>
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 BULK POOL INC ]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 CHEMICALS C/O NAVIG8 PTE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 CHEMICALS POOL INC C/O NAVIG8 CHEMICALS ASIA PTE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 EUROPE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 POOL INC C/O NAVIG8 ASIA PTE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 POOL INC C/O NAVIG8 PTE LTD]" operator="MEMBER" />
+              <Selection dimension="(Empresa) Cliente" type="member" node="[(Empresa) Cliente.default].[NAVIG8 PTE LTD]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+          <Dimension name="(Tempo) Anual">
+            <Inclusions>
+              <Selection dimension="(Tempo) Anual" type="member" node="[(Tempo) Anual.default].[2015]" operator="MEMBER" />
+            </Inclusions>
+            <Exclusions />
+          </Dimension>
+        </Dimensions>
+      </Axis>
+    </Axes>
+  </QueryModel>
+  <MDX>SELECT&#xD;
+NON EMPTY {[Measures].[Faturado Liquido U$]} ON COLUMNS,&#xD;
+NON EMPTY CrossJoin([(Local) Porto.default].[Nome do Porto].Members, [(Embarcacao) Navio.default].[Nome do Navio].Members) ON ROWS&#xD;
+FROM [Sulnorte]&#xD;
+WHERE Hierarchize(Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 BULK POOL INC ]}, {[(Tempo) Anual.default].[2015]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 CHEMICALS C/O NAVIG8 PTE LTD]}, {[(Tempo) Anual.default].[2015]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 CHEMICALS POOL INC C/O NAVIG8 CHEMICALS ASIA PTE LTD]}, {[(Tempo) Anual.default].[2015]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 EUROPE LTD]}, {[(Tempo) Anual.default].[2015]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 POOL INC C/O NAVIG8 ASIA PTE LTD]}, {[(Tempo) Anual.default].[2015]}), Union(CrossJoin({[(Empresa) Cliente.default].[NAVIG8 POOL INC C/O NAVIG8 PTE LTD]}, {[(Tempo) Anual.default].[2015]}), CrossJoin({[(Empresa) Cliente.default].[NAVIG8 PTE LTD]}, {[(Tempo) Anual.default].[2015]}))))))))</MDX>
+  <Properties>
+    <Property name="saiku.ui.render.mode" value="table" />
+    <Property name="org.saiku.query.explain" value="true" />
+    <Property name="saiku.olap.query.nonempty.columns" value="true" />
+    <Property name="saiku.olap.query.nonempty.rows" value="true" />
+    <Property name="org.saiku.connection.scenario" value="false" />
+    <Property name="saiku.olap.query.automatic_execution" value="false" />
+    <Property name="saiku.olap.query.drillthrough" value="true" />
+    <Property name="saiku.olap.query.filter" value="true" />
+    <Property name="saiku.olap.query.limit" value="true" />
+    <Property name="saiku.olap.query.nonempty" value="true" />
+  </Properties>
+</Query>
+

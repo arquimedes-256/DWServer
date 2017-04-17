@@ -111,7 +111,7 @@ function TableController() {
             $('.alert-ano').fadeIn();
         }
         if (idMes != undefined && idAno != undefined && idRebocador != undefined) {
-            if (documentIsSaved || confirm("Você não salvou essas alterações , deseja descartar ?")) {
+            if (true){//(documentIsSaved || confirm("Você não salvou essas alterações , deseja descartar ?")) {
                 getHistorico();
                 _setTitleDocument();
                 validaTodosConsumos();
@@ -252,7 +252,7 @@ Teste de Máquina
 Manutenção
 
 */
-                '<td><div class="btn-group">' + '<a class="btn btn-primary tipoConsumoDrop btn-warning"><span>Apoio Portuario</span></a>' + '<a class="btn btn-primary dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>' + '<ul class="dropdown-menu tipoconsumo-dropdown">' + '<li><a href="#Apoio Portuario">Apoio Portuario</a></li>' + '<li><a href="#Viajando">Viajando</a></li>' + '<li><a href="#Docando">Docando</a></li>' + '<li><a href="#Saida da Base">Saida da Base</a></li>' + '<li><a href="#Retorno a Base">Retorno a Base</a></li>' + '<li><a href="#Teste">Teste</a></li>' + '<li><a href="#Teste de Maquina">Teste de Maquina</a></li>' + '<li><a href="#Manutencao">Manutencao</a></li>' + '<li><a href="#Operacao Especial">Operacao Especial</a></li>' + '<li><a href="#Reboque">Reboque</a></li>' + '<li><a href="#Fora de Operacao">Fora de Operacao</a></li>' + '</ul>' + '</div></td><td style="display:none"><input type="text" class="filial"/><input type="text" class="rebocador"/></td>' + '<td><div class="btn-group">' + '<a class="btn btn-primary comandantesDrop btn-primary"><span>?</span></a>' + '<a class="btn btn-primary dropdown-toggle btn-primary" data-toggle="dropdown" href="#"><span class="caret"></span></a>' + '<ul class="dropdown-menu comandantes-dropdown">' + comandantesLista + '</ul>' + '</div></td>' + '<td><input type="text" class="input-mini inpt-saldofinal zz" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Saldo Final" disabled="true"></td>' + +'</tr>';
+                '<td><div class="btn-group">' + '<a class="btn btn-primary tipoConsumoDrop btn-warning"><span>Apoio Portuario</span></a>' + '<a class="btn btn-primary dropdown-toggle btn-warning" data-toggle="dropdown" href="#"><span class="caret"></span></a>' + '<ul class="dropdown-menu tipoconsumo-dropdown">' + '<li><a href="#Apoio Portuario">Apoio Portuario</a></li>' + '<li><a href="#Viajando">Viajando</a></li>' + '<li><a href="#Docando">Docando</a></li>' + '<li><a href="#Saida da Base">Saida da Base</a></li>' + '<li><a href="#Retorno a Base">Retorno a Base</a></li>' + '<li><a href="#Teste/Vistoria">Teste/Vistoria</a></li>' + '<li><a href="#Teste de Maquina">Teste de Maquina</a></li>' + '<li><a href="#Manutencao">Manutencao</a></li>' + '<li><a href="#Operacao Especial">Operacao Especial</a></li>' + '<li><a href="#Reboque">Reboque</a></li>' + '<li><a href="#Fora de Operacao">Fora de Operacao</a></li>' + '</ul>' + '</div></td><td style="display:none"><input type="text" class="filial"/><input type="text" class="rebocador"/></td>' + '<td><div class="btn-group">' + '<a class="btn btn-primary comandantesDrop btn-primary"><span>?</span></a>' + '<a class="btn btn-primary dropdown-toggle btn-primary" data-toggle="dropdown" href="#"><span class="caret"></span></a>' + '<ul class="dropdown-menu comandantes-dropdown">' + comandantesLista + '</ul>' + '</div></td>' + '<td><input type="text" class="input-mini inpt-saldofinal zz" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Saldo Final" disabled="true"></td>' + +'</tr>';
             $('.valores-table').append(tr);
         }
         $(allInput).keyup(function() {
@@ -412,6 +412,11 @@ Manutenção
             $('.blocker').fadeOut();
             $('.loadingZ').fadeOut();
             $('.salvarRegistros').fadeIn();
+
+            $('.inpt-saldo').each(function() {
+                onKeyPressRow(null, $(this));
+            });
+            
         });
     }
 
